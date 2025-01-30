@@ -14,111 +14,119 @@
     </ion-item>
     <ion-item>
       <ion-label position="stacked">CONGREGAÇÃO</ion-label>
-      <ion-input></ion-input>
+      <ion-input (ngModelChange)="congregacao=$event" formControlName="congregacao"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">CPF</ion-label>
-      <ion-input></ion-input>
+      <ion-input (ngModelChange)="cpf=$event" formControlName="cpf"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">Nome</ion-label>
-      <ion-input></ion-input>
+      <ion-input (ngModelChange)="nome=$event" formControlName="nome"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">Data de Nascimento</ion-label>
-      <ion-input></ion-input>
+      <ion-input (ngModelChange)="dataNascimento=$event" formControlName="dataNascimento"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">Sexo</ion-label>
-      <ion-input></ion-input>
+      <ion-input (ngModelChange)="sexo=$event" formControlName="sexo"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">Estado Civil</ion-label>
-      <ion-input></ion-input>
+      <ion-input (ngModelChange)="estadoCivil=$event" formControlName="estadoCivil"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">Nacionalidade</ion-label>
-      <ion-input></ion-input>
+      <ion-input (ngModelChange)="nacionalidade=$event" formControlName="nacionalidade"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">Naturalidade</ion-label>
-      <ion-input></ion-input>
+      <ion-input (ngModelChange)="naturalidade=$event" formControlName="naturalidade"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">UF</ion-label>
-      <ion-input></ion-input>
+      <ion-input (ngModelChange)="uf=$event" formControlName="uf"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">E-mail</ion-label>
-      <ion-input></ion-input>
+      <ion-input (ngModelChange)="email=$event" formControlName="email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Nome Mãe</ion-label>
+      <ion-input (ngModelChange)="nomeMae=$event" formControlName="nomeMae"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Nome Pai</ion-label>
+      <ion-input (ngModelChange)="nomePai=$event" formControlName="nomePai"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">Escolaridade</ion-label>
-      <ion-input></ion-input>
+      <ion-input (ngModelChange)="escolaridade=$event" formControlName="escolaridade"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">Telefone 1</ion-label>
-      <ion-input></ion-input>
+      <ion-input (ngModelChange)="telefone1=$event" formControlName="telefone1"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">Telefone 2</ion-label>
-      <ion-input></ion-input>
+      <ion-input (ngModelChange)="telefone2=$event" formControlName="telefone2"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">CEP</ion-label>
-      <ion-input></ion-input>
+      <ion-input (ngModelChange)="cep=$event" formControlName="cep"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">Rua</ion-label>
-      <ion-input></ion-input>
+      <ion-input (ngModelChange)="rua=$event" formControlName="rua"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">Número</ion-label>
-      <ion-input></ion-input>
+      <ion-input (ngModelChange)="numero=$event" formControlName="numero"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">Bairro</ion-label>
-      <ion-input></ion-input>
+      <ion-input (ngModelChange)="bairro=$event" formControlName="bairro"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">Complemento</ion-label>
-      <ion-input></ion-input>
+      <ion-input (ngModelChange)="complemento=$event" formControlName="complemento"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">Estado</ion-label>
-      <ion-input></ion-input>
+      <ion-input (ngModelChange)="estado=$event" formControlName="estado"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">Cidade</ion-label>
-      <ion-input></ion-input>
+      <ion-input (ngModelChange)="cidade=$event" formControlName="cidade"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">Data Batismo nas águas</ion-label>
-      <ion-input></ion-input>
+      <ion-input (ngModelChange)="batismoAgua=$event" formControlName="batismoAgua"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">Data Batismo no Espírito Santo</ion-label>
-      <ion-input></ion-input>
+      <ion-input (ngModelChange)="batismoEspiritoSanto=$event" formControlName="batismoEspiritoSanto"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">Obreiro</ion-label>
-      <ion-input></ion-input>
+      <ion-input (ngModelChange)="obreiroSim=$event" formControlName="obreiroSim"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">Cargo:</ion-label>
-      <ion-input></ion-input>
+      <ion-input (ngModelChange)="obreiroCargo=$event" formControlName="obreiroCargo"></ion-input>
     </ion-item>
     <ion-row>
       <ion-col size="5">
         <ion-item>
           <ion-label position="stacked">Diácono data Início</ion-label>
-          <ion-input></ion-input>
+          <ion-input (ngModelChange)="consDiacono=$event" formControlName="consDiacono"></ion-input>
         </ion-item>
       </ion-col>
       <ion-col>
         <ion-item>
           <ion-label position="stacked">Local:</ion-label>
-          <ion-input></ion-input>
+          <ion-input (ngModelChange)="localDiacono=$event" formControlName="localDiacono"></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -126,13 +134,13 @@
       <ion-col size="5">
         <ion-item>
           <ion-label position="stacked">Presbitero data Início</ion-label>
-          <ion-input></ion-input>
+          <ion-input (ngModelChange)="consPresbitero=$event" formControlName="consPresbitero"></ion-input>
         </ion-item>
       </ion-col>
       <ion-col>
         <ion-item>
           <ion-label position="stacked">Local:</ion-label>
-          <ion-input></ion-input>
+          <ion-input (ngModelChange)="localPresbitero=$event" formControlName="localPresbitero"></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -140,13 +148,13 @@
       <ion-col size="5">
         <ion-item>
           <ion-label position="stacked">Evangelista data Início</ion-label>
-          <ion-input></ion-input>
+          <ion-input (ngModelChange)="consEvangelista=$event" formControlName="consEvangelista"></ion-input>
         </ion-item>
       </ion-col>
       <ion-col>
         <ion-item>
           <ion-label position="stacked">Local:</ion-label>
-          <ion-input></ion-input>
+          <ion-input (ngModelChange)="localEvangelista=$event" formControlName="localEvangelista"></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -154,27 +162,27 @@
       <ion-col size="5">
         <ion-item>
           <ion-label position="stacked">Pastor data Início</ion-label>
-          <ion-input></ion-input>
+          <ion-input (ngModelChange)="consPastor=$event" formControlName="consPastor"></ion-input>
         </ion-item>
       </ion-col>
       <ion-col>
         <ion-item>
           <ion-label position="stacked">Local:</ion-label>
-          <ion-input></ion-input>
+          <ion-input (ngModelChange)="localPastor=$event" formControlName="localPastor"></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
     <ion-item>
       <ion-label position="stacked">Registro Campo Jd. América</ion-label>
-      <ion-input></ion-input>
+      <ion-input (ngModelChange)="regCampo=$event" formControlName="regCampo"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">Registro CADESGO</ion-label>
-      <ion-input></ion-input>
+      <ion-input (ngModelChange)="regCadesgo=$event" formControlName="regCadesgo"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">Registro CGADB</ion-label>
-      <ion-input></ion-input>
+      <ion-input (ngModelChange)="regCgadb=$event" formControlName="regCgadb"></ion-input>
     </ion-item>
   </form>
 

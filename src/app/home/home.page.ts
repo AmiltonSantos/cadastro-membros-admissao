@@ -23,54 +23,89 @@ export class HomePage implements OnInit {
     public photoPreview!: string;
     private logoData!: string | ArrayBuffer | null;
     private urlPdf!: string;
-    private congregacao: string = '';
-    private cpf: string = '';
-    private nome: string = '';
-    private dataNascimento: string = '';
-    private sexo: string = '';
-    private estadoCivil: string = '';
-    private nacionalidade: string = '';
-    private naturalidade: string = '';
-    private uf: string = '';
-    private email: string = '';
-    private nomeMae: string = '';
-    private nomePai: string = '';
-    private escolaridade: string = '';
-    private telefone1: string = '';
-    private telefone2: string = '';
-    private cep: string = '';
-    private rua: string = '';
-    private numero: string = '';
-    private bairro: string = '';
-    private complemento: string = '';
-    private estado: string = '';
-    private cidade: string = '';
-    private batismoAgua: string = '00/00/0000';
-    private batismoEspiritoSanto: string = '00/00/000';
-    private obreiroSim: string = '';
-    private obreiroNao: string = '';
-    private obreiroCargo: string = '';
-    private consDiacono: string = '00/00/0000';
-    private localDiacono: string = '';
-    private consPresbitero: string = '00/00/0000';
-    private localPresbitero: string = '';
-    private consEvangelista: string = '00/00/0000';
-    private localEvangelista: string = '';
-    private consPastor: string = '00/00/0000';
-    private localPastor: string = '';
-    private regCampo: string = '';
-    private regCadesgo: string = '';
-    private regCgadb: string = '';
+    public congregacao: string = '';
+    public cpf: string = '';
+    public nome: string = '';
+    public dataNascimento: string = '';
+    public sexo: string = '';
+    public estadoCivil: string = '';
+    public nacionalidade: string = '';
+    public naturalidade: string = '';
+    public uf: string = '';
+    public email: string = '';
+    public nomeMae: string = '';
+    public nomePai: string = '';
+    public escolaridade: string = '';
+    public telefone1: string = '';
+    public telefone2: string = '';
+    public cep: string = '';
+    public rua: string = '';
+    public numero: string = '';
+    public bairro: string = '';
+    public complemento: string = '';
+    public estado: string = '';
+    public cidade: string = '';
+    public batismoAgua: string = '00/00/0000';
+    public batismoEspiritoSanto: string = '00/00/000';
+    public obreiroSim: string = '';
+    public obreiroNao: string = '';
+    public obreiroCargo: string = '';
+    public consDiacono: string = '00/00/0000';
+    public localDiacono: string = '';
+    public consPresbitero: string = '00/00/0000';
+    public localPresbitero: string = '';
+    public consEvangelista: string = '00/00/0000';
+    public localEvangelista: string = '';
+    public consPastor: string = '00/00/0000';
+    public localPastor: string = '';
+    public regCampo: string = '';
+    public regCadesgo: string = '';
+    public regCgadb: string = '';
 
 
-    constructor(private fb: FormBuilder, private plt: Platform, private http: HttpClient, private fileOpener: FileOpener) { }
+    constructor(public fb: FormBuilder, public plt: Platform, public http: HttpClient, public fileOpener: FileOpener) { }
 
     ngOnInit() {
         this.myForm = this.fb.group({
             showLogo: true,
-            from: 'Carl',
-            to: 'Henning',
-            text: 'This is sample text.'
+            congregacao: this.congregacao,
+            cpf: this.cpf,
+            nome: this.nome,
+            dataNascimento: this.dataNascimento,
+            sexo: this.sexo,
+            estadoCivil: this.estadoCivil,
+            nacionalidade: this.nacionalidade,
+            naturalidade: this.naturalidade,
+            uf: this.uf,
+            email: this.email,
+            nomeMae: this.nomeMae,
+            nomePai: this.nomePai,
+            escolaridade: this.escolaridade,
+            telefone1: this.telefone1,
+            telefone2: this.telefone2,
+            cep: this.cep,
+            rua: this.rua,
+            numero: this.numero,
+            bairro: this.bairro,
+            complemento: this.complemento,
+            estado: this.estado,
+            cidade: this.cidade,
+            batismoAgua: this.batismoAgua,
+            batismoEspiritoSanto: this.batismoEspiritoSanto,
+            obreiroSim: this.obreiroSim,
+            obreiroNao: this.obreiroNao,
+            obreiroCargo: this.obreiroCargo,
+            consDiacono: this.consDiacono,
+            localDiacono: this.localDiacono,
+            consPresbitero: this.consPresbitero,
+            localPresbitero: this.localPresbitero,
+            consEvangelista: this.consEvangelista,
+            localEvangelista: this.localEvangelista,
+            consPastor: this.consPastor,
+            localPastor: this.localPastor,
+            regCampo: this.regCampo,
+            regCadesgo: this.regCadesgo,
+            regCgadb: this.regCgadb
         });
 
         this.loadLocalAssetToBase64();
@@ -152,7 +187,7 @@ export class HomePage implements OnInit {
                     text: 'FICHA DE CADASTRO',
                     style: 'header',
                     alignment: 'center',
-                    margin: [0, 10, 0, 10]
+                    margin: [0,5, 0, 5]
                 },
 
                 // Inicio dos Inputs table de cadastro
@@ -1032,7 +1067,7 @@ export class HomePage implements OnInit {
                             ]
                         }
                     ],
-                    margin: [0, 0, 0, 20]
+                    margin: [0, 0, 0, 10]
                 },
                 {
                     columns: [
