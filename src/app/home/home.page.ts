@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { IonicSafeString, Platform } from '@ionic/angular';
+import { Platform } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
 
 import * as pdfMake from "pdfmake/build/pdfmake";
@@ -71,6 +71,21 @@ export class HomePage implements OnInit {
         }
 
         const docDefinition: any = {
+            header: {
+                // Definindo o cabeçalho com uma moldura
+                canvas: [
+                    {
+                        type: 'rect',
+                        x: 30, // Margem esquerda
+                        y: 35, // Margem superior
+                        w: 535, // Largura da moldura (595 - 30 - 30)
+                        h: 778, // Altura da moldura (842 - 32 - 32)
+                        lineWidth: 3, // Espessura da linha
+                        fill: 'none' // Sem preenchimento
+                    }
+                ],
+                absolutePosition: { x: 0, y: 0 } // Posição absoluta para garantir que a moldura fique no fundo
+            },
             watermark: { text: 'AD MISSÃO JARDIM AMÉRICA', color: 'red', opacity: 0.05, bold: true },
             content: [
                 {
@@ -519,7 +534,7 @@ export class HomePage implements OnInit {
                                             y1: 0,
                                             x2: 120, 
                                             y2: 0,
-                                            lineWidth: 1.5,
+                                            lineWidth: 1,
                                             lineColor: 'black'
                                         }
                                     ],
@@ -544,7 +559,7 @@ export class HomePage implements OnInit {
                                             y1: 0,
                                             x2: 120, 
                                             y2: 0,
-                                            lineWidth: 1.5,
+                                            lineWidth: 1,
                                             lineColor: 'black'
                                         }
                                     ],
@@ -657,7 +672,7 @@ export class HomePage implements OnInit {
                                             y1: 0,
                                             x2: 120, 
                                             y2: 0,
-                                            lineWidth: 1.5,
+                                            lineWidth: 1,
                                             lineColor: 'black'
                                         }
                                     ],
@@ -716,7 +731,7 @@ export class HomePage implements OnInit {
                                             y1: 0,
                                             x2: 120, 
                                             y2: 0,
-                                            lineWidth: 1.5,
+                                            lineWidth: 1,
                                             lineColor: 'black'
                                         }
                                     ],
@@ -775,7 +790,7 @@ export class HomePage implements OnInit {
                                             y1: 0,
                                             x2: 120, 
                                             y2: 0,
-                                            lineWidth: 1.5,
+                                            lineWidth: 1,
                                             lineColor: 'black'
                                         }
                                     ],
@@ -834,7 +849,7 @@ export class HomePage implements OnInit {
                                             y1: 0,
                                             x2: 120, 
                                             y2: 0,
-                                            lineWidth: 1.5,
+                                            lineWidth: 1,
                                             lineColor: 'black'
                                         }
                                     ],
@@ -916,27 +931,140 @@ export class HomePage implements OnInit {
                     ],
                     margin: [0, 0, 0, 5]
                 },
-		        '(Continuação da Ficha de Cadastro para Obreiros e Membros da IEADMM-Jd. América..............Fl 02)',
-                {text: 'DECLARAÇÃO E TERMO DE AUTORIZAÇÃO', style: 'header'},
-
-                // The potentially captured image!
-                image,
-
-                // Adicionando a moldura como um canvas
                 {
-                    canvas: [
+                    text: '(Continuação da Ficha de Cadastro para Obreiros e Membros da IEADMM-Jd. América.....Fl 02)',
+                    decoration: 'underline',
+                    bold: true,
+                    margin: [0, 10, 0, 10] // Margens em torno do texto 
+                },
+
+                {text: 'DECLARAÇÃO E TERMO DE AUTORIZAÇÃO', style: 'header', alignment: 'center'},
+
+                {text: 'I – DÍZIMOS, OFERTAS E DOAÇÕES', style: 'header', margin: [0, 30, 0, 10]},
+
+                {
+                    text: `Pelo presente termo, eu acima identificado, declaro para os devidos fins e a quem possa interessar que as contribuições como os dízimos, as ofertas e outras doações feitas por mim à Igreja Evangélica Assembleia de Deus Ministério Missão – Jardim América, são voluntárias, e que em hipótese alguma, nem no presente e no futuro, reclamarei a devolução do que por mim foi doado.`,
+                    alignment: 'justify',
+                    fontSize: 14,
+                    margin: [0, 10, 0, 10]
+                },
+
+                {text: 'II – USO DE IMAGEM, VOZ E CESSÃO DE DIREITO', style: 'header', margin: [0, 30, 0, 10]},
+
+                {
+                    text: `Declaro ainda, com base no art. 29 da Lei de Direitos Autorais, que AUTORIZO de forma gratuita e sem qualquer ônus, a Igreja Evangélica Assembleia de Deus Ministério Missão – Jardim América, a utilização de minha(s) imagem(ns) e/ou voz e/ou de informações pessoais na obra, e em sua divulgação, se houver, em todos os meios de divulgação possíveis, quer sejam na mídia impressa (livros, catálogos, revistas, jornais, entre outros), televisiva (propagandas para televisão aberta e/ou fechas, vídeos, filmes, entre outros), radiofônica (programas de rádio/podcasts), internet, banco de dados informatizados, multimídia, entre outros, e nos meios de comunicação interna, como jornais e periódicos em geral, na forma de impresso, voz e imagem.`,
+                    alignment: 'justify',
+                    fontSize: 14,
+                    margin: [0, 10, 0, 10]
+                },
+
+                {
+                    text: `A presente autorização e cessão são de natureza gratuita, firmadas em caráter irrevogável e irretratável e por prazo indeterminado, cujos direitos e obrigações vinculam seus respectivos herdeiros e sucessores consoante as regras previstas na Lei 9.610/98 (Lei sobre Direitos Autorais e outras providências).`,
+                    alignment: 'justify',
+                    fontSize: 14,
+                    margin: [0, 10, 0, 80]
+                },
+                {
+                    columns: [
                         {
-                            type: 'rect',
-                            x: 30, // Margem esquerda
-                            y: 35, // Margem superior
-                            w: 535, // Largura da moldura (595 - 30 - 30)
-                            h: 778, // Altura da moldura (842 - 32 - 32)
-                            lineWidth: 3, // Espessura da linha
-                            fill: 'none' // Sem preenchimento
-                        }
+                            width: '30%',
+                            stack: [
+                                {
+                                    canvas: [
+                                        {
+                                            type: 'line',
+                                            x1: 0,
+                                            y1: 0,
+                                            x2: 154, 
+                                            y2: 0,
+                                            lineWidth: 1,
+                                            lineColor: 'black'
+                                        }
+                                    ],
+                                    margin: [0, 12, 0, 0]
+                                }
+                            ]
+                        },
+                        {
+                            width: '2%',
+                            stack: [
+                                { text: ',', bold: true, margin: [0, 0, 0, 0] },
+                            ]
+                        },
+                        {
+                            width: '8%',
+                            stack: [
+                                {
+                                    canvas: [
+                                        {
+                                            type: 'line',
+                                            x1: 0,
+                                            y1: 0,
+                                            x2: 35, 
+                                            y2: 0,
+                                            lineWidth: 1,
+                                            lineColor: 'black'
+                                        }
+                                    ],
+                                    margin: [0, 12, 0, 0]
+                                }
+                            ]
+                        },
+                        {
+                            width: '3%',
+                            stack: [
+                                { text: 'de', bold: true, margin: [0, 0, 0, 0] },
+                            ]
+                        },
+                        {
+                            width: '20%',
+                            stack: [
+                                {
+                                    canvas: [
+                                        {
+                                            type: 'line',
+                                            x1: 0,
+                                            y1: 0,
+                                            x2: 100, 
+                                            y2: 0,
+                                            lineWidth: 1,
+                                            lineColor: 'black'
+                                        }
+                                    ],
+                                    margin: [0, 12, 0, 0]
+                                }
+                            ]
+                        },
+                        {
+                            width: '3%',
+                            stack: [
+                                { text: 'de', bold: true, margin: [0, 0, 0, 0] },
+                            ]
+                        },
+                        {
+                            width: '10%',
+                            stack: [
+                                {
+                                    canvas: [
+                                        {
+                                            type: 'line',
+                                            x1: 0,
+                                            y1: 0,
+                                            x2: 50, 
+                                            y2: 0,
+                                            lineWidth: 1,
+                                            lineColor: 'black'
+                                        }
+                                    ],
+                                    margin: [0, 12, 0, 0]
+                                }
+                            ]
+                        }                                                                                  
                     ],
-                    absolutePosition: { x: 0, y: 0 } // Posição absoluta para garantir que a moldura fique no fundo
-                }
+                    margin: [0, 0, 0, 0]
+                },
+                // The potentially captured image!
+                image
             ],
 
             // Rodapé
