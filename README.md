@@ -5,7 +5,6 @@
       \____|__  /__|_|  /__|____/__|  \____/|___|  / /_______  (____  /___|  /__|  \____/____  >
               \/      \/                         \/          \/     \/     \/                \/ 
 
-# cadastro-membros-admissao
-Cadastros de membros
+# Cadastros de membros
 
 Author @amilton.dev
