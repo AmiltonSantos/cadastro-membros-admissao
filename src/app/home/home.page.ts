@@ -18,11 +18,50 @@ import { FileOpener } from '@awesome-cordova-plugins/file-opener/ngx';
 })
 export class HomePage implements OnInit {
 
-    myForm!: FormGroup;
-    pdfObj!: pdfMake.TCreatedPdf;
-    photoPreview!: string;
-    logoData!: string | ArrayBuffer | null;
-    urlPdf!: string;
+    public myForm!: FormGroup;
+    public pdfObj!: pdfMake.TCreatedPdf;
+    public photoPreview!: string;
+    private logoData!: string | ArrayBuffer | null;
+    private urlPdf!: string;
+    private congregacao: string = '';
+    private cpf: string = '';
+    private nome: string = '';
+    private dataNascimento: string = '';
+    private sexo: string = '';
+    private estadoCivil: string = '';
+    private nacionalidade: string = '';
+    private naturalidade: string = '';
+    private uf: string = '';
+    private email: string = '';
+    private nomeMae: string = '';
+    private nomePai: string = '';
+    private escolaridade: string = '';
+    private telefone1: string = '';
+    private telefone2: string = '';
+    private cep: string = '';
+    private rua: string = '';
+    private numero: string = '';
+    private bairro: string = '';
+    private complemento: string = '';
+    private estado: string = '';
+    private cidade: string = '';
+    private batismoAgua: string = '00/00/0000';
+    private batismoEspiritoSanto: string = '00/00/000';
+    private obreiroSim: string = '';
+    private obreiroNao: string = '';
+    private obreiroCargo: string = '';
+    private consDiacono: string = '00/00/0000';
+    private localDiacono: string = '';
+    private consPresbitero: string = '00/00/0000';
+    private localPresbitero: string = '';
+    private consEvangelista: string = '00/00/0000';
+    private localEvangelista: string = '';
+    private consPastor: string = '00/00/0000';
+    private localPastor: string = '';
+    private regCampo: string = '';
+    private regCadesgo: string = '';
+    private regCgadb: string = '';
+
 
     constructor(private fb: FormBuilder, private plt: Platform, private http: HttpClient, private fileOpener: FileOpener) { }
 
@@ -124,8 +163,13 @@ export class HomePage implements OnInit {
                 {
                     table: {
                         widths: [380],
+                        heights: 13,
                         body: [
-                            ['Column 1']
+                            [
+                                {
+                                    text: this.congregacao
+                                }
+                            ]
                         ]
                     }
                 },
@@ -141,8 +185,13 @@ export class HomePage implements OnInit {
                 {
                     table: {
                         widths: [380],
+                        heights: 13,
                         body: [
-                            ['Column 1']
+                            [
+                                {
+                                    text: this.cpf
+                                }
+                            ]
                         ]
                     },
                     margin: [0, 0, 0, 5]
@@ -154,8 +203,13 @@ export class HomePage implements OnInit {
                 {
                     table: {
                         widths: [500],
+                        heights: 13,
                         body: [
-                            ['Column 1']
+                            [
+                                {
+                                    text: this.nome
+                                }
+                            ]
                         ]
                     },
                     margin: [0, 0, 0, 5]
@@ -169,8 +223,13 @@ export class HomePage implements OnInit {
                                 {
                                     table: {
                                         widths: ['*'],
+                                        heights: 13,
                                         body: [
-                                            ['Col1']
+                                            [
+                                                {
+                                                    text: this.dataNascimento
+                                                }
+                                            ]
                                         ]
                                     },
                                     margin: [0, 0, 10, 0]
@@ -184,8 +243,13 @@ export class HomePage implements OnInit {
                                 {
                                     table: {
                                         widths: ['*'],
+                                        heights: 13,
                                         body: [
-                                            ['Col2']
+                                            [
+                                                {
+                                                    text: this.sexo
+                                                }
+                                            ]
                                         ]
                                     },
                                     margin: [0, 0, 10, 0]
@@ -199,8 +263,13 @@ export class HomePage implements OnInit {
                                 {
                                     table: {
                                         widths: ['*'],
+                                        heights: 13,
                                         body: [
-                                            ['Col3']
+                                            [
+                                                {
+                                                    text: this.sexo
+                                                }
+                                            ]
                                         ]
                                     },
                                     margin: [0, 0, 10, 0]
@@ -214,8 +283,13 @@ export class HomePage implements OnInit {
                                 {
                                     table: {
                                         widths: ['*'],
+                                        heights: 13,
                                         body: [
-                                            ['Col4']
+                                            [
+                                                {
+                                                    text: this.estadoCivil
+                                                }
+                                            ]
                                         ]
                                     },
                                     margin: [0, 0, 0, 0]
@@ -234,8 +308,13 @@ export class HomePage implements OnInit {
                                 {
                                     table: {
                                         widths: ['*'],
+                                        heights: 13,
                                         body: [
-                                            ['Col1']
+                                            [
+                                                {
+                                                    text: this.nacionalidade
+                                                }
+                                            ]
                                         ]
                                     },
                                     margin: [0, 0, 10, 0]
@@ -249,8 +328,13 @@ export class HomePage implements OnInit {
                                 {
                                     table: {
                                         widths: ['*'],
+                                        heights: 13,
                                         body: [
-                                            ['Col2']
+                                            [
+                                                {
+                                                    text: this.naturalidade
+                                                }
+                                            ]
                                         ]
                                     },
                                     margin: [0, 0, 10, 0]
@@ -264,8 +348,13 @@ export class HomePage implements OnInit {
                                 {
                                     table: {
                                         widths: ['*'],
+                                        heights: 13,
                                         body: [
-                                            ['Col3']
+                                            [
+                                                {
+                                                    text: this.uf
+                                                }
+                                            ]
                                         ]
                                     },
                                     margin: [0, 0, 10, 0]
@@ -279,8 +368,13 @@ export class HomePage implements OnInit {
                                 {
                                     table: {
                                         widths: ['*'],
+                                        heights: 13,
                                         body: [
-                                            ['Col4']
+                                            [
+                                                {
+                                                    text: this.email
+                                                }
+                                            ]
                                         ]
                                     },
                                     margin: [0, 0, 0, 0]
@@ -299,8 +393,13 @@ export class HomePage implements OnInit {
                                 {
                                     table: {
                                         widths: ['*'],
+                                        heights: 13,
                                         body: [
-                                            ['Col1']
+                                            [
+                                                {
+                                                    text: this.nomeMae
+                                                }
+                                            ]
                                         ]
                                     },
                                     margin: [0, 0, 10, 0]
@@ -314,8 +413,13 @@ export class HomePage implements OnInit {
                                 {
                                     table: {
                                         widths: ['*'],
+                                        heights: 13,
                                         body: [
-                                            ['Col2']
+                                            [
+                                                {
+                                                    text: this.nomePai
+                                                }
+                                            ]
                                         ]
                                     },
                                     margin: [0, 0, 0, 0]
@@ -334,8 +438,13 @@ export class HomePage implements OnInit {
                                 {
                                     table: {
                                         widths: ['*'],
+                                        heights: 13,
                                         body: [
-                                            ['Col1']
+                                            [
+                                                {
+                                                    text: this.escolaridade
+                                                }
+                                            ]
                                         ]
                                     },
                                     margin: [0, 0, 10, 0]
@@ -349,8 +458,13 @@ export class HomePage implements OnInit {
                                 {
                                     table: {
                                         widths: ['*'],
+                                        heights: 13,
                                         body: [
-                                            ['Col2']
+                                            [
+                                                {
+                                                    text: this.telefone1
+                                                }
+                                            ]
                                         ]
                                     },
                                     margin: [0, 0, 10, 0]
@@ -364,8 +478,13 @@ export class HomePage implements OnInit {
                                 {
                                     table: {
                                         widths: ['*'],
+                                        heights: 13,
                                         body: [
-                                            ['Col2']
+                                            [
+                                                {
+                                                    text: this.telefone2
+                                                }
+                                            ]
                                         ]
                                     },
                                     margin: [0, 0, 0, 0]
@@ -394,8 +513,13 @@ export class HomePage implements OnInit {
                                 {
                                     table: {
                                         widths: ['*'],
+                                        heights: 13,
                                         body: [
-                                            ['Col1']
+                                            [
+                                                {
+                                                    text: this.cep
+                                                }
+                                            ]
                                         ]
                                     },
                                     margin: [0, 0, 10, 0]
@@ -409,8 +533,13 @@ export class HomePage implements OnInit {
                                 {
                                     table: {
                                         widths: ['*'],
+                                        heights: 13,
                                         body: [
-                                            ['Col2']
+                                            [
+                                                {
+                                                    text: this.rua
+                                                }
+                                            ]
                                         ]
                                     },
                                     margin: [0, 0, 10, 0]
@@ -424,8 +553,13 @@ export class HomePage implements OnInit {
                                 {
                                     table: {
                                         widths: ['*'],
+                                        heights: 13,
                                         body: [
-                                            ['Col2']
+                                            [
+                                                {
+                                                    text: this.numero
+                                                }
+                                            ]
                                         ]
                                     },
                                     margin: [0, 0, 0, 0]
@@ -444,8 +578,13 @@ export class HomePage implements OnInit {
                                 {
                                     table: {
                                         widths: ['*'],
+                                        heights: 13,
                                         body: [
-                                            ['Col1']
+                                            [
+                                                {
+                                                    text: this.bairro
+                                                }
+                                            ]
                                         ]
                                     },
                                     margin: [0, 0, 10, 0]
@@ -459,8 +598,13 @@ export class HomePage implements OnInit {
                                 {
                                     table: {
                                         widths: ['*'],
+                                        heights: 13,
                                         body: [
-                                            ['Col2']
+                                            [
+                                                {
+                                                    text: this.complemento
+                                                }
+                                            ]
                                         ]
                                     },
                                     margin: [0, 0, 0, 0]
@@ -479,8 +623,13 @@ export class HomePage implements OnInit {
                                 {
                                     table: {
                                         widths: ['*'],
+                                        heights: 13,
                                         body: [
-                                            ['Col1']
+                                            [
+                                                {
+                                                    text: this.estado
+                                                }
+                                            ]
                                         ]
                                     },
                                     margin: [0, 0, 10, 0]
@@ -494,8 +643,13 @@ export class HomePage implements OnInit {
                                 {
                                     table: {
                                         widths: ['*'],
+                                        heights: 13,
                                         body: [
-                                            ['Col2']
+                                            [
+                                                {
+                                                    text: this.cidade
+                                                }
+                                            ]
                                         ]
                                     },
                                     margin: [0, 0, 0, 0]
@@ -520,51 +674,39 @@ export class HomePage implements OnInit {
                         {
                             width: '21%',
                             stack: [
-                                { text: 'Batismo nas águas ', bold: true, margin: [0, 0, 0, 0] },
+                                { text: 'Batismo nas águas:', bold: true, margin: [0, 0, 0, 0] },
                             ]
                         },
                         {
                             width: '27%',
                             stack: [
                                 {
-                                    canvas: [
-                                        {
-                                            type: 'line',
-                                            x1: 0,
-                                            y1: 0,
-                                            x2: 120, 
-                                            y2: 0,
-                                            lineWidth: 1,
-                                            lineColor: 'black'
-                                        }
-                                    ],
-                                    margin: [0, 12, 0, 0]
-                                }
+                                    text: this.batismoAgua,
+                                    color: 'gray',
+                                    fontSize: 14,
+                                    decoration: 'underline',
+                                    bold: true,
+                                    margin: [0, 0, 0, 0]
+                                },
                             ]
                         },
                         {
                             width: '28%',
                             stack: [
-                                { text: 'Batismo no Espírito Santo', bold: true, margin: [0, 0, 0, 0] },
+                                { text: 'Batismo no Espírito Santo:', bold: true, margin: [0, 0, 0, 0] },
                             ]
                         },
                         {
                             width: '25%',
                             stack: [
                                 {
-                                    canvas: [
-                                        {
-                                            type: 'line',
-                                            x1: 0,
-                                            y1: 0,
-                                            x2: 120, 
-                                            y2: 0,
-                                            lineWidth: 1,
-                                            lineColor: 'black'
-                                        }
-                                    ],
-                                    margin: [0, 12, 0, 0]
-                                }
+                                    text: this.batismoEspiritoSanto,
+                                    color: 'gray',
+                                    fontSize: 14,
+                                    decoration: 'underline',
+                                    bold: true,
+                                    margin: [0, 0, 0, 0]
+                                },
                             ]
                         },
                     ],
@@ -592,8 +734,13 @@ export class HomePage implements OnInit {
                                 {
                                     table: {
                                         widths: [25],
+                                        heights: 13,
                                         body: [
-                                            ['Col4']
+                                            [
+                                                {
+                                                    text: this.obreiroSim
+                                                }
+                                            ]
                                         ]
                                     },
                                     margin: [0, 0, 10, 0]
@@ -608,13 +755,18 @@ export class HomePage implements OnInit {
                             ]
                         },
                         {
-                            width: '20%',                            
+                            width: '20%',
                             stack: [
                                 {
                                     table: {
                                         widths: [25],
+                                        heights: 13,
                                         body: [
-                                            ['Col4']
+                                            [
+                                                {
+                                                    text: this.obreiroNao
+                                                }
+                                            ]
                                         ]
                                     },
                                     margin: [0, 0, 10, 0]
@@ -629,13 +781,18 @@ export class HomePage implements OnInit {
                             ]
                         },
                         {
-                            width: '40.5%',                            
+                            width: '40.5%',
                             stack: [
                                 {
                                     table: {
                                         widths: ['*'],
+                                        heights: 13,
                                         body: [
-                                            ['Col4']
+                                            [
+                                                {
+                                                    text: this.obreiroCargo
+                                                }
+                                            ]
                                         ]
                                     },
                                     margin: [0, 0, 10, 0]
@@ -655,28 +812,22 @@ export class HomePage implements OnInit {
                             ]
                         },
                         {
-                            width: '12%',
+                            width: '13%',
                             bold: true,
                             stack: [
-                                { text: 'Data Início', margin: [0, 5, 0, 0] }
+                                { text: 'Data Início:', margin: [0, 5, 0, 0] }
                             ]
                         },
                         {
                             width: '25%',
                             stack: [
                                 {
-                                    canvas: [
-                                        {
-                                            type: 'line',
-                                            x1: 0,
-                                            y1: 0,
-                                            x2: 120, 
-                                            y2: 0,
-                                            lineWidth: 1,
-                                            lineColor: 'black'
-                                        }
-                                    ],
-                                    margin: [0, 15, 0, 0]
+                                    text: this.consDiacono,
+                                    color: 'gray',
+                                    fontSize: 14,
+                                    decoration: 'underline',
+                                    bold: true,
+                                    margin: [0, 3, 0, 0]
                                 }
                             ]
                         },
@@ -688,19 +839,24 @@ export class HomePage implements OnInit {
                             ]
                         },
                         {
-                            width: '43%',                            
+                            width: '42%',
                             stack: [
                                 {
                                     table: {
                                         widths: ['*'],
+                                        heights: 13,
                                         body: [
-                                            ['Col4']
+                                            [
+                                                {
+                                                    text: this.localDiacono
+                                                }
+                                            ]
                                         ]
                                     },
                                     margin: [0, 0, 10, 0]
                                 }
                             ]
-                        }                        
+                        }
                     ],
                     margin: [0, 0, 0, 5]
                 },
@@ -714,28 +870,22 @@ export class HomePage implements OnInit {
                             ]
                         },
                         {
-                            width: '12%',
+                            width: '13%',
                             bold: true,
                             stack: [
-                                { text: 'Data Início', margin: [0, 5, 0, 0] }
+                                { text: 'Data Início:', margin: [0, 5, 0, 0] }
                             ]
                         },
                         {
                             width: '25%',
                             stack: [
                                 {
-                                    canvas: [
-                                        {
-                                            type: 'line',
-                                            x1: 0,
-                                            y1: 0,
-                                            x2: 120, 
-                                            y2: 0,
-                                            lineWidth: 1,
-                                            lineColor: 'black'
-                                        }
-                                    ],
-                                    margin: [0, 15, 0, 0]
+                                    text: this.consPresbitero,
+                                    color: 'gray',
+                                    fontSize: 14,
+                                    decoration: 'underline',
+                                    bold: true,
+                                    margin: [0, 3, 0, 0]
                                 }
                             ]
                         },
@@ -747,19 +897,24 @@ export class HomePage implements OnInit {
                             ]
                         },
                         {
-                            width: '43%',                            
+                            width: '42%',
                             stack: [
                                 {
                                     table: {
                                         widths: ['*'],
+                                        heights: 13,
                                         body: [
-                                            ['Col4']
+                                            [
+                                                {
+                                                    text: this.localPresbitero
+                                                }
+                                            ]
                                         ]
                                     },
                                     margin: [0, 0, 10, 0]
                                 }
                             ]
-                        }                        
+                        }
                     ],
                     margin: [0, 0, 0, 5]
                 },
@@ -773,28 +928,22 @@ export class HomePage implements OnInit {
                             ]
                         },
                         {
-                            width: '12%',
+                            width: '13%',
                             bold: true,
                             stack: [
-                                { text: 'Data Início', margin: [0, 5, 0, 0] }
+                                { text: 'Data Início:', margin: [0, 5, 0, 0] }
                             ]
                         },
                         {
                             width: '25%',
                             stack: [
                                 {
-                                    canvas: [
-                                        {
-                                            type: 'line',
-                                            x1: 0,
-                                            y1: 0,
-                                            x2: 120, 
-                                            y2: 0,
-                                            lineWidth: 1,
-                                            lineColor: 'black'
-                                        }
-                                    ],
-                                    margin: [0, 15, 0, 0]
+                                    text: this.consEvangelista,
+                                    color: 'gray',
+                                    fontSize: 14,
+                                    decoration: 'underline',
+                                    bold: true,
+                                    margin: [0, 3, 0, 0]
                                 }
                             ]
                         },
@@ -806,19 +955,24 @@ export class HomePage implements OnInit {
                             ]
                         },
                         {
-                            width: '43%',                            
+                            width: '42%',
                             stack: [
                                 {
                                     table: {
                                         widths: ['*'],
+                                        heights: 13,
                                         body: [
-                                            ['Col4']
+                                            [
+                                                {
+                                                    text: this.localEvangelista
+                                                }
+                                            ]
                                         ]
                                     },
                                     margin: [0, 0, 10, 0]
                                 }
                             ]
-                        }                        
+                        }
                     ],
                     margin: [0, 0, 0, 5]
                 },
@@ -832,28 +986,22 @@ export class HomePage implements OnInit {
                             ]
                         },
                         {
-                            width: '12%',
+                            width: '13%',
                             bold: true,
                             stack: [
-                                { text: 'Data Início', margin: [0, 5, 0, 0] }
+                                { text: 'Data Início:', margin: [0, 5, 0, 0] }
                             ]
                         },
                         {
                             width: '25%',
                             stack: [
                                 {
-                                    canvas: [
-                                        {
-                                            type: 'line',
-                                            x1: 0,
-                                            y1: 0,
-                                            x2: 120, 
-                                            y2: 0,
-                                            lineWidth: 1,
-                                            lineColor: 'black'
-                                        }
-                                    ],
-                                    margin: [0, 15, 0, 0]
+                                    text: this.consPastor,
+                                    color: 'gray',
+                                    fontSize: 14,
+                                    decoration: 'underline',
+                                    bold: true,
+                                    margin: [0, 3, 0, 0]
                                 }
                             ]
                         },
@@ -865,21 +1013,26 @@ export class HomePage implements OnInit {
                             ]
                         },
                         {
-                            width: '43%',                            
+                            width: '42%',
                             stack: [
                                 {
                                     table: {
                                         widths: ['*'],
+                                        heights: 13,
                                         body: [
-                                            ['Col4']
+                                            [
+                                                {
+                                                    text: this.localPastor
+                                                }
+                                            ]
                                         ]
                                     },
                                     margin: [0, 0, 10, 0]
                                 }
                             ]
-                        }                        
+                        }
                     ],
-                    margin: [0, 0, 0, 10]
+                    margin: [0, 0, 0, 20]
                 },
                 {
                     columns: [
@@ -890,8 +1043,13 @@ export class HomePage implements OnInit {
                                 {
                                     table: {
                                         widths: ['*'],
+                                        heights: 13,
                                         body: [
-                                            ['Col1']
+                                            [
+                                                {
+                                                    text: this.regCampo
+                                                }
+                                            ]
                                         ]
                                     },
                                     margin: [0, 0, 10, 0]
@@ -905,8 +1063,13 @@ export class HomePage implements OnInit {
                                 {
                                     table: {
                                         widths: ['*'],
+                                        heights: 13,
                                         body: [
-                                            ['Col2']
+                                            [
+                                                {
+                                                    text: this.regCadesgo
+                                                }
+                                            ]
                                         ]
                                     },
                                     margin: [0, 0, 10, 0]
@@ -920,8 +1083,13 @@ export class HomePage implements OnInit {
                                 {
                                     table: {
                                         widths: ['*'],
+                                        heights: 13,
                                         body: [
-                                            ['Col2']
+                                            [
+                                                {
+                                                    text: this.regCgadb
+                                                }
+                                            ]
                                         ]
                                     },
                                     margin: [0, 0, 0, 0]
@@ -938,9 +1106,9 @@ export class HomePage implements OnInit {
                     margin: [0, 10, 0, 10] // Margens em torno do texto 
                 },
 
-                {text: 'DECLARAÇÃO E TERMO DE AUTORIZAÇÃO', style: 'header', alignment: 'center'},
+                { text: 'DECLARAÇÃO E TERMO DE AUTORIZAÇÃO', style: 'header', alignment: 'center' },
 
-                {text: 'I – DÍZIMOS, OFERTAS E DOAÇÕES', style: 'header', margin: [0, 30, 0, 10]},
+                { text: 'I – DÍZIMOS, OFERTAS E DOAÇÕES', style: 'header', margin: [0, 30, 0, 10] },
 
                 {
                     text: `Pelo presente termo, eu acima identificado, declaro para os devidos fins e a quem possa interessar que as contribuições como os dízimos, as ofertas e outras doações feitas por mim à Igreja Evangélica Assembleia de Deus Ministério Missão – Jardim América, são voluntárias, e que em hipótese alguma, nem no presente e no futuro, reclamarei a devolução do que por mim foi doado.`,
@@ -949,7 +1117,7 @@ export class HomePage implements OnInit {
                     margin: [0, 10, 0, 10]
                 },
 
-                {text: 'II – USO DE IMAGEM, VOZ E CESSÃO DE DIREITO', style: 'header', margin: [0, 30, 0, 10]},
+                { text: 'II – USO DE IMAGEM, VOZ E CESSÃO DE DIREITO', style: 'header', margin: [0, 30, 0, 10] },
 
                 {
                     text: `Declaro ainda, com base no art. 29 da Lei de Direitos Autorais, que AUTORIZO de forma gratuita e sem qualquer ônus, a Igreja Evangélica Assembleia de Deus Ministério Missão – Jardim América, a utilização de minha(s) imagem(ns) e/ou voz e/ou de informações pessoais na obra, e em sua divulgação, se houver, em todos os meios de divulgação possíveis, quer sejam na mídia impressa (livros, catálogos, revistas, jornais, entre outros), televisiva (propagandas para televisão aberta e/ou fechas, vídeos, filmes, entre outros), radiofônica (programas de rádio/podcasts), internet, banco de dados informatizados, multimídia, entre outros, e nos meios de comunicação interna, como jornais e periódicos em geral, na forma de impresso, voz e imagem.`,
@@ -975,7 +1143,7 @@ export class HomePage implements OnInit {
                                             type: 'line',
                                             x1: 0,
                                             y1: 0,
-                                            x2: 154, 
+                                            x2: 154,
                                             y2: 0,
                                             lineWidth: 1,
                                             lineColor: 'black'
@@ -1000,7 +1168,7 @@ export class HomePage implements OnInit {
                                             type: 'line',
                                             x1: 0,
                                             y1: 0,
-                                            x2: 35, 
+                                            x2: 35,
                                             y2: 0,
                                             lineWidth: 1,
                                             lineColor: 'black'
@@ -1025,7 +1193,7 @@ export class HomePage implements OnInit {
                                             type: 'line',
                                             x1: 0,
                                             y1: 0,
-                                            x2: 100, 
+                                            x2: 100,
                                             y2: 0,
                                             lineWidth: 1,
                                             lineColor: 'black'
@@ -1050,7 +1218,7 @@ export class HomePage implements OnInit {
                                             type: 'line',
                                             x1: 0,
                                             y1: 0,
-                                            x2: 50, 
+                                            x2: 50,
                                             y2: 0,
                                             lineWidth: 1,
                                             lineColor: 'black'
@@ -1059,10 +1227,75 @@ export class HomePage implements OnInit {
                                     margin: [0, 12, 0, 0]
                                 }
                             ]
-                        }                                                                                  
+                        }
+                    ],
+                    margin: [0, 0, 0, 60]
+                },
+                {
+                    columns: [
+                        {
+                            width: '50%',
+                            alignment: 'center',
+                            stack: [
+                                {
+                                    canvas: [
+                                        {
+                                            type: 'line',
+                                            x1: 0,
+                                            y1: 0,
+                                            x2: 200,
+                                            y2: 0,
+                                            lineWidth: 1,
+                                            lineColor: 'black'
+                                        }
+                                    ],
+                                    margin: [0, 12, 0, 0]
+                                }
+                            ]
+                        },
+                        {
+                            width: '50%',
+                            alignment: 'center',
+                            stack: [
+                                {
+                                    canvas: [
+                                        {
+                                            type: 'line',
+                                            x1: 0,
+                                            y1: 0,
+                                            x2: 200,
+                                            y2: 0,
+                                            lineWidth: 1,
+                                            lineColor: 'black'
+                                        }
+                                    ],
+                                    margin: [0, 12, 0, 0]
+                                }
+                            ]
+                        }
                     ],
                     margin: [0, 0, 0, 0]
                 },
+                {
+                    columns: [
+                        {
+                            width: '50%',
+                            alignment: 'center',
+                            stack: [
+                                { text: 'OBREIRO/MEMBRO', bold: true, margin: [0, 0, 0, 0] },
+                            ]
+                        },
+                        {
+                            width: '50%',
+                            alignment: 'center',
+                            stack: [
+                                { text: 'DIRIGENTE/SECRETÁRIO', bold: true, margin: [0, 0, 0, 0] },
+                            ]
+                        },
+                    ],
+                    margin: [0, 0, 0, 0]
+                },
+
                 // The potentially captured image!
                 image
             ],
