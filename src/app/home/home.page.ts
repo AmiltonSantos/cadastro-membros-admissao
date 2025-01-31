@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
-import { Platform } from '@ionic/angular';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormGroup, FormBuilder, NgForm } from '@angular/forms';
+import { IonContent, IonSlides, Platform } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
 
 import * as pdfMake from "pdfmake/build/pdfmake";
@@ -18,7 +18,14 @@ import { FileOpener } from '@awesome-cordova-plugins/file-opener/ngx';
 })
 export class HomePage implements OnInit {
 
-    public myForm!: FormGroup;
+    @ViewChild(IonContent, { static: true }) ionContent!: IonContent;
+    @ViewChild(IonSlides, { static: false }) ionSlides!: IonSlides;
+    @ViewChild('dadosFormRef', { static: false }) dadosFormRef!: NgForm;
+    @ViewChild('enderecoFormRef', { static: false }) enderecoFormRef!: NgForm;
+    @ViewChild('ministerioFormRef', { static: false }) ministerioFormRef!: NgForm;
+    public dadosForm!: FormGroup;
+    public enderecoForm!: FormGroup;
+    public ministerioForm!: FormGroup;
     public pdfObj!: pdfMake.TCreatedPdf;
     public photoPreview!: string;
     private logoData!: string | ArrayBuffer | null;
@@ -61,12 +68,26 @@ export class HomePage implements OnInit {
     public regCampo: string = '';
     public regCadesgo: string = '';
     public regCgadb: string = '';
-
+    public currentSlide!: string;
+    public slides!: string[];
+    public isBeginning: boolean = true;
+    public isEnd: boolean = false;
+    public isEnabledBack: boolean = false;
+    
+    public slidesOpts = {
+        allowTouchMove: false,
+        autoHeight: true,
+    };
 
     constructor(public fb: FormBuilder, public plt: Platform, public http: HttpClient, public fileOpener: FileOpener) { }
 
     ngOnInit() {
-        this.myForm = this.fb.group({
+        const slides = ['Dados Pessoais', 'Endereço', 'Ministério'];
+        this.currentSlide = slides[0];
+        this.slides = slides;
+        this.currentSlide = slides[0];
+        this.slides = slides;
+        this.dadosForm = this.fb.group({
             showLogo: true,
             congregacao: this.congregacao,
             cpf: this.cpf,
@@ -82,14 +103,20 @@ export class HomePage implements OnInit {
             nomePai: this.nomePai,
             escolaridade: this.escolaridade,
             telefone1: this.telefone1,
-            telefone2: this.telefone2,
+            telefone2: this.telefone2
+        });
+
+        this.enderecoForm = this.fb.group({
             cep: this.cep,
             rua: this.rua,
             numero: this.numero,
             bairro: this.bairro,
             complemento: this.complemento,
             estado: this.estado,
-            cidade: this.cidade,
+            cidade: this.cidade
+        });
+
+        this.ministerioForm = this.fb.group({
             batismoAgua: this.batismoAgua,
             batismoEspiritoSanto: this.batismoEspiritoSanto,
             obreiroSim: this.obreiroSim,
@@ -108,7 +135,41 @@ export class HomePage implements OnInit {
             regCgadb: this.regCgadb
         });
 
+
         this.loadLocalAssetToBase64();
+    }
+
+    onSlidesDidChange() {
+        this.ionContent.scrollToTop();
+    }
+
+    onBackButtonTouched() {
+        this.ionSlides.slidePrev();
+        this.ionContent.scrollToTop();
+    }
+
+    onNextButtonTouched() {
+        if (this.currentSlide === 'Dados Pessoais') {
+            this.ionSlides.slideNext();
+            this.ionContent.scrollToTop();
+        } else if (this.currentSlide === 'Endereço') {
+            this.ionSlides.slideNext();
+            this.ionContent.scrollToTop();
+        } else if (this.currentSlide === 'Ministério') {
+            this.ionSlides.slideNext();
+            this.ionContent.scrollToTop();
+        }
+    }
+
+    async onSlidesChanged() {
+        this.isEnabledBack = false;
+        const index = await this.ionSlides.getActiveIndex();
+        this.currentSlide = this.slides[index];
+        this.isBeginning = await this.ionSlides.isBeginning();
+        this.isEnd = await this.ionSlides.isEnd();
+        if (this.isEnd) {
+            this.isEnabledBack = true;
+        }
     }
 
     loadLocalAssetToBase64() {
@@ -136,7 +197,7 @@ export class HomePage implements OnInit {
     }
 
     createPdf() {
-        const formvalue = this.myForm.value;
+        const formvalue = this.dadosForm.value;
         const image = this.photoPreview ? { image: this.photoPreview, width: 300, alignment: 'left' } : {};
 
         let logo = {};
@@ -187,7 +248,7 @@ export class HomePage implements OnInit {
                     text: 'FICHA DE CADASTRO',
                     style: 'header',
                     alignment: 'center',
-                    margin: [0,5, 0, 5]
+                    margin: [0, 5, 0, 5]
                 },
 
                 // Inicio dos Inputs table de cadastro

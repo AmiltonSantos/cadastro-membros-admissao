@@ -1,0 +1,27 @@
+.line {
+  height: 3px;
+  background: var(--ion-color-light-shade);
+  top: 14px;
+  z-index: -1;
+}
+
+ion-slides {
+  height: 100%;
+
+  ion-slide {
+    align-items: flex-start;
+  }
+
+  .swiper-slide {
+    visibility: hidden;
+  }
+
+  .swiper-slide.swiper-slide-active {
+    visibility: visible;
+  }
+}
+
+.custom-form {
+  width: 100%; /* Ocupa 100% da largura do contêiner pai */
+  box-sizing: border-box; /* Inclui padding e bordas na largura total */
+}

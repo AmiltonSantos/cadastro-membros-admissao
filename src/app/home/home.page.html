@@ -7,200 +7,251 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <form (ngSubmit)="createPdf()" [formGroup]="myForm">
-    <ion-item lines="none">
-      <ion-label>Incluir foto?</ion-label>
-      <ion-checkbox formControlName="showLogo" slot="start"></ion-checkbox>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked">CONGREGAÇÃO</ion-label>
-      <ion-input (ngModelChange)="congregacao=$event" formControlName="congregacao"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked">CPF</ion-label>
-      <ion-input (ngModelChange)="cpf=$event" formControlName="cpf"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked">Nome</ion-label>
-      <ion-input (ngModelChange)="nome=$event" formControlName="nome"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked">Data de Nascimento</ion-label>
-      <ion-input (ngModelChange)="dataNascimento=$event" formControlName="dataNascimento"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked">Sexo</ion-label>
-      <ion-input (ngModelChange)="sexo=$event" formControlName="sexo"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked">Estado Civil</ion-label>
-      <ion-input (ngModelChange)="estadoCivil=$event" formControlName="estadoCivil"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked">Nacionalidade</ion-label>
-      <ion-input (ngModelChange)="nacionalidade=$event" formControlName="nacionalidade"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked">Naturalidade</ion-label>
-      <ion-input (ngModelChange)="naturalidade=$event" formControlName="naturalidade"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked">UF</ion-label>
-      <ion-input (ngModelChange)="uf=$event" formControlName="uf"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked">E-mail</ion-label>
-      <ion-input (ngModelChange)="email=$event" formControlName="email"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked">Nome Mãe</ion-label>
-      <ion-input (ngModelChange)="nomeMae=$event" formControlName="nomeMae"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked">Nome Pai</ion-label>
-      <ion-input (ngModelChange)="nomePai=$event" formControlName="nomePai"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked">Escolaridade</ion-label>
-      <ion-input (ngModelChange)="escolaridade=$event" formControlName="escolaridade"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked">Telefone 1</ion-label>
-      <ion-input (ngModelChange)="telefone1=$event" formControlName="telefone1"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked">Telefone 2</ion-label>
-      <ion-input (ngModelChange)="telefone2=$event" formControlName="telefone2"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked">CEP</ion-label>
-      <ion-input (ngModelChange)="cep=$event" formControlName="cep"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked">Rua</ion-label>
-      <ion-input (ngModelChange)="rua=$event" formControlName="rua"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked">Número</ion-label>
-      <ion-input (ngModelChange)="numero=$event" formControlName="numero"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked">Bairro</ion-label>
-      <ion-input (ngModelChange)="bairro=$event" formControlName="bairro"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked">Complemento</ion-label>
-      <ion-input (ngModelChange)="complemento=$event" formControlName="complemento"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked">Estado</ion-label>
-      <ion-input (ngModelChange)="estado=$event" formControlName="estado"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked">Cidade</ion-label>
-      <ion-input (ngModelChange)="cidade=$event" formControlName="cidade"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked">Data Batismo nas águas</ion-label>
-      <ion-input (ngModelChange)="batismoAgua=$event" formControlName="batismoAgua"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked">Data Batismo no Espírito Santo</ion-label>
-      <ion-input (ngModelChange)="batismoEspiritoSanto=$event" formControlName="batismoEspiritoSanto"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked">Obreiro</ion-label>
-      <ion-input (ngModelChange)="obreiroSim=$event" formControlName="obreiroSim"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked">Cargo:</ion-label>
-      <ion-input (ngModelChange)="obreiroCargo=$event" formControlName="obreiroCargo"></ion-input>
-    </ion-item>
-    <ion-row>
-      <ion-col size="5">
-        <ion-item>
-          <ion-label position="stacked">Diácono data Início</ion-label>
-          <ion-input (ngModelChange)="consDiacono=$event" formControlName="consDiacono"></ion-input>
-        </ion-item>
-      </ion-col>
-      <ion-col>
-        <ion-item>
-          <ion-label position="stacked">Local:</ion-label>
-          <ion-input (ngModelChange)="localDiacono=$event" formControlName="localDiacono"></ion-input>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="5">
-        <ion-item>
-          <ion-label position="stacked">Presbitero data Início</ion-label>
-          <ion-input (ngModelChange)="consPresbitero=$event" formControlName="consPresbitero"></ion-input>
-        </ion-item>
-      </ion-col>
-      <ion-col>
-        <ion-item>
-          <ion-label position="stacked">Local:</ion-label>
-          <ion-input (ngModelChange)="localPresbitero=$event" formControlName="localPresbitero"></ion-input>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="5">
-        <ion-item>
-          <ion-label position="stacked">Evangelista data Início</ion-label>
-          <ion-input (ngModelChange)="consEvangelista=$event" formControlName="consEvangelista"></ion-input>
-        </ion-item>
-      </ion-col>
-      <ion-col>
-        <ion-item>
-          <ion-label position="stacked">Local:</ion-label>
-          <ion-input (ngModelChange)="localEvangelista=$event" formControlName="localEvangelista"></ion-input>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="5">
-        <ion-item>
-          <ion-label position="stacked">Pastor data Início</ion-label>
-          <ion-input (ngModelChange)="consPastor=$event" formControlName="consPastor"></ion-input>
-        </ion-item>
-      </ion-col>
-      <ion-col>
-        <ion-item>
-          <ion-label position="stacked">Local:</ion-label>
-          <ion-input (ngModelChange)="localPastor=$event" formControlName="localPastor"></ion-input>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-    <ion-item>
-      <ion-label position="stacked">Registro Campo Jd. América</ion-label>
-      <ion-input (ngModelChange)="regCampo=$event" formControlName="regCampo"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked">Registro CADESGO</ion-label>
-      <ion-input (ngModelChange)="regCadesgo=$event" formControlName="regCadesgo"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked">Registro CGADB</ion-label>
-      <ion-input (ngModelChange)="regCgadb=$event" formControlName="regCgadb"></ion-input>
-    </ion-item>
-  </form>
+  <div class="flex justify-content-space-between ion-margin-top relative">
+    <div class="absolute full-width line"></div>
+    <div class="flex flex-column justify-content-center full-width"
+      *ngFor="let slide of slides; let index = index; let first = first; let last = last;">
+      <span [ngClass]="{ 'align-self-end': last, 'align-self-center': (!first && !last) }"
+        class="flex flex-column align-items-center justify-content-center bold text-medium radius"
+        style="width: 30px; height: 30px;"
+        [style.background]="slide === currentSlide ? 'var(--ion-color-primary)':'var(--ion-color-light-shade)'"
+        [style.color]="slide === currentSlide ? 'var(--ion-color-light)':'var(--ion-color-dark)'"
+        [ngClass]="{ 'align-self-end': last, 'align-self-center': (!first && !last) }">
+        {{ index + 1 }}
+      </span>
+      <span [style.color]="slide === currentSlide ? 'var(--ion-color-primary)':'var(--ion-color-medium)'"
+        [ngClass]="{ 'align-self-end': last, 'align-self-center': (!first && !last) }"
+        class="flex text-medium bold ion-margin-vertical">
+        {{ slide }}
+      </span>
+    </div>
+  </div>
+
+  <ion-slides [options]="slidesOpts" (ionSlideDidChange)="onSlidesDidChange()" (ionSlideWillChange)="onSlidesChanged()">
+    <ng-container *ngFor="let slide of slides">
+      <ion-slide>
+        <form (ngSubmit)="createPdf()" [formGroup]="dadosForm" #dadosFormRef="ngForm" novalidate
+          *ngIf="slide === 'Dados Pessoais'" class="custom-form">
+          <ion-item lines="none">
+            <ion-label>Incluir foto?</ion-label>
+            <ion-checkbox formControlName="showLogo" slot="start"></ion-checkbox>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">CONGREGAÇÃO</ion-label>
+            <ion-input (ngModelChange)="congregacao=$event" formControlName="congregacao"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">CPF</ion-label>
+            <ion-input (ngModelChange)="cpf=$event" formControlName="cpf"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Nome</ion-label>
+            <ion-input (ngModelChange)="nome=$event" formControlName="nome"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Data de Nascimento</ion-label>
+            <ion-input (ngModelChange)="dataNascimento=$event" formControlName="dataNascimento"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Sexo</ion-label>
+            <ion-input (ngModelChange)="sexo=$event" formControlName="sexo"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Estado Civil</ion-label>
+            <ion-input (ngModelChange)="estadoCivil=$event" formControlName="estadoCivil"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Nacionalidade</ion-label>
+            <ion-input (ngModelChange)="nacionalidade=$event" formControlName="nacionalidade"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Naturalidade</ion-label>
+            <ion-input (ngModelChange)="naturalidade=$event" formControlName="naturalidade"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">UF</ion-label>
+            <ion-input (ngModelChange)="uf=$event" formControlName="uf"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">E-mail</ion-label>
+            <ion-input (ngModelChange)="email=$event" formControlName="email"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Nome Mãe</ion-label>
+            <ion-input (ngModelChange)="nomeMae=$event" formControlName="nomeMae"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Nome Pai</ion-label>
+            <ion-input (ngModelChange)="nomePai=$event" formControlName="nomePai"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Escolaridade</ion-label>
+            <ion-input (ngModelChange)="escolaridade=$event" formControlName="escolaridade"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Telefone 1</ion-label>
+            <ion-input (ngModelChange)="telefone1=$event" formControlName="telefone1"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Telefone 2</ion-label>
+            <ion-input (ngModelChange)="telefone2=$event" formControlName="telefone2"></ion-input>
+          </ion-item>
+        </form>
+
+        <form [formGroup]="enderecoForm" #enderecoFormRef="ngForm" novalidate *ngIf="slide === 'Endereço'" class="custom-form">
+          <ion-item>
+            <ion-label position="stacked">CEP</ion-label>
+            <ion-input (ngModelChange)="cep=$event" formControlName="cep"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Rua</ion-label>
+            <ion-input (ngModelChange)="rua=$event" formControlName="rua"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Número</ion-label>
+            <ion-input (ngModelChange)="numero=$event" formControlName="numero"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Bairro</ion-label>
+            <ion-input (ngModelChange)="bairro=$event" formControlName="bairro"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Complemento</ion-label>
+            <ion-input (ngModelChange)="complemento=$event" formControlName="complemento"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Estado</ion-label>
+            <ion-input (ngModelChange)="estado=$event" formControlName="estado"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Cidade</ion-label>
+            <ion-input (ngModelChange)="cidade=$event" formControlName="cidade"></ion-input>
+          </ion-item>
+        </form>
+
+        <form [formGroup]="ministerioForm" #ministerioFormRef="ngForm" novalidate *ngIf="slide === 'Ministério'" class="custom-form">
+          <ion-row>
+            <ion-col>
+              <ion-button expand="full" shape="round" (click)="takePicture()"> Foto </ion-button>
+            </ion-col>
+            <ion-col>
+              <ion-button expand="full" shape="round" (click)="createPdf()" type="submit"> Criar Pdf </ion-button>
+            </ion-col>
+            <ion-col>
+              <ion-button expand="full" shape="round" (click)="downloadPdf()" color="secondary" [disabled]="!pdfObj">
+                Salvar PDF </ion-button>
+            </ion-col>
+          </ion-row>
+          <ion-item>
+            <ion-label position="stacked">Data Batismo nas águas</ion-label>
+            <ion-input (ngModelChange)="batismoAgua=$event" formControlName="batismoAgua"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Data Batismo no Espírito Santo</ion-label>
+            <ion-input (ngModelChange)="batismoEspiritoSanto=$event" formControlName="batismoEspiritoSanto"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Obreiro</ion-label>
+            <ion-input (ngModelChange)="obreiroSim=$event" formControlName="obreiroSim"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Cargo:</ion-label>
+            <ion-input (ngModelChange)="obreiroCargo=$event" formControlName="obreiroCargo"></ion-input>
+          </ion-item>
+          <ion-row>
+            <ion-col size="5">
+              <ion-item>
+                <ion-label position="stacked">Diácono data Início</ion-label>
+                <ion-input (ngModelChange)="consDiacono=$event" formControlName="consDiacono"></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item>
+                <ion-label position="stacked">Local:</ion-label>
+                <ion-input (ngModelChange)="localDiacono=$event" formControlName="localDiacono"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="5">
+              <ion-item>
+                <ion-label position="stacked">Presbitero data Início</ion-label>
+                <ion-input (ngModelChange)="consPresbitero=$event" formControlName="consPresbitero"></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item>
+                <ion-label position="stacked">Local:</ion-label>
+                <ion-input (ngModelChange)="localPresbitero=$event" formControlName="localPresbitero"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="5">
+              <ion-item>
+                <ion-label position="stacked">Evangelista data Início</ion-label>
+                <ion-input (ngModelChange)="consEvangelista=$event" formControlName="consEvangelista"></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item>
+                <ion-label position="stacked">Local:</ion-label>
+                <ion-input (ngModelChange)="localEvangelista=$event" formControlName="localEvangelista"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="5">
+              <ion-item>
+                <ion-label position="stacked">Pastor data Início</ion-label>
+                <ion-input (ngModelChange)="consPastor=$event" formControlName="consPastor"></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item>
+                <ion-label position="stacked">Local:</ion-label>
+                <ion-input (ngModelChange)="localPastor=$event" formControlName="localPastor"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-item>
+            <ion-label position="stacked">Registro Campo Jd. América</ion-label>
+            <ion-input (ngModelChange)="regCampo=$event" formControlName="regCampo"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Registro CADESGO</ion-label>
+            <ion-input (ngModelChange)="regCadesgo=$event" formControlName="regCadesgo"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Registro CGADB</ion-label>
+            <ion-input (ngModelChange)="regCgadb=$event" formControlName="regCgadb"></ion-input>
+          </ion-item>
+        </form>
+      </ion-slide>
+    </ng-container>
+  </ion-slides>
 
   <img [src]="photoPreview" *ngIf="photoPreview">
 
 </ion-content>
 
 <ion-footer>
-  <ion-row>
-    <ion-col>
-      <ion-button expand="full" shape="round" (click)="takePicture()">Foto</ion-button>
-    </ion-col>
-    <ion-col>
-      <ion-button expand="full" shape="round" (click)="createPdf()" type="submit">Criar Pdf</ion-button>
-    </ion-col>
-    <ion-col>
-      <ion-button expand="full" shape="round" (click)="downloadPdf()" color="secondary" [disabled]="!pdfObj">Salvar
-        PDF</ion-button>
-    </ion-col>
-  </ion-row>
+  <ion-toolbar>
+    <div class="full-width flex align-items-center justify-content-space-between">
+      <ion-button style="width: 120px;" strong shape="round" color="dark" *ngIf="isEnabledBack"
+        (click)="onBackButtonTouched()">
+        <span>Back</span>
+        <ion-icon slot="start" name="chevron-back"></ion-icon>
+      </ion-button>
+      <ion-button style="width: 120px;" strong shape="round" color="dark"
+        [style.visibility]="(isBeginning || isEnd) ? 'hidden' : ''" (click)="onBackButtonTouched()">
+        <span>Back</span>
+        <ion-icon slot="start" name="chevron-back"></ion-icon>
+      </ion-button>
+      <ion-button style="width: 120px;" strong shape="round" color="primary" [style.visibility]="isEnd ? 'hidden' : ''"
+        (click)="onNextButtonTouched()">
+        <span>Next</span>
+      </ion-button> <!-- isEnabledBack -->
+    </div>
+  </ion-toolbar>
 </ion-footer>
