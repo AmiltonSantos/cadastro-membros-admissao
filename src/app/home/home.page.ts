@@ -79,7 +79,7 @@ export class HomePage implements OnInit, AfterViewInit {
         autoHeight: true,
     };
 
-    constructor(public fb: FormBuilder, public plt: Platform, public http: HttpClient, public fileOpener: FileOpener) { }
+    constructor(public fb: FormBuilder, public plt: Platform, public http: HttpClient, public fileOpener: FileOpener, private platform: Platform) { }
 
     ngOnInit() {
         const slides = ['Dados Pessoais', 'Endereço', 'Ministério'];
@@ -140,19 +140,19 @@ export class HomePage implements OnInit, AfterViewInit {
     }
 
     ngAfterViewInit() {
-        // Aguarda a visualização ser inicializada antes de adicionar os ouvintes
         const footer = document.querySelector('ion-footer');
         const inputField = document.querySelector('input');
 
         if (inputField && footer) {
             inputField.addEventListener('focus', () => {
-                // Ajusta a altura do footer quando o teclado é aberto
-                footer.style.position = 'absolute';
-                footer.style.bottom = '300px'; // Ajuste conforme a altura do teclado
+                if (this.platform.is('cordova')) {
+                    // Ajusta a altura do footer quando o teclado é aberto em dispositivos móveis
+                    footer.style.position = 'absolute';
+                    footer.style.bottom = '300px'; // Ajuste conforme a altura do teclado
+                }
             });
 
             inputField.addEventListener('blur', () => {
-                // Restaura a posição original do footer quando o teclado é fechado
                 footer.style.position = 'fixed';
                 footer.style.bottom = '0';
             });
