@@ -293,7 +293,7 @@ export class HomePage implements OnInit, AfterViewInit {
                         body: [
                             [
                                 {
-                                    text: this.congregacao
+                                    text: this.congregacao.toUpperCase()
                                 }
                             ]
                         ]
@@ -315,7 +315,7 @@ export class HomePage implements OnInit, AfterViewInit {
                         body: [
                             [
                                 {
-                                    text: this.cpf
+                                    text: this.cpf.toUpperCase()
                                 }
                             ]
                         ]
@@ -333,7 +333,7 @@ export class HomePage implements OnInit, AfterViewInit {
                         body: [
                             [
                                 {
-                                    text: this.nome
+                                    text: this.nome.toUpperCase()
                                 }
                             ]
                         ]
@@ -353,7 +353,7 @@ export class HomePage implements OnInit, AfterViewInit {
                                         body: [
                                             [
                                                 {
-                                                    text: this.dataNascimento
+                                                    text: this.dataNascimento.toUpperCase()
                                                 }
                                             ]
                                         ]
@@ -373,7 +373,7 @@ export class HomePage implements OnInit, AfterViewInit {
                                         body: [
                                             [
                                                 {
-                                                    text: this.sexo
+                                                    text: this.sexo.toUpperCase()
                                                 }
                                             ]
                                         ]
@@ -393,7 +393,7 @@ export class HomePage implements OnInit, AfterViewInit {
                                         body: [
                                             [
                                                 {
-                                                    text: this.sexo
+                                                    text: this.sexo.toUpperCase()
                                                 }
                                             ]
                                         ]
@@ -413,7 +413,7 @@ export class HomePage implements OnInit, AfterViewInit {
                                         body: [
                                             [
                                                 {
-                                                    text: this.estadoCivil
+                                                    text: this.estadoCivil.toUpperCase()
                                                 }
                                             ]
                                         ]
@@ -438,7 +438,7 @@ export class HomePage implements OnInit, AfterViewInit {
                                         body: [
                                             [
                                                 {
-                                                    text: this.nacionalidade
+                                                    text: this.nacionalidade.toUpperCase()
                                                 }
                                             ]
                                         ]
@@ -458,7 +458,7 @@ export class HomePage implements OnInit, AfterViewInit {
                                         body: [
                                             [
                                                 {
-                                                    text: this.naturalidade
+                                                    text: this.naturalidade.toUpperCase()
                                                 }
                                             ]
                                         ]
@@ -478,7 +478,7 @@ export class HomePage implements OnInit, AfterViewInit {
                                         body: [
                                             [
                                                 {
-                                                    text: this.uf
+                                                    text: this.uf.toUpperCase()
                                                 }
                                             ]
                                         ]
@@ -498,7 +498,7 @@ export class HomePage implements OnInit, AfterViewInit {
                                         body: [
                                             [
                                                 {
-                                                    text: this.email
+                                                    text: this.email.toUpperCase()
                                                 }
                                             ]
                                         ]
@@ -523,7 +523,7 @@ export class HomePage implements OnInit, AfterViewInit {
                                         body: [
                                             [
                                                 {
-                                                    text: this.nomeMae
+                                                    text: this.nomeMae.toUpperCase()
                                                 }
                                             ]
                                         ]
@@ -543,7 +543,7 @@ export class HomePage implements OnInit, AfterViewInit {
                                         body: [
                                             [
                                                 {
-                                                    text: this.nomePai
+                                                    text: this.nomePai.toUpperCase()
                                                 }
                                             ]
                                         ]
@@ -568,7 +568,7 @@ export class HomePage implements OnInit, AfterViewInit {
                                         body: [
                                             [
                                                 {
-                                                    text: this.escolaridade
+                                                    text: this.escolaridade.toUpperCase()
                                                 }
                                             ]
                                         ]
@@ -588,7 +588,7 @@ export class HomePage implements OnInit, AfterViewInit {
                                         body: [
                                             [
                                                 {
-                                                    text: this.telefone1
+                                                    text: this.telefone1.toUpperCase()
                                                 }
                                             ]
                                         ]
@@ -608,7 +608,7 @@ export class HomePage implements OnInit, AfterViewInit {
                                         body: [
                                             [
                                                 {
-                                                    text: this.telefone2
+                                                    text: this.telefone2.toUpperCase()
                                                 }
                                             ]
                                         ]
@@ -643,7 +643,7 @@ export class HomePage implements OnInit, AfterViewInit {
                                         body: [
                                             [
                                                 {
-                                                    text: this.cep
+                                                    text: this.cep.toUpperCase()
                                                 }
                                             ]
                                         ]
@@ -663,7 +663,7 @@ export class HomePage implements OnInit, AfterViewInit {
                                         body: [
                                             [
                                                 {
-                                                    text: this.rua
+                                                    text: this.rua.toUpperCase()
                                                 }
                                             ]
                                         ]
@@ -683,7 +683,7 @@ export class HomePage implements OnInit, AfterViewInit {
                                         body: [
                                             [
                                                 {
-                                                    text: this.numero
+                                                    text: this.numero.toUpperCase()
                                                 }
                                             ]
                                         ]
@@ -708,7 +708,7 @@ export class HomePage implements OnInit, AfterViewInit {
                                         body: [
                                             [
                                                 {
-                                                    text: this.bairro
+                                                    text: this.bairro.toUpperCase()
                                                 }
                                             ]
                                         ]
@@ -728,7 +728,7 @@ export class HomePage implements OnInit, AfterViewInit {
                                         body: [
                                             [
                                                 {
-                                                    text: this.complemento
+                                                    text: this.complemento.toUpperCase()
                                                 }
                                             ]
                                         ]
@@ -753,7 +753,7 @@ export class HomePage implements OnInit, AfterViewInit {
                                         body: [
                                             [
                                                 {
-                                                    text: this.estado
+                                                    text: this.estado.toUpperCase()
                                                 }
                                             ]
                                         ]
@@ -773,7 +773,7 @@ export class HomePage implements OnInit, AfterViewInit {
                                         body: [
                                             [
                                                 {
-                                                    text: this.cidade
+                                                    text: this.cidade.toUpperCase()
                                                 }
                                             ]
                                         ]
@@ -807,7 +807,7 @@ export class HomePage implements OnInit, AfterViewInit {
                             width: '27%',
                             stack: [
                                 {
-                                    text: this.batismoAgua,
+                                    text: this.batismoAgua.toUpperCase(),
                                     color: 'gray',
                                     fontSize: 12,
                                     decoration: 'underline',
@@ -826,7 +826,7 @@ export class HomePage implements OnInit, AfterViewInit {
                             width: '25%',
                             stack: [
                                 {
-                                    text: this.batismoEspiritoSanto,
+                                    text: this.batismoEspiritoSanto.toUpperCase(),
                                     color: 'gray',
                                     fontSize: 12,
                                     decoration: 'underline',
@@ -864,7 +864,7 @@ export class HomePage implements OnInit, AfterViewInit {
                                         body: [
                                             [
                                                 {
-                                                    text: this.obreiroSim
+                                                    text: this.obreiroSim.toUpperCase()
                                                 }
                                             ]
                                         ]
@@ -890,7 +890,7 @@ export class HomePage implements OnInit, AfterViewInit {
                                         body: [
                                             [
                                                 {
-                                                    text: this.obreiroNao
+                                                    text: this.obreiroNao.toUpperCase()
                                                 }
                                             ]
                                         ]
@@ -916,7 +916,7 @@ export class HomePage implements OnInit, AfterViewInit {
                                         body: [
                                             [
                                                 {
-                                                    text: this.obreiroCargo
+                                                    text: this.obreiroCargo.toUpperCase()
                                                 }
                                             ]
                                         ]
@@ -948,7 +948,7 @@ export class HomePage implements OnInit, AfterViewInit {
                             width: '25%',
                             stack: [
                                 {
-                                    text: this.consDiacono,
+                                    text: this.consDiacono.toUpperCase(),
                                     color: 'gray',
                                     fontSize: 12,
                                     decoration: 'underline',
@@ -974,7 +974,7 @@ export class HomePage implements OnInit, AfterViewInit {
                                         body: [
                                             [
                                                 {
-                                                    text: this.localDiacono
+                                                    text: this.localDiacono.toUpperCase()
                                                 }
                                             ]
                                         ]
@@ -1006,7 +1006,7 @@ export class HomePage implements OnInit, AfterViewInit {
                             width: '25%',
                             stack: [
                                 {
-                                    text: this.consPresbitero,
+                                    text: this.consPresbitero.toUpperCase(),
                                     color: 'gray',
                                     fontSize: 12,
                                     decoration: 'underline',
@@ -1032,7 +1032,7 @@ export class HomePage implements OnInit, AfterViewInit {
                                         body: [
                                             [
                                                 {
-                                                    text: this.localPresbitero
+                                                    text: this.localPresbitero.toUpperCase()
                                                 }
                                             ]
                                         ]
@@ -1064,7 +1064,7 @@ export class HomePage implements OnInit, AfterViewInit {
                             width: '25%',
                             stack: [
                                 {
-                                    text: this.consEvangelista,
+                                    text: this.consEvangelista.toUpperCase(),
                                     color: 'gray',
                                     fontSize: 12,
                                     decoration: 'underline',
@@ -1090,7 +1090,7 @@ export class HomePage implements OnInit, AfterViewInit {
                                         body: [
                                             [
                                                 {
-                                                    text: this.localEvangelista
+                                                    text: this.localEvangelista.toUpperCase()
                                                 }
                                             ]
                                         ]
@@ -1122,7 +1122,7 @@ export class HomePage implements OnInit, AfterViewInit {
                             width: '25%',
                             stack: [
                                 {
-                                    text: this.consPastor,
+                                    text: this.consPastor.toUpperCase(),
                                     color: 'gray',
                                     fontSize: 12,
                                     decoration: 'underline',
@@ -1148,7 +1148,7 @@ export class HomePage implements OnInit, AfterViewInit {
                                         body: [
                                             [
                                                 {
-                                                    text: this.localPastor
+                                                    text: this.localPastor.toUpperCase()
                                                 }
                                             ]
                                         ]
@@ -1173,7 +1173,7 @@ export class HomePage implements OnInit, AfterViewInit {
                                         body: [
                                             [
                                                 {
-                                                    text: this.regCampo
+                                                    text: this.regCampo.toUpperCase()
                                                 }
                                             ]
                                         ]
@@ -1193,7 +1193,7 @@ export class HomePage implements OnInit, AfterViewInit {
                                         body: [
                                             [
                                                 {
-                                                    text: this.regCadesgo
+                                                    text: this.regCadesgo.toUpperCase()
                                                 }
                                             ]
                                         ]
@@ -1213,7 +1213,7 @@ export class HomePage implements OnInit, AfterViewInit {
                                         body: [
                                             [
                                                 {
-                                                    text: this.regCgadb
+                                                    text: this.regCgadb.toUpperCase()
                                                 }
                                             ]
                                         ]
