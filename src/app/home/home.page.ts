@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, NgForm } from '@angular/forms';
 import { IonContent, IonSlides, Platform } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
@@ -7,7 +7,7 @@ import * as pdfMake from "pdfmake/build/pdfmake";
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 (<any>pdfMake).vfs = pdfFonts.pdfMake.vfs;
 
-import { Filesystem, Directory, Encoding } from '@capacitor/filesystem';
+import { Filesystem, Directory } from '@capacitor/filesystem';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { FileOpener } from '@awesome-cordova-plugins/file-opener/ngx';
 
@@ -16,7 +16,7 @@ import { FileOpener } from '@awesome-cordova-plugins/file-opener/ngx';
     templateUrl: 'home.page.html',
     styleUrls: ['home.page.scss'],
 })
-export class HomePage implements OnInit, AfterViewInit {
+export class HomePage implements OnInit {
 
     @ViewChild(IonContent, { static: true }) ionContent!: IonContent;
     @ViewChild(IonSlides, { static: false }) ionSlides!: IonSlides;
@@ -79,7 +79,7 @@ export class HomePage implements OnInit, AfterViewInit {
         autoHeight: true,
     };
 
-    constructor(public fb: FormBuilder, public plt: Platform, public http: HttpClient, public fileOpener: FileOpener, private platform: Platform) { }
+    constructor(public fb: FormBuilder, public plt: Platform, public http: HttpClient, public fileOpener: FileOpener) { }
 
     ngOnInit() {
         const slides = ['Dados Pessoais', 'Endereço', 'Ministério'];
@@ -88,7 +88,6 @@ export class HomePage implements OnInit, AfterViewInit {
         this.currentSlide = slides[0];
         this.slides = slides;
         this.dadosForm = this.fb.group({
-            showLogo: true,
             congregacao: this.congregacao,
             cpf: this.cpf,
             nome: this.nome,
@@ -137,26 +136,6 @@ export class HomePage implements OnInit, AfterViewInit {
 
 
         this.loadLocalAssetToBase64();
-    }
-
-    ngAfterViewInit() {
-        const footer = document.querySelector('ion-footer');
-        const inputField = document.querySelector('ion-input');
-
-        if (inputField && footer) {
-            inputField.addEventListener('focus', () => {
-                if (this.platform.is('cordova')) {
-                    // Ajusta a altura do footer quando o teclado é aberto em dispositivos móveis
-                    footer.style.position = 'absolute';
-                    footer.style.bottom = '300px'; // Ajuste conforme a altura do teclado
-                }
-            });
-
-            inputField.addEventListener('blur', () => {
-                footer.style.position = 'fixed';
-                footer.style.bottom = '0';
-            });
-        }
     }
 
     onSlidesDidChange() {
@@ -215,24 +194,39 @@ export class HomePage implements OnInit, AfterViewInit {
                 promptLabelPhoto: 'Custom Camera Text',
                 promptLabelPicture: 'Custom Gallery Text'
             });
-            
-            this.photoPreview = `data:image/jpeg;base64,${image.base64String}`;            
+
+            this.photoPreview = `data:image/jpeg;base64,${image.base64String}`;
+            this.urlPdf = '';
         } catch (error) {
+            this.photoPreview = '';
+            this.urlPdf = '';
             if (error instanceof Error) {
                 console.log('Erro:', error.message);
             } else {
                 console.log('Erro desconhecido:', error);
             }
-        }        
+        }
     }
 
     createPdf() {
-        const formvalue = this.dadosForm.value;
-        const image = this.photoPreview ? { image: this.photoPreview, width: 300, alignment: 'left' } : {};
+        let logo = { image: this.logoData, width: 450, alignment: 'center' };
 
-        let logo = {};
-        if (formvalue.showLogo) {
-            logo = { image: this.logoData, width: 450, alignment: 'center' }
+        const content = [];
+
+        // Verifica se this.photoPreview existe e é uma string não vazia
+        if (this.photoPreview) {
+            content.push({
+                image: this.photoPreview ?? '',
+                width: 98, // Largura da imagem
+                height: 120, // Altura da imagem
+                margin: [0, -120, 0, 0]
+            });
+        } else {
+            content.push({
+                text: 'Imagem não disponível',
+                alignment: 'center',
+                margin: [0, -50, 0, 0]
+            });
         }
 
         const docDefinition: any = {
@@ -283,44 +277,78 @@ export class HomePage implements OnInit, AfterViewInit {
 
                 // Inicio dos Inputs table de cadastro
                 {
-                    text: 'CONGREGAÇÃO',
-                    bold: true
-                },
-                {
-                    table: {
-                        widths: [380],
-                        heights: 13,
-                        body: [
-                            [
+                    columns: [
+                        {
+                            width: '80%', // Ajuste a largura conforme necessário
+                            stack: [
                                 {
-                                    text: this.congregacao.toUpperCase()
+                                    text: 'CONGREGAÇÃO',
+                                    bold: true,
+                                    margin: [0, 0, 0, 10]
+                                },
+                                {
+                                    table: {
+                                        widths: [380],
+                                        heights: 13,
+                                        body: [
+                                            [
+                                                {
+                                                    text: this.congregacao.toUpperCase()
+                                                }
+                                            ]
+                                        ]
+                                    }
+                                },
+                                {
+                                    text: 'Dados Pessoais',
+                                    bold: true,
+                                    margin: [0, 10, 0, 10]
+                                },
+                                {
+                                    text: 'CPF',
+                                    bold: true
+                                },
+                                {
+                                    table: {
+                                        widths: [380],
+                                        heights: 13,
+                                        body: [
+                                            [
+                                                {
+                                                    text: this.cpf.toUpperCase()
+                                                }
+                                            ]
+                                        ]
+                                    },
+                                    margin: [0, 0, 0, 5]
                                 }
                             ]
-                        ]
-                    }
-                },
-                {
-                    text: 'Dados Pessoais',
-                    bold: true,
-                    margin: [0, 10, 0, 10]
-                },
-                {
-                    text: 'CPF',
-                    bold: true
-                },
-                {
-                    table: {
-                        widths: [380],
-                        heights: 13,
-                        body: [
-                            [
+                        },
+                        // Quadrado da foto
+                        {
+                            width: '20%', // Ajuste a largura conforme necessário
+                            stack: [
                                 {
-                                    text: this.cpf.toUpperCase()
-                                }
+                                    canvas: [
+                                        {
+                                            type: 'rect',
+                                            x: 0,
+                                            y: 0,
+                                            w: 98, // Largura do quadrado
+                                            h: 120, // Altura do quadrado
+                                            lineWidth: 1,
+                                            lineColor: 'black',
+                                            fill: 'none' // Sem preenchimento
+                                        }
+                                    ],
+                                    margin: [0, 0, 0, 0] // Margem à direita do quadrado
+                                },
+                                // Variavel da imagem
+                                content
                             ]
-                        ]
-                    },
-                    margin: [0, 0, 0, 5]
+                        }
+                    ],
+                    margin: [0, 0, 0, 0] // Margem em torno do conjunto de colunas
                 },
                 {
                     text: 'Nome',
@@ -1421,9 +1449,7 @@ export class HomePage implements OnInit, AfterViewInit {
                     ],
                     margin: [0, 0, 0, 0]
                 },
-
-                // The potentially captured image!
-                image
+                
             ],
 
             // Rodapé

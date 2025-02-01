@@ -30,8 +30,3 @@ ion-label {
   width: 100%; /* Ocupa 100% da largura do contêiner pai */
   box-sizing: border-box; /* Inclui padding e bordas na largura total */
 }
-
-// Transição suave ao subir o footer quando abrir o teclado
-ion-footer {
-  transition: bottom 0.3s ease; /* Para uma transição suave */
-}
