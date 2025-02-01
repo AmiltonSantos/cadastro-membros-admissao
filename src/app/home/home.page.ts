@@ -74,7 +74,6 @@ export class HomePage implements OnInit {
     public isBeginning: boolean = true;
     public isEnd: boolean = false;
     public isEnabledBack: boolean = false;
-    public keyboardVisible: boolean = false;
 
     public slidesOpts = {
         allowTouchMove: false,
@@ -85,11 +84,11 @@ export class HomePage implements OnInit {
 
     ngOnInit() {
         Keyboard.addListener('keyboardWillShow', () => {
-            this.keyboardVisible = true;
+            document.body.classList.add('keyboard-visible');
         });
 
         Keyboard.addListener('keyboardWillHide', () => {
-            this.keyboardVisible = false;
+            document.body.classList.remove('keyboard-visible');
         });
 
         const slides = ['Dados Pessoais', 'Endereço', 'Ministério'];
