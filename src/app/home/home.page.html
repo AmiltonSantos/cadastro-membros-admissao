@@ -32,6 +32,12 @@
       <ion-slide>
         <form (ngSubmit)="createPdf()" [formGroup]="dadosForm" #dadosFormRef="ngForm" novalidate
           *ngIf="slide === 'Dados Pessoais'" class="custom-form">
+          <div class="full-width flex align-items-center justify-content-end">
+            <ion-button style="width: 120px;" strong shape="round" color="primary"
+              [style.visibility]="isEnd ? 'hidden' : ''" (click)="onNextButtonTouched()">
+              <span>Next</span>
+            </ion-button>
+          </div>
           <ion-item lines="none">
             <ion-label>Incluir foto?</ion-label>
             <ion-checkbox formControlName="showLogo" slot="start"></ion-checkbox>
@@ -99,6 +105,17 @@
         </form>
 
         <form [formGroup]="enderecoForm" #enderecoFormRef="ngForm" novalidate *ngIf="slide === 'Endereço'" class="custom-form">
+          <div class="full-width flex align-items-center justify-content-space-between">
+            <ion-button style="width: 120px;" strong shape="round" color="dark"
+              [style.visibility]="(isBeginning || isEnd) ? 'hidden' : ''" (click)="onBackButtonTouched()">
+              <span>Back</span>
+              <ion-icon slot="start" name="chevron-back"></ion-icon>
+            </ion-button>
+            <ion-button style="width: 120px;" strong shape="round" color="primary" [style.visibility]="isEnd ? 'hidden' : ''"
+              (click)="onNextButtonTouched()">
+              <span>Next</span>
+            </ion-button>
+          </div>
           <ion-item>
             <ion-label position="stacked">CEP</ion-label>
             <ion-input (ngModelChange)="cep=$event" formControlName="cep"></ion-input>
@@ -130,18 +147,12 @@
         </form>
 
         <form [formGroup]="ministerioForm" #ministerioFormRef="ngForm" novalidate *ngIf="slide === 'Ministério'" class="custom-form">
-          <ion-row>
-            <ion-col>
-              <ion-button expand="full" shape="round" (click)="takePicture()"> Foto </ion-button>
-            </ion-col>
-            <ion-col>
-              <ion-button expand="full" shape="round" (click)="createPdf()" type="submit"> Criar Pdf </ion-button>
-            </ion-col>
-            <ion-col>
-              <ion-button expand="full" shape="round" (click)="downloadPdf()" color="secondary" [disabled]="!pdfObj">
-                Salvar PDF </ion-button>
-            </ion-col>
-          </ion-row>
+          <div class="full-width flex align-items-center justify-content-space-between">
+            <ion-button style="width: 120px;" strong shape="round" color="dark" *ngIf="isEnabledBack" (click)="onBackButtonTouched()">
+              <span>Back</span>
+              <ion-icon slot="start" name="chevron-back"></ion-icon>
+            </ion-button>
+          </div>
           <ion-item>
             <ion-label position="stacked">DATA BATISMO NAS ÁGUAS</ion-label>
             <ion-input (ngModelChange)="batismoAgua=$event" formControlName="batismoAgua"></ion-input>
@@ -235,23 +246,19 @@
 
 </ion-content>
 
-<ion-footer>
+<ion-footer *ngIf="isEnabledBack">
   <ion-toolbar>
-    <div class="full-width flex align-items-center justify-content-space-between">
-      <ion-button style="width: 120px;" strong shape="round" color="dark" *ngIf="isEnabledBack"
-        (click)="onBackButtonTouched()">
-        <span>Back</span>
-        <ion-icon slot="start" name="chevron-back"></ion-icon>
-      </ion-button>
-      <ion-button style="width: 120px;" strong shape="round" color="dark"
-        [style.visibility]="(isBeginning || isEnd) ? 'hidden' : ''" (click)="onBackButtonTouched()">
-        <span>Back</span>
-        <ion-icon slot="start" name="chevron-back"></ion-icon>
-      </ion-button>
-      <ion-button style="width: 120px;" strong shape="round" color="primary" [style.visibility]="isEnd ? 'hidden' : ''"
-        (click)="onNextButtonTouched()">
-        <span>Next</span>
-      </ion-button> <!-- isEnabledBack -->
-    </div>
+    <ion-row>
+      <ion-col>
+        <ion-button expand="full" shape="round" (click)="takePicture()"> Foto </ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button expand="full" shape="round" (click)="createPdf()" type="submit"> Criar Pdf </ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button expand="full" shape="round" (click)="downloadPdf()" color="secondary" [disabled]="!pdfObj">
+          Salvar PDF </ion-button>
+      </ion-col>
+    </ion-row>
   </ion-toolbar>
 </ion-footer>
