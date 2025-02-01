@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, NgForm } from '@angular/forms';
 import { IonContent, IonSlides, Platform } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
@@ -10,14 +10,13 @@ import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 import { Filesystem, Directory, Encoding } from '@capacitor/filesystem';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { FileOpener } from '@awesome-cordova-plugins/file-opener/ngx';
-import { Keyboard } from '@capacitor/keyboard';
 
 @Component({
     selector: 'app-home',
     templateUrl: 'home.page.html',
     styleUrls: ['home.page.scss'],
 })
-export class HomePage implements OnInit {
+export class HomePage implements OnInit, AfterViewInit {
 
     @ViewChild(IonContent, { static: true }) ionContent!: IonContent;
     @ViewChild(IonSlides, { static: false }) ionSlides!: IonSlides;
@@ -83,14 +82,6 @@ export class HomePage implements OnInit {
     constructor(public fb: FormBuilder, public plt: Platform, public http: HttpClient, public fileOpener: FileOpener) { }
 
     ngOnInit() {
-        Keyboard.addListener('keyboardWillShow', () => {
-            document.body.classList.add('keyboard-visible');
-        });
-
-        Keyboard.addListener('keyboardWillHide', () => {
-            document.body.classList.remove('keyboard-visible');
-        });
-
         const slides = ['Dados Pessoais', 'Endereço', 'Ministério'];
         this.currentSlide = slides[0];
         this.slides = slides;
@@ -146,6 +137,26 @@ export class HomePage implements OnInit {
 
 
         this.loadLocalAssetToBase64();
+    }
+
+    ngAfterViewInit() {
+        // Aguarda a visualização ser inicializada antes de adicionar os ouvintes
+        const footer = document.querySelector('ion-footer');
+        const inputField = document.querySelector('input');
+
+        if (inputField && footer) {
+            inputField.addEventListener('focus', () => {
+                // Ajusta a altura do footer quando o teclado é aberto
+                footer.style.position = 'absolute';
+                footer.style.bottom = '300px'; // Ajuste conforme a altura do teclado
+            });
+
+            inputField.addEventListener('blur', () => {
+                // Restaura a posição original do footer quando o teclado é fechado
+                footer.style.position = 'fixed';
+                footer.style.bottom = '0';
+            });
+        }
     }
 
     onSlidesDidChange() {

@@ -30,16 +30,3 @@ ion-label {
   width: 100%; /* Ocupa 100% da largura do contêiner pai */
   box-sizing: border-box; /* Inclui padding e bordas na largura total */
 }
-
-ion-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  transition: bottom 0.3s ease;
-}
-
-.keyboard-visible ion-footer {
-  bottom: 300px; /* Ajuste conforme necessário */
-  transition: bottom 0.3s ease; /* Para uma transição suave */
-}
