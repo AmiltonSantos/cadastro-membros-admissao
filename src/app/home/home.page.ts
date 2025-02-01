@@ -141,7 +141,7 @@ export class HomePage implements OnInit, AfterViewInit {
 
     ngAfterViewInit() {
         const footer = document.querySelector('ion-footer');
-        const inputField = document.querySelector('input');
+        const inputField = document.querySelector('ion-input');
 
         if (inputField && footer) {
             inputField.addEventListener('focus', () => {
