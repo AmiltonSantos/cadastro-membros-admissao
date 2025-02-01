@@ -21,6 +21,11 @@ ion-slides {
   }
 }
 
+ion-label {
+  font-size: 18px !important;
+  font-weight: bold;
+}
+
 .custom-form {
   width: 100%; /* Ocupa 100% da largura do contêiner pai */
   box-sizing: border-box; /* Inclui padding e bordas na largura total */

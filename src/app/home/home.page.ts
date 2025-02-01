@@ -10,6 +10,7 @@ import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 import { Filesystem, Directory, Encoding } from '@capacitor/filesystem';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { FileOpener } from '@awesome-cordova-plugins/file-opener/ngx';
+import { Keyboard } from '@capacitor/keyboard';
 
 @Component({
     selector: 'app-home',
@@ -33,7 +34,7 @@ export class HomePage implements OnInit {
     public congregacao: string = '';
     public cpf: string = '';
     public nome: string = '';
-    public dataNascimento: string = '';
+    public dataNascimento: string = '00/00/0000';
     public sexo: string = '';
     public estadoCivil: string = '';
     public nacionalidade: string = '';
@@ -73,7 +74,8 @@ export class HomePage implements OnInit {
     public isBeginning: boolean = true;
     public isEnd: boolean = false;
     public isEnabledBack: boolean = false;
-    
+    public keyboardVisible: boolean = false;
+
     public slidesOpts = {
         allowTouchMove: false,
         autoHeight: true,
@@ -82,6 +84,14 @@ export class HomePage implements OnInit {
     constructor(public fb: FormBuilder, public plt: Platform, public http: HttpClient, public fileOpener: FileOpener) { }
 
     ngOnInit() {
+        Keyboard.addListener('keyboardWillShow', () => {
+            this.keyboardVisible = true;
+        });
+
+        Keyboard.addListener('keyboardWillHide', () => {
+            this.keyboardVisible = false;
+        });
+
         const slides = ['Dados Pessoais', 'Endereço', 'Ministério'];
         this.currentSlide = slides[0];
         this.slides = slides;
@@ -779,7 +789,7 @@ export class HomePage implements OnInit {
                                 {
                                     text: this.batismoAgua,
                                     color: 'gray',
-                                    fontSize: 14,
+                                    fontSize: 12,
                                     decoration: 'underline',
                                     bold: true,
                                     margin: [0, 0, 0, 0]
@@ -798,7 +808,7 @@ export class HomePage implements OnInit {
                                 {
                                     text: this.batismoEspiritoSanto,
                                     color: 'gray',
-                                    fontSize: 14,
+                                    fontSize: 12,
                                     decoration: 'underline',
                                     bold: true,
                                     margin: [0, 0, 0, 0]
@@ -920,7 +930,7 @@ export class HomePage implements OnInit {
                                 {
                                     text: this.consDiacono,
                                     color: 'gray',
-                                    fontSize: 14,
+                                    fontSize: 12,
                                     decoration: 'underline',
                                     bold: true,
                                     margin: [0, 3, 0, 0]
@@ -978,7 +988,7 @@ export class HomePage implements OnInit {
                                 {
                                     text: this.consPresbitero,
                                     color: 'gray',
-                                    fontSize: 14,
+                                    fontSize: 12,
                                     decoration: 'underline',
                                     bold: true,
                                     margin: [0, 3, 0, 0]
@@ -1036,7 +1046,7 @@ export class HomePage implements OnInit {
                                 {
                                     text: this.consEvangelista,
                                     color: 'gray',
-                                    fontSize: 14,
+                                    fontSize: 12,
                                     decoration: 'underline',
                                     bold: true,
                                     margin: [0, 3, 0, 0]
@@ -1094,7 +1104,7 @@ export class HomePage implements OnInit {
                                 {
                                     text: this.consPastor,
                                     color: 'gray',
-                                    fontSize: 14,
+                                    fontSize: 12,
                                     decoration: 'underline',
                                     bold: true,
                                     margin: [0, 3, 0, 0]
