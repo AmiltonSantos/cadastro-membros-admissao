@@ -29,7 +29,7 @@ export class HomePage implements OnInit, AfterViewInit {
     public pdfObj!: pdfMake.TCreatedPdf;
     public photoPreview!: string;
     private logoData!: string | ArrayBuffer | null;
-    private urlPdf!: string;
+    public urlPdf: string = '';
     public congregacao: string = '';
     public cpf: string = '';
     public nome: string = '';
@@ -164,6 +164,7 @@ export class HomePage implements OnInit, AfterViewInit {
     }
 
     onBackButtonTouched() {
+        this.urlPdf = '';
         this.ionSlides.slidePrev();
         this.ionContent.scrollToTop();
     }
@@ -204,16 +205,25 @@ export class HomePage implements OnInit, AfterViewInit {
     }
 
     async takePicture() {
-        const image = await Camera.getPhoto({
-            quality: 100,
-            allowEditing: false,
-            resultType: CameraResultType.Base64,
-            source: CameraSource.Camera,
-            promptLabelHeader: 'Custom Header Text',
-            promptLabelPhoto: 'Custom Camera Text',
-            promptLabelPicture: 'Custom Gallery Text'
-        });
-        this.photoPreview = `data:image/jpeg;base64,${image.base64String}`;
+        try {
+            const image = await Camera.getPhoto({
+                quality: 100,
+                allowEditing: false,
+                resultType: CameraResultType.Base64,
+                source: CameraSource.Camera,
+                promptLabelHeader: 'Custom Header Text',
+                promptLabelPhoto: 'Custom Camera Text',
+                promptLabelPicture: 'Custom Gallery Text'
+            });
+            
+            this.photoPreview = `data:image/jpeg;base64,${image.base64String}`;            
+        } catch (error) {
+            if (error instanceof Error) {
+                console.log('Erro:', error.message);
+            } else {
+                console.log('Erro desconhecido:', error);
+            }
+        }        
     }
 
     createPdf() {

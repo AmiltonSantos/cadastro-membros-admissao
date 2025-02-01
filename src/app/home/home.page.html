@@ -38,10 +38,6 @@
               <span>Next</span>
             </ion-button>
           </div>
-          <ion-item lines="none">
-            <ion-label>Incluir foto?</ion-label>
-            <ion-checkbox formControlName="showLogo" slot="start"></ion-checkbox>
-          </ion-item>
           <ion-item>
             <ion-label position="stacked">CONGREGAÇÃO</ion-label>
             <ion-input (ngModelChange)="congregacao=$event" formControlName="congregacao"></ion-input>
@@ -253,11 +249,10 @@
         <ion-button expand="full" shape="round" (click)="takePicture()"> Foto </ion-button>
       </ion-col>
       <ion-col>
-        <ion-button expand="full" shape="round" (click)="createPdf()" type="submit"> Criar Pdf </ion-button>
+        <ion-button expand="full" shape="round" (click)="createPdf()" type="submit"> Salvar </ion-button>
       </ion-col>
-      <ion-col>
-        <ion-button expand="full" shape="round" (click)="downloadPdf()" color="secondary" [disabled]="!pdfObj">
-          Salvar PDF </ion-button>
+      <ion-col *ngIf="urlPdf !== ''">
+        <ion-button expand="full" shape="round" (click)="downloadPdf()" color="success"> PDF </ion-button>
       </ion-col>
     </ion-row>
   </ion-toolbar>
