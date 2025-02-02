@@ -4,10 +4,7 @@
       Cadastro de Membros
     </ion-title>
   </ion-toolbar>
-</ion-header>
-
-<ion-content class="ion-padding">
-  <div class="flex justify-content-space-between ion-margin-top relative">
+  <div style="padding-left: 15px; padding-right: 15px;" class="flex justify-content-space-between ion-margin-top relative">
     <div class="absolute full-width line"></div>
     <div class="flex flex-column justify-content-center full-width"
       *ngFor="let slide of slides; let index = index; let first = first; let last = last;">
@@ -26,18 +23,34 @@
       </span>
     </div>
   </div>
+  <div style="padding-left: 15px; padding-right: 15px;">
+    <div class="full-width flex align-items-center justify-content-space-between" *ngIf="!isEnabledBack">
+      <ion-button style="width: 120px;" strong shape="round" color="dark"
+        [style.visibility]="(isBeginning || isEnd) ? 'hidden' : ''" (click)="onBackButtonTouched()">
+        <span>Back</span>
+        <ion-icon slot="start" name="chevron-back"></ion-icon>
+      </ion-button>
+      <ion-button style="width: 120px;" strong shape="round" color="primary" [style.visibility]="isEnd ? 'hidden' : ''"
+        (click)="onNextButtonTouched()">
+        <span>Next</span>
+      </ion-button>
+    </div>
+    <div class="full-width flex align-items-center justify-content-space-between">
+      <ion-button style="width: 120px;" strong shape="round" color="dark" *ngIf="isEnabledBack" (click)="onBackButtonTouched()">
+        <span>Back</span>
+        <ion-icon slot="start" name="chevron-back"></ion-icon>
+      </ion-button>
+    </div>
+  </div>
+</ion-header>
+
+<ion-content class="ion-padding">
 
   <ion-slides [options]="slidesOpts" (ionSlideDidChange)="onSlidesDidChange()" (ionSlideWillChange)="onSlidesChanged()">
     <ng-container *ngFor="let slide of slides">
       <ion-slide>
-        <form (ngSubmit)="createPdf()" [formGroup]="dadosForm" #dadosFormRef="ngForm" novalidate
+        <form style="height: 600px; overflow: scroll" (ngSubmit)="createPdf()" [formGroup]="dadosForm" #dadosFormRef="ngForm" novalidate
           *ngIf="slide === 'Dados Pessoais'" class="custom-form">
-          <div class="full-width flex align-items-center justify-content-end">
-            <ion-button style="width: 120px;" strong shape="round" color="primary"
-              [style.visibility]="isEnd ? 'hidden' : ''" (click)="onNextButtonTouched()">
-              <span>Next</span>
-            </ion-button>
-          </div>
           <ion-item>
             <ion-label position="stacked">CONGREGAÇÃO</ion-label>
             <ion-input style="text-transform: uppercase;" (ngModelChange)="congregacao=$event" formControlName="congregacao"></ion-input>
@@ -100,18 +113,7 @@
           </ion-item>
         </form>
 
-        <form [formGroup]="enderecoForm" #enderecoFormRef="ngForm" novalidate *ngIf="slide === 'Endereço'" class="custom-form">
-          <div class="full-width flex align-items-center justify-content-space-between">
-            <ion-button style="width: 120px;" strong shape="round" color="dark"
-              [style.visibility]="(isBeginning || isEnd) ? 'hidden' : ''" (click)="onBackButtonTouched()">
-              <span>Back</span>
-              <ion-icon slot="start" name="chevron-back"></ion-icon>
-            </ion-button>
-            <ion-button style="width: 120px;" strong shape="round" color="primary" [style.visibility]="isEnd ? 'hidden' : ''"
-              (click)="onNextButtonTouched()">
-              <span>Next</span>
-            </ion-button>
-          </div>
+        <form style="height: 600px; overflow: scroll" [formGroup]="enderecoForm" #enderecoFormRef="ngForm" novalidate *ngIf="slide === 'Endereço'" class="custom-form">
           <ion-item>
             <ion-label position="stacked">CEP</ion-label>
             <ion-input style="text-transform: uppercase;" (ngModelChange)="cep=$event" formControlName="cep"></ion-input>
@@ -142,13 +144,7 @@
           </ion-item>
         </form>
 
-        <form [formGroup]="ministerioForm" #ministerioFormRef="ngForm" novalidate *ngIf="slide === 'Ministério'" class="custom-form">
-          <div class="full-width flex align-items-center justify-content-space-between">
-            <ion-button style="width: 120px;" strong shape="round" color="dark" *ngIf="isEnabledBack" (click)="onBackButtonTouched()">
-              <span>Back</span>
-              <ion-icon slot="start" name="chevron-back"></ion-icon>
-            </ion-button>
-          </div>
+        <form style="height: 600px; overflow: scroll" [formGroup]="ministerioForm" #ministerioFormRef="ngForm" novalidate *ngIf="slide === 'Ministério'" class="custom-form">
           <ion-item>
             <ion-label position="stacked">DATA BATISMO NAS ÁGUAS</ion-label>
             <ion-input style="text-transform: uppercase;" (ngModelChange)="batismoAgua=$event" formControlName="batismoAgua"></ion-input>
