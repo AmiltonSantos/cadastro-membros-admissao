@@ -4,7 +4,8 @@
       Cadastro de Membros
     </ion-title>
   </ion-toolbar>
-  <div style="padding-left: 15px; padding-right: 15px;" class="flex justify-content-space-between ion-margin-top relative">
+  <div style="padding-left: 15px; padding-right: 15px;"
+    class="flex justify-content-space-between ion-margin-top relative">
     <div class="absolute full-width line"></div>
     <div class="flex flex-column justify-content-center full-width"
       *ngFor="let slide of slides; let index = index; let first = first; let last = last;">
@@ -49,8 +50,8 @@
   <ion-slides [options]="slidesOpts" (ionSlideDidChange)="onSlidesDidChange()" (ionSlideWillChange)="onSlidesChanged()">
     <ng-container *ngFor="let slide of slides">
       <ion-slide>
-        <form style="height: 600px; overflow: scroll" (ngSubmit)="createPdf()" [formGroup]="dadosForm" #dadosFormRef="ngForm" novalidate
-          *ngIf="slide === 'Dados Pessoais'" class="custom-form">
+        <form style="height: 600px; overflow: scroll" (ngSubmit)="createPdf()" [formGroup]="dadosForm"
+          #dadosFormRef="ngForm" novalidate *ngIf="slide === 'Dados Pessoais'" class="custom-form">
           <ion-item>
             <ion-label position="floating">CONGREGAÇÃO</ion-label>
             <ion-input style="text-transform: uppercase;" (ngModelChange)="congregacao=$event" formControlName="congregacao"></ion-input>
@@ -116,7 +117,8 @@
           </ion-item>
         </form>
 
-        <form style="height: 600px; overflow: scroll" [formGroup]="enderecoForm" #enderecoFormRef="ngForm" novalidate *ngIf="slide === 'Endereço'" class="custom-form">
+        <form style="height: 600px; overflow: scroll" [formGroup]="enderecoForm" #enderecoFormRef="ngForm" novalidate
+          *ngIf="slide === 'Endereço'" class="custom-form">
           <ion-item>
             <ion-label position="floating">CEP</ion-label>
             <ion-input style="text-transform: uppercase;" (ngModelChange)="cep=$event" formControlName="cep"></ion-input>
@@ -147,14 +149,19 @@
           </ion-item>
         </form>
 
-        <form style="height: 600px; overflow: scroll" [formGroup]="ministerioForm" #ministerioFormRef="ngForm" novalidate *ngIf="slide === 'Ministério'" class="custom-form">
+        <form style="height: 600px; overflow: scroll" [formGroup]="ministerioForm" #ministerioFormRef="ngForm"
+          novalidate *ngIf="slide === 'Ministério'" class="custom-form">
           <ion-item>
-            <ion-label position="floating">DATA BATISMO NAS ÁGUAS</ion-label>
-            <ion-input type="date"  (ngModelChange)="batismoAgua=$event" formControlName="batismoAgua"></ion-input>
+            <ion-label>DATA BATISMO NAS ÁGUAS</ion-label>
+            <div>
+              <ion-input type="date" (ngModelChange)="batismoAgua=$event" formControlName="batismoAgua"></ion-input>
+            </div>
           </ion-item>
           <ion-item>
-            <ion-label position="floating">DATA BATISMO ESPÍRITO SANTO</ion-label>
-            <ion-input type="date"  (ngModelChange)="batismoEspiritoSanto=$event" formControlName="batismoEspiritoSanto"></ion-input>
+            <ion-label>DATA BATISMO ESPÍRITO SANTO</ion-label>
+            <div>
+              <ion-input type="date" (ngModelChange)="batismoEspiritoSanto=$event" formControlName="batismoEspiritoSanto"></ion-input>
+            </div>
           </ion-item>
           <ion-item>
             <ion-label position="floating">OBREIRO</ion-label>
@@ -164,74 +171,68 @@
             <ion-label position="floating">CARGO</ion-label>
             <ion-input style="text-transform: uppercase;" (ngModelChange)="obreiroCargo=$event" formControlName="obreiroCargo"></ion-input>
           </ion-item>
-          <ion-row>
-            <ion-col size="5">
-              <ion-item>
-                <ion-label position="floating">DIÁCONO DATA INÍCIO</ion-label>
-                <ion-input type="date"  (ngModelChange)="consDiacono=$event" formControlName="consDiacono"></ion-input>
-              </ion-item>
-            </ion-col>
-            <ion-col>
-              <ion-item>
-                <ion-label position="floating">LOCAL:</ion-label>
-                <ion-input style="text-transform: uppercase;" (ngModelChange)="localDiacono=$event" formControlName="localDiacono"></ion-input>
-              </ion-item>
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col size="5">
-              <ion-item>
-                <ion-label position="floating">PRESBÍTERO DATA INÍCIO</ion-label>
-                <ion-input type="date"  (ngModelChange)="consPresbitero=$event" formControlName="consPresbitero"></ion-input>
-              </ion-item>
-            </ion-col>
-            <ion-col>
-              <ion-item>
-                <ion-label position="floating">LOCAL:</ion-label>
-                <ion-input style="text-transform: uppercase;" (ngModelChange)="localPresbitero=$event" formControlName="localPresbitero"></ion-input>
-              </ion-item>
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col size="5">
-              <ion-item>
-                <ion-label position="floating">EVANGELISTA DATA INÍCIO</ion-label>
-                <ion-input type="date"  (ngModelChange)="consEvangelista=$event" formControlName="consEvangelista"></ion-input>
-              </ion-item>
-            </ion-col>
-            <ion-col>
-              <ion-item>
-                <ion-label position="floating">LOCAL:</ion-label>
-                <ion-input style="text-transform: uppercase;" (ngModelChange)="localEvangelista=$event" formControlName="localEvangelista"></ion-input>
-              </ion-item>
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col size="5">
-              <ion-item>
-                <ion-label position="floating">PASTOR DATA INICIO</ion-label>
-                <ion-input type="date"  (ngModelChange)="consPastor=$event" formControlName="consPastor"></ion-input>
-              </ion-item>
-            </ion-col>
-            <ion-col>
-              <ion-item>
-                <ion-label position="floating">LOCAL:</ion-label>
-                <ion-input style="text-transform: uppercase;" (ngModelChange)="localPastor=$event" formControlName="localPastor"></ion-input>
-              </ion-item>
-            </ion-col>
-          </ion-row>
-          <ion-item>
-            <ion-label position="floating">REGISTRO CAMPO JD. AMÉRICA</ion-label>
-            <ion-input type="date"  (ngModelChange)="regCampo=$event" formControlName="regCampo"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label position="floating">REGISTRO CADESGO</ion-label>
-            <ion-input type="date"  (ngModelChange)="regCadesgo=$event" formControlName="regCadesgo"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label position="floating">REGISTRO CGADB</ion-label>
-            <ion-input type="date"  (ngModelChange)="regCgadb=$event" formControlName="regCgadb"></ion-input>
-          </ion-item>
+
+          <ion-card style="padding-bottom: 100px;">
+            <ion-item>
+              <ion-label >DIÁCONO DATA INÍCIO</ion-label>
+              <div>
+                <ion-input type="date" (ngModelChange)="consDiacono=$event" formControlName="consDiacono"></ion-input>
+              </div>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">LOCAL:</ion-label>
+              <ion-input style="text-transform: uppercase;" (ngModelChange)="localDiacono=$event" formControlName="localDiacono"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label>PRESBÍTERO DATA INÍCIO</ion-label>
+              <div>
+                <ion-input type="date" (ngModelChange)="consPresbitero=$event" formControlName="consPresbitero"></ion-input>
+              </div>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">LOCAL:</ion-label>
+              <ion-input style="text-transform: uppercase;" (ngModelChange)="localPresbitero=$event" formControlName="localPresbitero"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label >EVANGELISTA DATA INÍCIO</ion-label>
+              <div>
+                <ion-input type="date" (ngModelChange)="consEvangelista=$event" formControlName="consEvangelista"></ion-input>
+              </div>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">LOCAL:</ion-label>
+              <ion-input style="text-transform: uppercase;" (ngModelChange)="localEvangelista=$event" formControlName="localEvangelista"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label>PASTOR DATA INICIO</ion-label>
+              <div>
+                <ion-input type="date" (ngModelChange)="consPastor=$event" formControlName="consPastor"></ion-input>
+              </div>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">LOCAL:</ion-label>
+              <ion-input style="text-transform: uppercase;" (ngModelChange)="localPastor=$event"
+                formControlName="localPastor"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label>REGISTRO CAMPO JD. AMÉRICA</ion-label>
+              <div>
+                <ion-input type="date" (ngModelChange)="regCampo=$event" formControlName="regCampo"></ion-input>
+              </div>
+            </ion-item>
+            <ion-item>
+              <ion-label>REGISTRO CADESGO</ion-label>
+              <div>
+                <ion-input type="date" (ngModelChange)="regCadesgo=$event" formControlName="regCadesgo"></ion-input>
+              </div>
+            </ion-item>
+            <ion-item>
+              <ion-label>REGISTRO CGADB</ion-label>
+              <div>
+                <ion-input type="date" (ngModelChange)="regCgadb=$event" formControlName="regCgadb"></ion-input>
+              </div>
+            </ion-item>
+          </ion-card>
         </form>
       </ion-slide>
     </ng-container>
