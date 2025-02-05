@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, NgForm } from '@angular/forms';
-import { IonContent, IonSlides, Platform } from '@ionic/angular';
+import { IonContent, IonDatetime, IonModal, IonSlides, Platform } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
+import { format } from 'date-fns';
 
 import * as pdfMake from "pdfmake/build/pdfmake";
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
@@ -23,6 +24,8 @@ export class HomePage implements OnInit {
     @ViewChild('dadosFormRef', { static: false }) dadosFormRef!: NgForm;
     @ViewChild('enderecoFormRef', { static: false }) enderecoFormRef!: NgForm;
     @ViewChild('ministerioFormRef', { static: false }) ministerioFormRef!: NgForm;
+    @ViewChild(IonModal) modal!: IonModal;
+    @ViewChild('usage') datetime!: IonDatetime;
     public dadosForm!: FormGroup;
     public enderecoForm!: FormGroup;
     public ministerioForm!: FormGroup;
@@ -73,6 +76,7 @@ export class HomePage implements OnInit {
     public isBeginning: boolean = true;
     public isEnd: boolean = false;
     public isEnabledBack: boolean = false;
+    public usageDate: string = '';
 
     public slidesOpts = {
         allowTouchMove: false,
@@ -136,6 +140,25 @@ export class HomePage implements OnInit {
 
 
         this.loadLocalAssetToBase64();
+    }
+
+    onWillDismiss(event: Event) {
+        console.log(`Bye, ${this.usageDate}!`);
+        console.log(`Bye, ${this.datetime.value}!`);
+    }
+    
+    onWillPresent(event: Event) {
+        console.log(event);
+        this.datetime.reset(this.usageDate);
+    }
+    
+    onDateChange(event: any) {
+        if (event?.detail?.value) {
+          const date = event.detail.value.split('T')[0];
+          this.usageDate = date;
+        } else {
+          this.usageDate = format(Date.now(), 'Y-m-d');
+        }
     }
 
     onSlidesDidChange() {
@@ -315,7 +338,7 @@ export class HomePage implements OnInit {
                                         body: [
                                             [
                                                 {
-                                                    text: this.cpf.toUpperCase()
+                                                    text: this.cpf.replace(/^(\d{3})(\d{3})(\d{3})(\d{2})$/, '$1.$2.$3-$4')
                                                 }
                                             ]
                                         ]

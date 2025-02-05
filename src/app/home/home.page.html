@@ -65,10 +65,30 @@
             <ion-input style="text-transform: uppercase;" (ngModelChange)="nome=$event" formControlName="nome"></ion-input>
           </ion-item>
           <ion-item>
-            <ion-label>DATA NASC:</ion-label>
-            <div>
-              <ion-input placeholder="Data" style="--background: burlywood; border-radius: 10px;" type="date" (ngModelChange)="dataNascimento=$event" formControlName="dataNascimento"></ion-input>
-            </div>
+            <ion-input
+              id="selectDate"
+              placeholder="DATA NASC:"
+              [readonly]="true"
+              [value]="usageDate">
+            </ion-input>
+            <ion-modal
+              trigger="selectDate"
+              [keepContentsMounted]="true"
+              (willDismiss)="onWillDismiss($event)"
+              (willPresent)="onWillPresent($event)"
+              class="ion-datetime-button-overlay">
+              <ng-template>
+                <ion-datetime
+                  #usage
+                  presentation="date"
+                  [value]="usageDate"
+                  [showDefaultButtons]="true"
+                  doneText="OK"
+                  cancelText="Cancelar"
+                  (ionChange)="onDateChange($event)">
+                </ion-datetime>
+              </ng-template>
+            </ion-modal>
           </ion-item>
           <ion-item>
             <ion-label position="floating">SEXO</ion-label>
