@@ -64,10 +64,10 @@
             <ion-label position="floating">NOME COMPLETO</ion-label>
             <ion-input style="text-transform: uppercase;" (ngModelChange)="nome=$event" formControlName="nome"></ion-input>
           </ion-item>
-          <ion-item>
+          <ion-item (click)="abreData()">
             <ion-label>DATA NASC:</ion-label>
             <div>
-              <ion-input type="date" (ngModelChange)="dataNascimento=$event" formControlName="dataNascimento"></ion-input>
+              <ion-input #abreInput style="--background: burlywood; border-radius: 10px;" type="date" (ngModelChange)="dataNascimento=$event" formControlName="dataNascimento"></ion-input>
             </div>
           </ion-item>
           <ion-item>
@@ -152,15 +152,15 @@
         <form style="height: 600px; overflow: scroll" [formGroup]="ministerioForm" #ministerioFormRef="ngForm"
           novalidate *ngIf="slide === 'Ministério'" class="custom-form">
           <ion-item>
-            <ion-label>DATA BATISMO NAS ÁGUAS</ion-label>
+            <ion-label>DATA BATISMO NAS ÁGUAS:</ion-label>
             <div>
-              <ion-input type="date" (ngModelChange)="batismoAgua=$event" formControlName="batismoAgua"></ion-input>
+              <ion-input style="--background: burlywood; border-radius: 10px;" type="date" (ngModelChange)="batismoAgua=$event" formControlName="batismoAgua"></ion-input>
             </div>
           </ion-item>
           <ion-item>
-            <ion-label>DATA BATISMO ESPÍRITO SANTO</ion-label>
+            <ion-label>DATA BATISMO ESPÍRITO SANTO:</ion-label>
             <div>
-              <ion-input type="date" (ngModelChange)="batismoEspiritoSanto=$event" formControlName="batismoEspiritoSanto"></ion-input>
+              <ion-input style="--background: burlywood; border-radius: 10px;" type="date" (ngModelChange)="batismoEspiritoSanto=$event" formControlName="batismoEspiritoSanto"></ion-input>
             </div>
           </ion-item>
           <ion-item>
@@ -174,9 +174,9 @@
 
           <ion-card style="padding-bottom: 100px;">
             <ion-item>
-              <ion-label >DIÁCONO DATA INÍCIO</ion-label>
+              <ion-label>DIÁCONO DATA INÍCIO:</ion-label>
               <div>
-                <ion-input type="date" (ngModelChange)="consDiacono=$event" formControlName="consDiacono"></ion-input>
+                <ion-input style="--background: burlywood; border-radius: 10px;" type="date" (ngModelChange)="consDiacono=$event" formControlName="consDiacono"></ion-input>
               </div>
             </ion-item>
             <ion-item>
@@ -184,9 +184,9 @@
               <ion-input style="text-transform: uppercase;" (ngModelChange)="localDiacono=$event" formControlName="localDiacono"></ion-input>
             </ion-item>
             <ion-item>
-              <ion-label>PRESBÍTERO DATA INÍCIO</ion-label>
+              <ion-label>PRESBÍTERO DATA INÍCIO:</ion-label>
               <div>
-                <ion-input type="date" (ngModelChange)="consPresbitero=$event" formControlName="consPresbitero"></ion-input>
+                <ion-input style="--background: burlywood; border-radius: 10px;" type="date" (ngModelChange)="consPresbitero=$event" formControlName="consPresbitero"></ion-input>
               </div>
             </ion-item>
             <ion-item>
@@ -194,9 +194,9 @@
               <ion-input style="text-transform: uppercase;" (ngModelChange)="localPresbitero=$event" formControlName="localPresbitero"></ion-input>
             </ion-item>
             <ion-item>
-              <ion-label >EVANGELISTA DATA INÍCIO</ion-label>
+              <ion-label>EVANGELISTA DATA INÍCIO:</ion-label>
               <div>
-                <ion-input type="date" (ngModelChange)="consEvangelista=$event" formControlName="consEvangelista"></ion-input>
+                <ion-input style="--background: burlywood; border-radius: 10px;" type="date" (ngModelChange)="consEvangelista=$event" formControlName="consEvangelista"></ion-input>
               </div>
             </ion-item>
             <ion-item>
@@ -204,9 +204,9 @@
               <ion-input style="text-transform: uppercase;" (ngModelChange)="localEvangelista=$event" formControlName="localEvangelista"></ion-input>
             </ion-item>
             <ion-item>
-              <ion-label>PASTOR DATA INICIO</ion-label>
+              <ion-label>PASTOR DATA INICIO:</ion-label>
               <div>
-                <ion-input type="date" (ngModelChange)="consPastor=$event" formControlName="consPastor"></ion-input>
+                <ion-input style="--background: burlywood; border-radius: 10px;" type="date" (ngModelChange)="consPastor=$event" formControlName="consPastor"></ion-input>
               </div>
             </ion-item>
             <ion-item>
@@ -215,21 +215,21 @@
                 formControlName="localPastor"></ion-input>
             </ion-item>
             <ion-item>
-              <ion-label>REGISTRO CAMPO JD. AMÉRICA</ion-label>
+              <ion-label>REGISTRO CAMPO JD. AMÉRICA:</ion-label>
               <div>
-                <ion-input type="date" (ngModelChange)="regCampo=$event" formControlName="regCampo"></ion-input>
+                <ion-input style="--background: burlywood; border-radius: 10px;" type="date" (ngModelChange)="regCampo=$event" formControlName="regCampo"></ion-input>
               </div>
             </ion-item>
             <ion-item>
-              <ion-label>REGISTRO CADESGO</ion-label>
+              <ion-label>REGISTRO CADESGO:</ion-label>
               <div>
-                <ion-input type="date" (ngModelChange)="regCadesgo=$event" formControlName="regCadesgo"></ion-input>
+                <ion-input style="--background: burlywood; border-radius: 10px;" type="date" (ngModelChange)="regCadesgo=$event" formControlName="regCadesgo"></ion-input>
               </div>
             </ion-item>
             <ion-item>
-              <ion-label>REGISTRO CGADB</ion-label>
+              <ion-label>REGISTRO CGADB:</ion-label>
               <div>
-                <ion-input type="date" (ngModelChange)="regCgadb=$event" formControlName="regCgadb"></ion-input>
+                <ion-input style="--background: burlywood; border-radius: 10px;" type="date" (ngModelChange)="regCgadb=$event" formControlName="regCgadb"></ion-input>
               </div>
             </ion-item>
           </ion-card>
