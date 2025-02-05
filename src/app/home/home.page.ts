@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, NgForm } from '@angular/forms';
-import { IonContent, IonInput, IonSlides, Platform } from '@ionic/angular';
+import { IonContent, IonSlides, Platform } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
 
 import * as pdfMake from "pdfmake/build/pdfmake";
@@ -23,7 +23,6 @@ export class HomePage implements OnInit {
     @ViewChild('dadosFormRef', { static: false }) dadosFormRef!: NgForm;
     @ViewChild('enderecoFormRef', { static: false }) enderecoFormRef!: NgForm;
     @ViewChild('ministerioFormRef', { static: false }) ministerioFormRef!: NgForm;
-    @ViewChild('abreInput', { static: false }) abreInput!: IonInput;
     public dadosForm!: FormGroup;
     public enderecoForm!: FormGroup;
     public ministerioForm!: FormGroup;
@@ -137,10 +136,6 @@ export class HomePage implements OnInit {
 
 
         this.loadLocalAssetToBase64();
-    }
-
-    abreData() {
-        this.abreInput.setFocus();
     }
 
     onSlidesDidChange() {
