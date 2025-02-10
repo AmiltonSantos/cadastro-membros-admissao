@@ -1,7 +1,7 @@
 {
-  "name": "ionic-angular-capacitor-pdfmake",
+  "name": "cadastro-membros-admissao-jardim-america",
   "version": "0.0.1",
-  "author": "Ionic Framework",
+  "author": "Amilton Santos - node v18.18.2",
   "homepage": "https://ionicframework.com/",
   "scripts": {
     "ng": "ng",
@@ -32,6 +32,7 @@
     "@ionic/pwa-elements": "^3.1.1",
     "cordova-plugin-file-opener2": "^3.0.5",
     "ionicons": "^6.0.3",
+    "br-mask": "0.0.10",
     "pdfmake": "^0.2.7",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",

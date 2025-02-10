@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, NgForm } from '@angular/forms';
-import { IonContent, IonDatetime, IonModal, IonSlides, Platform } from '@ionic/angular';
+import { IonContent, IonSlides, Platform } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
 
 import * as pdfMake from "pdfmake/build/pdfmake";
@@ -23,17 +23,6 @@ export class HomePage implements OnInit {
     @ViewChild('dadosFormRef', { static: false }) dadosFormRef!: NgForm;
     @ViewChild('enderecoFormRef', { static: false }) enderecoFormRef!: NgForm;
     @ViewChild('ministerioFormRef', { static: false }) ministerioFormRef!: NgForm;
-    @ViewChild(IonModal) modal!: IonModal;
-    @ViewChild('usageNasc') datetimeNasc!: IonDatetime;
-    @ViewChild('usageBatAgua') datetimeBatAgua!: IonDatetime;
-    @ViewChild('usageBatEspSanto') datetimeBatEspSanto!: IonDatetime;
-    @ViewChild('usageDiacono') datetimeDiacono!: IonDatetime;
-    @ViewChild('usagePresbitero') datetimePresbitero!: IonDatetime;
-    @ViewChild('usageEvangelista') datetimeEvangelista!: IonDatetime;
-    @ViewChild('usagePastor') datetimePastor!: IonDatetime;
-    @ViewChild('usageCampo') datetimeCampo!: IonDatetime;
-    @ViewChild('usageCadesgo') datetimeCadesgo!: IonDatetime;
-    @ViewChild('usageCgadb') datetimeCgadb!: IonDatetime;
     public dadosForm!: FormGroup;
     public enderecoForm!: FormGroup;
     public ministerioForm!: FormGroup;
@@ -84,16 +73,6 @@ export class HomePage implements OnInit {
     public isBeginning: boolean = true;
     public isEnd: boolean = false;
     public isEnabledBack: boolean = false;
-    public usageDateNasc: string = '';
-    public usageDateBatAgua: string = '';
-    public usageDateBatEspSanto: string = '';
-    public usageDateDiacono: string = '';
-    public usageDatePresb: string = '';
-    public usageDateEvang: string = '';
-    public usageDatePastor: string = '';
-    public usageDateCampo: string = '';
-    public usageDateCadesgo: string = '';
-    public usageDateCgadb: string = '';
 
     public slidesOpts = {
         allowTouchMove: false,
@@ -292,72 +271,6 @@ export class HomePage implements OnInit {
         this.loadLocalAssetToBase64();
     }
    
-    onWillPresent(event: Event, numero: number) {
-
-        console.log(event);
-        if (numero === 1) {
-            this.datetimeNasc.reset(this.usageDateNasc);
-        } else if (numero === 2) {
-            this.datetimeBatAgua.reset(this.usageDateBatAgua);
-        } else if (numero === 3) {
-            this.datetimeBatEspSanto.reset(this.usageDateBatEspSanto);
-        } else if (numero === 4) {
-            this.datetimeDiacono.reset(this.usageDateDiacono);
-        } else if (numero === 5) {
-            this.datetimePresbitero.reset(this.usageDatePresb);
-        } else if (numero === 6) {
-            this.datetimeEvangelista.reset(this.usageDateEvang);
-        } else if (numero === 7) {
-            this.datetimePastor.reset(this.usageDatePastor);
-        } else if (numero === 8) {
-            this.datetimeCampo.reset(this.usageDateCampo);
-        } else if (numero === 9) {
-            this.datetimeCadesgo.reset(this.usageDateCadesgo);
-        } else if (numero === 10) {
-            this.datetimeCgadb.reset(this.usageDateCgadb);
-        }
-    }
-    
-    onDateChange(event: any, numero: number) {
-        console.log(numero);
-        if (event?.detail?.value) {           
-            const date = event.detail.value.split('T')[0];
-            if (numero === 1) {
-                this.usageDateNasc = date;
-                this.dataNascimento = date.replace(/^(\d{4})-(\d{2})-(\d{2})$/, '$3/$2/$1');
-            } else if (numero === 2) {
-                this.usageDateBatAgua = date;
-                this.batismoAgua = date.replace(/^(\d{4})-(\d{2})-(\d{2})$/, '$3/$2/$1');
-            } else if (numero === 3) {
-                this.usageDateBatEspSanto = date;
-                this.batismoEspiritoSanto = date.replace(/^(\d{4})-(\d{2})-(\d{2})$/, '$3/$2/$1');
-            } else if (numero === 4) {
-                this.usageDateDiacono = date;
-                this.consDiacono = date.replace(/^(\d{4})-(\d{2})-(\d{2})$/, '$3/$2/$1');
-            } else if (numero === 5) {
-                this.usageDatePresb = date;
-                this.consPresbitero = date.replace(/^(\d{4})-(\d{2})-(\d{2})$/, '$3/$2/$1');
-            } else if (numero === 6) {
-                this.usageDateEvang = date;
-                this.consEvangelista = date.replace(/^(\d{4})-(\d{2})-(\d{2})$/, '$3/$2/$1');
-            } else if (numero === 7) {
-                this.usageDatePastor = date;
-                this.consPastor = date.replace(/^(\d{4})-(\d{2})-(\d{2})$/, '$3/$2/$1');
-            } else if (numero === 8) {
-                this.usageDateCampo = date;
-                this.regCampo = date.replace(/^(\d{4})-(\d{2})-(\d{2})$/, '$3/$2/$1');
-            } else if (numero === 9) {
-                this.usageDateCadesgo = date;
-                this.regCadesgo = date.replace(/^(\d{4})-(\d{2})-(\d{2})$/, '$3/$2/$1');
-            } else if (numero === 10) {
-                this.usageDateCgadb = date;
-                this.regCgadb = date.replace(/^(\d{4})-(\d{2})-(\d{2})$/, '$3/$2/$1');
-            }            
-        } else {
-            this.usageDateNasc = event?.detail?.value
-        }
-    }
-
     onSlidesDidChange() {
         this.ionContent.scrollToTop();
     }
