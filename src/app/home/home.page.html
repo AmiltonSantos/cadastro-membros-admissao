@@ -74,27 +74,27 @@
           <ion-item>
             <ion-label position="floating">DATA NASC:</ion-label>
             <ion-input
-              id="selectDate"
+              id="selectDateNasc"
               placeholder="dd/mm/aaaa"
               [readonly]="true"
               [value]="dataNascimento">
             </ion-input>
             <ion-modal
-              trigger="selectDate"
+              trigger="selectDateNasc"
               [keepContentsMounted]="true"
-              (willPresent)="onWillPresent($event)"
+              (willPresent)="onWillPresent($event, 1)"
               class="ion-datetime-button-overlay">
               <ng-template>
                 <ion-datetime
-                  #usage
+                  #usageNasc
                   presentation="date"
-                  [value]="usageDate"
+                  [value]="usageDateNasc"
                   [showDefaultButtons]="true"
                   doneText="OK"
                   cancelText="Cancelar"
                   formControlName="dataNascimento"
                   (ngModelChange)="dataNascimento=$event" 
-                  (ionChange)="onDateChange($event)">
+                  (ionChange)="onDateChange($event, 1)">
                 </ion-datetime>
               </ng-template>
             </ion-modal>
@@ -182,7 +182,9 @@
           </ion-item>
           <ion-item>
             <ion-label position="floating">ESTADO</ion-label>
-            <ion-input style="text-transform: uppercase;" (ngModelChange)="estado=$event" formControlName="estado"></ion-input>
+            <ion-select (ngModelChange)="estado=$event" formControlName="estado">
+              <ion-select-option *ngFor="let item of estadosBrasil" [value]="item.nome">{{item.nome}}</ion-select-option>
+            </ion-select>
           </ion-item>
           <ion-item>
             <ion-label position="floating">CIDADE</ion-label>
@@ -193,17 +195,63 @@
         <form style="height: 600px; overflow: scroll" [formGroup]="ministerioForm" #ministerioFormRef="ngForm"
           novalidate *ngIf="slide === 'Ministério'" class="custom-form">
           <ion-item>
-            <ion-label>DATA BATISMO NAS ÁGUAS:</ion-label>
-            <div>
-              <ion-input placeholder="Data" style="--background: burlywood; border-radius: 10px;" type="date" (ngModelChange)="batismoAgua=$event" formControlName="batismoAgua"></ion-input>
-            </div>
+            <ion-label position="floating">DATA BATISMO NAS ÁGUAS:</ion-label>
+            <ion-input
+              id="selectDateBatAgua"
+              placeholder="dd/mm/aaaa"
+              [readonly]="true"
+              [value]="batismoAgua">
+            </ion-input>
+            <ion-modal
+              trigger="selectDateBatAgua"
+              [keepContentsMounted]="true"
+              (willPresent)="onWillPresent($event, 2)"
+              class="ion-datetime-button-overlay">
+              <ng-template>
+                <ion-datetime
+                  #usageBatAgua
+                  presentation="date"
+                  [value]="usageDateBatAgua"
+                  [showDefaultButtons]="true"
+                  doneText="OK"
+                  cancelText="Cancelar"
+                  formControlName="batismoAgua"
+                  (ngModelChange)="batismoAgua=$event" 
+                  (ionChange)="onDateChange($event, 2)">
+                </ion-datetime>
+              </ng-template>
+            </ion-modal>
           </ion-item>
+
           <ion-item>
-            <ion-label>DATA BATISMO ESPÍRITO SANTO:</ion-label>
-            <div>
-              <ion-input placeholder="Data" style="--background: burlywood; border-radius: 10px;" type="date" (ngModelChange)="batismoEspiritoSanto=$event" formControlName="batismoEspiritoSanto"></ion-input>
-            </div>
+            <ion-label position="floating">DATA BATISMO ESPÍRITO SANTO:</ion-label>
+            <ion-input
+              id="selectDateBatEspSanto"
+              placeholder="dd/mm/aaaa"
+              [readonly]="true"
+              [value]="batismoEspiritoSanto">
+            </ion-input>
+            <ion-modal
+              trigger="selectDateBatEspSanto"
+              [keepContentsMounted]="true"
+              (willPresent)="onWillPresent($event, 3)"
+              class="ion-datetime-button-overlay">
+              <ng-template>
+                <ion-datetime
+                  #usageBatEspSanto
+                  presentation="date"
+                  [value]="usageDateBatEspSanto"
+                  [showDefaultButtons]="true"
+                  doneText="OK"
+                  cancelText="Cancelar"
+                  formControlName="batismoEspiritoSanto"
+                  (ngModelChange)="batismoEspiritoSanto=$event" 
+                  (ionChange)="onDateChange($event, 3)">
+                </ion-datetime>
+              </ng-template>
+            </ion-modal>
           </ion-item>
+
           <ion-item>
             <ion-label position="floating">OBREIRO</ion-label>
             <ion-input style="text-transform: uppercase;" (ngModelChange)="obreiroSim=$event" formControlName="obreiroSim"></ion-input>
@@ -215,62 +263,226 @@
 
           <ion-card style="padding-bottom: 100px;">
             <ion-item>
-              <ion-label>DIÁCONO DATA INÍCIO:</ion-label>
-              <div>
-                <ion-input style="--background: burlywood; border-radius: 10px;" type="date" (ngModelChange)="consDiacono=$event" formControlName="consDiacono"></ion-input>
-              </div>
+              <ion-label position="floating">DIÁCONO DATA INÍCIO:</ion-label>
+              <ion-input
+                id="selectDateDiacono"
+                placeholder="dd/mm/aaaa"
+                [readonly]="true"
+                [value]="consDiacono">
+              </ion-input>
+              <ion-modal
+                trigger="selectDateDiacono"
+                [keepContentsMounted]="true"
+                (willPresent)="onWillPresent($event, 4)"
+                class="ion-datetime-button-overlay">
+                <ng-template>
+                  <ion-datetime
+                    #usageDiacono
+                    presentation="date"
+                    [value]="usageDateDiacono"
+                    [showDefaultButtons]="true"
+                    doneText="OK"
+                    cancelText="Cancelar"
+                    formControlName="consDiacono"
+                    (ngModelChange)="consDiacono=$event" 
+                    (ionChange)="onDateChange($event, 4)">
+                  </ion-datetime>
+                </ng-template>
+              </ion-modal>
             </ion-item>
+  
             <ion-item>
               <ion-label position="floating">LOCAL:</ion-label>
               <ion-input style="text-transform: uppercase;" (ngModelChange)="localDiacono=$event" formControlName="localDiacono"></ion-input>
             </ion-item>
+
             <ion-item>
-              <ion-label>PRESBÍTERO DATA INÍCIO:</ion-label>
-              <div>
-                <ion-input placeholder="Data" style="--background: burlywood; border-radius: 10px;" type="date" (ngModelChange)="consPresbitero=$event" formControlName="consPresbitero"></ion-input>
-              </div>
+              <ion-label position="floating">DIÁCONO DATA INÍCIO:</ion-label>
+              <ion-input
+                id="selectDatePresbitero"
+                placeholder="dd/mm/aaaa"
+                [readonly]="true"
+                [value]="consPresbitero">
+              </ion-input>
+              <ion-modal
+                trigger="selectDatePresbitero"
+                [keepContentsMounted]="true"
+                (willPresent)="onWillPresent($event, 5)"
+                class="ion-datetime-button-overlay">
+                <ng-template>
+                  <ion-datetime
+                    #usagePresbitero
+                    presentation="date"
+                    [value]="usageDatePresb"
+                    [showDefaultButtons]="true"
+                    doneText="OK"
+                    cancelText="Cancelar"
+                    formControlName="consPresbitero"
+                    (ngModelChange)="consPresbitero=$event" 
+                    (ionChange)="onDateChange($event, 5)">
+                  </ion-datetime>
+                </ng-template>
+              </ion-modal>
             </ion-item>
+
             <ion-item>
               <ion-label position="floating">LOCAL:</ion-label>
               <ion-input style="text-transform: uppercase;" (ngModelChange)="localPresbitero=$event" formControlName="localPresbitero"></ion-input>
             </ion-item>
+
             <ion-item>
-              <ion-label>EVANGELISTA DATA INÍCIO:</ion-label>
-              <div>
-                <ion-input placeholder="Data" style="--background: burlywood; border-radius: 10px;" type="date" (ngModelChange)="consEvangelista=$event" formControlName="consEvangelista"></ion-input>
-              </div>
+              <ion-label position="floating">EVANGELISTA DATA INÍCIO:</ion-label>
+              <ion-input
+                id="selectDateEvangelista"
+                placeholder="dd/mm/aaaa"
+                [readonly]="true"
+                [value]="consEvangelista">
+              </ion-input>
+              <ion-modal
+                trigger="selectDateEvangelista"
+                [keepContentsMounted]="true"
+                (willPresent)="onWillPresent($event, 6)"
+                class="ion-datetime-button-overlay">
+                <ng-template>
+                  <ion-datetime
+                    #usageEvangelista
+                    presentation="date"
+                    [value]="usageDateEvang"
+                    [showDefaultButtons]="true"
+                    doneText="OK"
+                    cancelText="Cancelar"
+                    formControlName="consEvangelista"
+                    (ngModelChange)="consEvangelista=$event" 
+                    (ionChange)="onDateChange($event, 6)">
+                  </ion-datetime>
+                </ng-template>
+              </ion-modal>
             </ion-item>
+
             <ion-item>
               <ion-label position="floating">LOCAL:</ion-label>
               <ion-input style="text-transform: uppercase;" (ngModelChange)="localEvangelista=$event" formControlName="localEvangelista"></ion-input>
             </ion-item>
+
             <ion-item>
-              <ion-label>PASTOR DATA INICIO:</ion-label>
-              <div>
-                <ion-input placeholder="Data" style="--background: burlywood; border-radius: 10px;" type="date" (ngModelChange)="consPastor=$event" formControlName="consPastor"></ion-input>
-              </div>
+              <ion-label position="floating">PASTOR DATA INICIO:</ion-label>
+              <ion-input
+                id="selectDatePastor"
+                placeholder="dd/mm/aaaa"
+                [readonly]="true"
+                [value]="consPastor">
+              </ion-input>
+              <ion-modal
+                trigger="selectDatePastor"
+                [keepContentsMounted]="true"
+                (willPresent)="onWillPresent($event, 7)"
+                class="ion-datetime-button-overlay">
+                <ng-template>
+                  <ion-datetime
+                    #usagePastor
+                    presentation="date"
+                    [value]="usageDatePastor"
+                    [showDefaultButtons]="true"
+                    doneText="OK"
+                    cancelText="Cancelar"
+                    formControlName="consPastor"
+                    (ngModelChange)="consPastor=$event" 
+                    (ionChange)="onDateChange($event, 7)">
+                  </ion-datetime>
+                </ng-template>
+              </ion-modal>
             </ion-item>
+
             <ion-item>
               <ion-label position="floating">LOCAL:</ion-label>
               <ion-input style="text-transform: uppercase;" (ngModelChange)="localPastor=$event" formControlName="localPastor"></ion-input>
             </ion-item>
+
             <ion-item>
-              <ion-label>REGISTRO CAMPO JD. AMÉRICA:</ion-label>
-              <div>
-                <ion-input placeholder="Data" style="--background: burlywood; border-radius: 10px;" type="date" (ngModelChange)="regCampo=$event" formControlName="regCampo"></ion-input>
-              </div>
+              <ion-label position="floating">REGISTRO CAMPO JD. AMÉRICA:</ion-label>
+              <ion-input
+                id="selectDateCampo"
+                placeholder="dd/mm/aaaa"
+                [readonly]="true"
+                [value]="regCampo">
+              </ion-input>
+              <ion-modal
+                trigger="selectDateCampo"
+                [keepContentsMounted]="true"
+                (willPresent)="onWillPresent($event, 8)"
+                class="ion-datetime-button-overlay">
+                <ng-template>
+                  <ion-datetime
+                    #usageCampo
+                    presentation="date"
+                    [value]="usageDateCampo"
+                    [showDefaultButtons]="true"
+                    doneText="OK"
+                    cancelText="Cancelar"
+                    formControlName="regCampo"
+                    (ngModelChange)="regCampo=$event" 
+                    (ionChange)="onDateChange($event, 8)">
+                  </ion-datetime>
+                </ng-template>
+              </ion-modal>
             </ion-item>
+
             <ion-item>
-              <ion-label>REGISTRO CADESGO:</ion-label>
-              <div>
-                <ion-input placeholder="Data" style="--background: burlywood; border-radius: 10px;" type="date" (ngModelChange)="regCadesgo=$event" formControlName="regCadesgo"></ion-input>
-              </div>
+              <ion-label position="floating">REGISTRO CADESGO:</ion-label>
+              <ion-input
+                id="selectDateCadesgo"
+                placeholder="dd/mm/aaaa"
+                [readonly]="true"
+                [value]="regCadesgo">
+              </ion-input>
+              <ion-modal
+                trigger="selectDateCadesgo"
+                [keepContentsMounted]="true"
+                (willPresent)="onWillPresent($event, 9)"
+                class="ion-datetime-button-overlay">
+                <ng-template>
+                  <ion-datetime
+                    #usageCadesgo
+                    presentation="date"
+                    [value]="usageDateCadesgo"
+                    [showDefaultButtons]="true"
+                    doneText="OK"
+                    cancelText="Cancelar"
+                    formControlName="regCadesgo"
+                    (ngModelChange)="regCadesgo=$event" 
+                    (ionChange)="onDateChange($event, 9)">
+                  </ion-datetime>
+                </ng-template>
+              </ion-modal>
             </ion-item>
+
             <ion-item>
-              <ion-label>REGISTRO CGADB:</ion-label>
-              <div>
-                <ion-input placeholder="Data" style="--background: burlywood; border-radius: 10px;" type="date" (ngModelChange)="regCgadb=$event" formControlName="regCgadb"></ion-input>
-              </div>
+              <ion-label position="floating">REGISTRO CGADB:</ion-label>
+              <ion-input
+                id="selectDateCgadb"
+                placeholder="dd/mm/aaaa"
+                [readonly]="true"
+                [value]="regCgadb">
+              </ion-input>
+              <ion-modal
+                trigger="selectDateCgadb"
+                [keepContentsMounted]="true"
+                (willPresent)="onWillPresent($event, 10)"
+                class="ion-datetime-button-overlay">
+                <ng-template>
+                  <ion-datetime
+                    #usageCgadb
+                    presentation="date"
+                    [value]="usageDateCgadb"
+                    [showDefaultButtons]="true"
+                    doneText="OK"
+                    cancelText="Cancelar"
+                    formControlName="regCgadb"
+                    (ngModelChange)="regCgadb=$event" 
+                    (ionChange)="onDateChange($event, 10)">
+                  </ion-datetime>
+                </ng-template>
+              </ion-modal>
             </ion-item>
           </ion-card>
         </form>

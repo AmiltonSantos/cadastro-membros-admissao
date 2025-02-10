@@ -24,7 +24,16 @@ export class HomePage implements OnInit {
     @ViewChild('enderecoFormRef', { static: false }) enderecoFormRef!: NgForm;
     @ViewChild('ministerioFormRef', { static: false }) ministerioFormRef!: NgForm;
     @ViewChild(IonModal) modal!: IonModal;
-    @ViewChild('usage') datetime!: IonDatetime;
+    @ViewChild('usageNasc') datetimeNasc!: IonDatetime;
+    @ViewChild('usageBatAgua') datetimeBatAgua!: IonDatetime;
+    @ViewChild('usageBatEspSanto') datetimeBatEspSanto!: IonDatetime;
+    @ViewChild('usageDiacono') datetimeDiacono!: IonDatetime;
+    @ViewChild('usagePresbitero') datetimePresbitero!: IonDatetime;
+    @ViewChild('usageEvangelista') datetimeEvangelista!: IonDatetime;
+    @ViewChild('usagePastor') datetimePastor!: IonDatetime;
+    @ViewChild('usageCampo') datetimeCampo!: IonDatetime;
+    @ViewChild('usageCadesgo') datetimeCadesgo!: IonDatetime;
+    @ViewChild('usageCgadb') datetimeCgadb!: IonDatetime;
     public dadosForm!: FormGroup;
     public enderecoForm!: FormGroup;
     public ministerioForm!: FormGroup;
@@ -75,7 +84,16 @@ export class HomePage implements OnInit {
     public isBeginning: boolean = true;
     public isEnd: boolean = false;
     public isEnabledBack: boolean = false;
-    public usageDate: string = '';
+    public usageDateNasc: string = '';
+    public usageDateBatAgua: string = '';
+    public usageDateBatEspSanto: string = '';
+    public usageDateDiacono: string = '';
+    public usageDatePresb: string = '';
+    public usageDateEvang: string = '';
+    public usageDatePastor: string = '';
+    public usageDateCampo: string = '';
+    public usageDateCadesgo: string = '';
+    public usageDateCgadb: string = '';
 
     public slidesOpts = {
         allowTouchMove: false,
@@ -83,33 +101,33 @@ export class HomePage implements OnInit {
     };
     
     public estadosBrasil = [
-        { sigla: 'AC', nome: 'Acre' },
-        { sigla: 'AL', nome: 'Alagoas' },
-        { sigla: 'AP', nome: 'Amapá' },
-        { sigla: 'AM', nome: 'Amazonas' },
-        { sigla: 'BA', nome: 'Bahia' },
-        { sigla: 'CE', nome: 'Ceará' },
-        { sigla: 'DF', nome: 'Distrito Federal' },
-        { sigla: 'ES', nome: 'Espírito Santo' },
-        { sigla: 'GO', nome: 'Goiás' },
-        { sigla: 'MA', nome: 'Maranhão' },
-        { sigla: 'MT', nome: 'Mato Grosso' },
-        { sigla: 'MS', nome: 'Mato Grosso do Sul' },
-        { sigla: 'MG', nome: 'Minas Gerais' },
-        { sigla: 'PA', nome: 'Pará' },
-        { sigla: 'PB', nome: 'Paraíba' },
-        { sigla: 'PR', nome: 'Paraná' },
-        { sigla: 'PE', nome: 'Pernambuco' },
-        { sigla: 'PI', nome: 'Piauí' },
-        { sigla: 'RJ', nome: 'Rio de Janeiro' },
-        { sigla: 'RN', nome: 'Rio Grande do Norte' },
-        { sigla: 'RS', nome: 'Rio Grande do Sul' },
-        { sigla: 'RO', nome: 'Rondônia' },
-        { sigla: 'RR', nome: 'Roraima' },
-        { sigla: 'SC', nome: 'Santa Catarina' },
-        { sigla: 'SP', nome: 'São Paulo' },
-        { sigla: 'SE', nome: 'Sergipe' },
-        { sigla: 'TO', nome: 'Tocantins' }
+        { sigla: 'AC', nome: 'ACRE' },
+        { sigla: 'AL', nome: 'ALAGOAS' },
+        { sigla: 'AP', nome: 'AMAPÁ' },
+        { sigla: 'AM', nome: 'AMAZONAS' },
+        { sigla: 'BA', nome: 'BAHIA' },
+        { sigla: 'CE', nome: 'CEARÁ' },
+        { sigla: 'DF', nome: 'DISTRITO FEDERAL' },
+        { sigla: 'ES', nome: 'ESPÍRITO SANTO' },
+        { sigla: 'GO', nome: 'GOIÁS' },
+        { sigla: 'MA', nome: 'MARANHÃO' },
+        { sigla: 'MT', nome: 'MATO GROSSO' },
+        { sigla: 'MS', nome: 'MATO GROSSO DO SUL' },
+        { sigla: 'MG', nome: 'MINAS GERAIS' },
+        { sigla: 'PA', nome: 'PARÁ' },
+        { sigla: 'PB', nome: 'PARAÍBA' },
+        { sigla: 'PR', nome: 'PARANÁ' },
+        { sigla: 'PE', nome: 'PERNAMBUCO' },
+        { sigla: 'PI', nome: 'PIAUÍ' },
+        { sigla: 'RJ', nome: 'RIO DE JANEIRO' },
+        { sigla: 'RN', nome: 'RIO GRANDE DO NORTE' },
+        { sigla: 'RS', nome: 'RIO GRANDE DO SUL' },
+        { sigla: 'RO', nome: 'RONDÔNIA' },
+        { sigla: 'RR', nome: 'RORAIMA' },
+        { sigla: 'SC', nome: 'SANTA CATARINA' },
+        { sigla: 'SP', nome: 'SÃO PAULO' },
+        { sigla: 'SE', nome: 'SERGIPE' },
+        { sigla: 'TO', nome: 'TOCANTINS' }
     ]
     public listaCongregacao = [
         {
@@ -274,18 +292,69 @@ export class HomePage implements OnInit {
         this.loadLocalAssetToBase64();
     }
    
-    onWillPresent(event: Event) {
+    onWillPresent(event: Event, numero: number) {
+
         console.log(event);
-        this.datetime.reset(this.usageDate);
+        if (numero === 1) {
+            this.datetimeNasc.reset(this.usageDateNasc);
+        } else if (numero === 2) {
+            this.datetimeBatAgua.reset(this.usageDateBatAgua);
+        } else if (numero === 3) {
+            this.datetimeBatEspSanto.reset(this.usageDateBatEspSanto);
+        } else if (numero === 4) {
+            this.datetimeDiacono.reset(this.usageDateDiacono);
+        } else if (numero === 5) {
+            this.datetimePresbitero.reset(this.usageDatePresb);
+        } else if (numero === 6) {
+            this.datetimeEvangelista.reset(this.usageDateEvang);
+        } else if (numero === 7) {
+            this.datetimePastor.reset(this.usageDatePastor);
+        } else if (numero === 8) {
+            this.datetimeCampo.reset(this.usageDateCampo);
+        } else if (numero === 9) {
+            this.datetimeCadesgo.reset(this.usageDateCadesgo);
+        } else if (numero === 10) {
+            this.datetimeCgadb.reset(this.usageDateCgadb);
+        }
     }
     
-    onDateChange(event: any) {
-        if (event?.detail?.value) {
-          const date = event.detail.value.split('T')[0];
-          this.usageDate = date;
-          this.dataNascimento = date.replace(/^(\d{4})-(\d{2})-(\d{2})$/, '$3/$2/$1');
+    onDateChange(event: any, numero: number) {
+        console.log(numero);
+        if (event?.detail?.value) {           
+            const date = event.detail.value.split('T')[0];
+            if (numero === 1) {
+                this.usageDateNasc = date;
+                this.dataNascimento = date.replace(/^(\d{4})-(\d{2})-(\d{2})$/, '$3/$2/$1');
+            } else if (numero === 2) {
+                this.usageDateBatAgua = date;
+                this.batismoAgua = date.replace(/^(\d{4})-(\d{2})-(\d{2})$/, '$3/$2/$1');
+            } else if (numero === 3) {
+                this.usageDateBatEspSanto = date;
+                this.batismoEspiritoSanto = date.replace(/^(\d{4})-(\d{2})-(\d{2})$/, '$3/$2/$1');
+            } else if (numero === 4) {
+                this.usageDateDiacono = date;
+                this.consDiacono = date.replace(/^(\d{4})-(\d{2})-(\d{2})$/, '$3/$2/$1');
+            } else if (numero === 5) {
+                this.usageDatePresb = date;
+                this.consPresbitero = date.replace(/^(\d{4})-(\d{2})-(\d{2})$/, '$3/$2/$1');
+            } else if (numero === 6) {
+                this.usageDateEvang = date;
+                this.consEvangelista = date.replace(/^(\d{4})-(\d{2})-(\d{2})$/, '$3/$2/$1');
+            } else if (numero === 7) {
+                this.usageDatePastor = date;
+                this.consPastor = date.replace(/^(\d{4})-(\d{2})-(\d{2})$/, '$3/$2/$1');
+            } else if (numero === 8) {
+                this.usageDateCampo = date;
+                this.regCampo = date.replace(/^(\d{4})-(\d{2})-(\d{2})$/, '$3/$2/$1');
+            } else if (numero === 9) {
+                this.usageDateCadesgo = date;
+                this.regCadesgo = date.replace(/^(\d{4})-(\d{2})-(\d{2})$/, '$3/$2/$1');
+            } else if (numero === 10) {
+                this.usageDateCgadb = date;
+                this.regCgadb = date.replace(/^(\d{4})-(\d{2})-(\d{2})$/, '$3/$2/$1');
+            }            
         } else {
-          this.usageDate = event?.detail?.value
+            this.usageDateNasc = event?.detail?.value
         }
     }
 
@@ -552,7 +621,8 @@ export class HomePage implements OnInit {
                                         body: [
                                             [
                                                 {
-                                                    text: this.sexo.toUpperCase()
+                                                    text: this.sexo === 'masculino' ? 'X' : '',
+                                                    alignment: 'center'
                                                 }
                                             ]
                                         ]
@@ -572,7 +642,8 @@ export class HomePage implements OnInit {
                                         body: [
                                             [
                                                 {
-                                                    text: this.sexo.toUpperCase()
+                                                    text: this.sexo === 'feminino' ? 'X' : '',
+                                                    alignment: 'center'
                                                 }
                                             ]
                                         ]
