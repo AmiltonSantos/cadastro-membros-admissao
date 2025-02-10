@@ -54,7 +54,14 @@
           #dadosFormRef="ngForm" novalidate *ngIf="slide === 'Dados Pessoais'" class="custom-form">
           <ion-item>
             <ion-label position="floating">CONGREGAÇÃO</ion-label>
-            <ion-input style="text-transform: uppercase;" (ngModelChange)="congregacao=$event" formControlName="congregacao"></ion-input>
+            <ion-select [(ngModel)]="congregacao" (ngModelChange)="congregacao=$event" formControlName="congregacao">
+              <ng-container *ngFor="let section of listaCongregacao">
+                <ion-select-option disabled>{{ section.regional }}</ion-select-option>
+                <ng-container *ngFor="let option of section.options">
+                  <ion-select-option [value]="option.value">{{ option.value }}</ion-select-option>
+                </ng-container>
+              </ng-container>
+            </ion-select>
           </ion-item>
           <ion-item>
             <ion-label position="floating">CPF</ion-label>
@@ -65,16 +72,16 @@
             <ion-input style="text-transform: uppercase;" (ngModelChange)="nome=$event" formControlName="nome"></ion-input>
           </ion-item>
           <ion-item>
+            <ion-label position="floating">DATA NASC:</ion-label>
             <ion-input
               id="selectDate"
-              placeholder="DATA NASC:"
+              placeholder="dd/mm/aaaa"
               [readonly]="true"
-              [value]="usageDate">
+              [value]="dataNascimento">
             </ion-input>
             <ion-modal
               trigger="selectDate"
               [keepContentsMounted]="true"
-              (willDismiss)="onWillDismiss($event)"
               (willPresent)="onWillPresent($event)"
               class="ion-datetime-button-overlay">
               <ng-template>
@@ -85,6 +92,8 @@
                   [showDefaultButtons]="true"
                   doneText="OK"
                   cancelText="Cancelar"
+                  formControlName="dataNascimento"
+                  (ngModelChange)="dataNascimento=$event" 
                   (ionChange)="onDateChange($event)">
                 </ion-datetime>
               </ng-template>
@@ -92,15 +101,25 @@
           </ion-item>
           <ion-item>
             <ion-label position="floating">SEXO</ion-label>
-            <ion-input style="text-transform: uppercase;" (ngModelChange)="sexo=$event" formControlName="sexo"></ion-input>
+            <ion-select [(ngModel)]="sexo" (ngModelChange)="sexo=$event" formControlName="sexo">
+              <ion-select-option value="masculino">MASCULINO</ion-select-option>
+              <ion-select-option value="feminino">FEMININO</ion-select-option>
+            </ion-select>
           </ion-item>
           <ion-item>
             <ion-label position="floating">ESTADO CIVIL</ion-label>
-            <ion-input style="text-transform: uppercase;" (ngModelChange)="estadoCivil=$event" formControlName="estadoCivil"></ion-input>
+            <ion-select [(ngModel)]="estadoCivil" (ngModelChange)="estadoCivil=$event" formControlName="estadoCivil">
+              <ion-select-option value="casado(a)">CASADO(a)</ion-select-option>
+              <ion-select-option value="solteiro(a)">SOLTEIRO(a)</ion-select-option>
+              <ion-select-option value="divorciado(a)">DIVORCIADO(a)</ion-select-option>
+            </ion-select>
           </ion-item>
           <ion-item>
             <ion-label position="floating">NACIONALIDADE</ion-label>
-            <ion-input style="text-transform: uppercase;" (ngModelChange)="nacionalidade=$event" formControlName="nacionalidade"></ion-input>
+            <ion-select [(ngModel)]="nacionalidade" (ngModelChange)="nacionalidade=$event" formControlName="nacionalidade">
+              <ion-select-option value="brasileiro(a)">BRASILEIRO(a)</ion-select-option>
+              <ion-select-option value="estrangeiro(a)">ESTRANGEIRO(a)</ion-select-option>
+            </ion-select>
           </ion-item>
           <ion-item>
             <ion-label position="floating">NATURALIDADE</ion-label>
@@ -108,7 +127,9 @@
           </ion-item>
           <ion-item>
             <ion-label position="floating">UF</ion-label>
-            <ion-input style="text-transform: uppercase;" (ngModelChange)="uf=$event" formControlName="uf"></ion-input>
+            <ion-select (ngModelChange)="uf=$event" formControlName="uf">
+              <ion-select-option *ngFor="let item of estadosBrasil" [value]="item.sigla">{{item.nome}}</ion-select-option>
+            </ion-select>
           </ion-item>
           <ion-item>
             <ion-label position="floating">E-MAIL</ion-label>

@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, NgForm } from '@angular/forms';
 import { IonContent, IonDatetime, IonModal, IonSlides, Platform } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
-import { format } from 'date-fns';
 
 import * as pdfMake from "pdfmake/build/pdfmake";
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
@@ -36,7 +35,7 @@ export class HomePage implements OnInit {
     public congregacao: string = '';
     public cpf: string = '';
     public nome: string = '';
-    public dataNascimento: string = 'dd/mm/aaaa';
+    public dataNascimento: string = '';
     public sexo: string = '';
     public estadoCivil: string = '';
     public nacionalidade: string = '';
@@ -55,18 +54,18 @@ export class HomePage implements OnInit {
     public complemento: string = '';
     public estado: string = '';
     public cidade: string = '';
-    public batismoAgua: string = 'dd/mm/aaaa';
-    public batismoEspiritoSanto: string = '00/00/000';
+    public batismoAgua: string = '';
+    public batismoEspiritoSanto: string = '';
     public obreiroSim: string = '';
     public obreiroNao: string = '';
     public obreiroCargo: string = '';
-    public consDiacono: string = 'dd/mm/aaaa';
+    public consDiacono: string = '';
     public localDiacono: string = '';
-    public consPresbitero: string = 'dd/mm/aaaa';
+    public consPresbitero: string = '';
     public localPresbitero: string = '';
-    public consEvangelista: string = 'dd/mm/aaaa';
+    public consEvangelista: string = '';
     public localEvangelista: string = '';
-    public consPastor: string = 'dd/mm/aaaa';
+    public consPastor: string = '';
     public localPastor: string = '';
     public regCampo: string = '';
     public regCadesgo: string = '';
@@ -82,6 +81,139 @@ export class HomePage implements OnInit {
         allowTouchMove: false,
         autoHeight: true,
     };
+    
+    public estadosBrasil = [
+        { sigla: 'AC', nome: 'Acre' },
+        { sigla: 'AL', nome: 'Alagoas' },
+        { sigla: 'AP', nome: 'Amapá' },
+        { sigla: 'AM', nome: 'Amazonas' },
+        { sigla: 'BA', nome: 'Bahia' },
+        { sigla: 'CE', nome: 'Ceará' },
+        { sigla: 'DF', nome: 'Distrito Federal' },
+        { sigla: 'ES', nome: 'Espírito Santo' },
+        { sigla: 'GO', nome: 'Goiás' },
+        { sigla: 'MA', nome: 'Maranhão' },
+        { sigla: 'MT', nome: 'Mato Grosso' },
+        { sigla: 'MS', nome: 'Mato Grosso do Sul' },
+        { sigla: 'MG', nome: 'Minas Gerais' },
+        { sigla: 'PA', nome: 'Pará' },
+        { sigla: 'PB', nome: 'Paraíba' },
+        { sigla: 'PR', nome: 'Paraná' },
+        { sigla: 'PE', nome: 'Pernambuco' },
+        { sigla: 'PI', nome: 'Piauí' },
+        { sigla: 'RJ', nome: 'Rio de Janeiro' },
+        { sigla: 'RN', nome: 'Rio Grande do Norte' },
+        { sigla: 'RS', nome: 'Rio Grande do Sul' },
+        { sigla: 'RO', nome: 'Rondônia' },
+        { sigla: 'RR', nome: 'Roraima' },
+        { sigla: 'SC', nome: 'Santa Catarina' },
+        { sigla: 'SP', nome: 'São Paulo' },
+        { sigla: 'SE', nome: 'Sergipe' },
+        { sigla: 'TO', nome: 'Tocantins' }
+    ]
+    public listaCongregacao = [
+        {
+            regional: 'REGIONAL 01',
+            options: [
+                {value: 'ANICUNS'},
+                {value: 'ADELÂNDIA'},
+                {value: 'AMERICANO DO BRASIL'},
+                {value: 'SÃO DOMINGOS'},
+                {value: 'SANTA FÉ'}
+            ],
+        },
+        {
+            regional: 'REGIONAL 02',
+            options: [
+                {value: 'RECANTO DO BOSQUE'},
+                {value: 'ALICE BARBOSA'},
+                {value: 'ITANHANGÁ'},
+                {value: 'ALTO CERRADO'},
+                {value: 'BOA VISTA'},
+                {value: 'SÃO BERNARDO'},
+                {value: '14 BIS'}
+            ],
+        },
+        {
+            regional: 'REGIONAL 03',
+            options: [
+                {value: 'JOÃO BRÁS'},
+                {value: 'VILA FÁTIMA'},
+                {value: 'NORTE FERROVIÁRIO'},
+                {value: 'SÃO MARCOS'},
+                {value: 'RESIDENCIAL PORTINARI'},
+                {value: 'SETOR CAMPINAS'},
+                {value: 'GOIANIRA (SERRA DOURADA)'}
+            ],
+        },
+        {
+            regional: 'REGIONAL 04',
+            options: [
+                {value: 'FAIÇALVILLE'},
+                {value: 'VILA BOA'},
+                {value: 'PEDRO LUDOVICO'},
+                {value: 'VILA ROSA'},
+                {value: 'SETOR DOS AFONSO'},
+                {value: 'RESIDENCIAL ELI FORTE'}
+            ],
+        },
+        {
+            regional: 'REGIONAL 05',
+            options: [
+                {value: 'JARDIM TDS SANTOS 2'},
+                {value: 'JARDIM TODOS OS SANTOS 3'},
+                {value: 'PEDRO MIRANDA'},
+                {value: 'RIO ARAGUAIA'},
+                {value: 'FLOR DO YPÊ'}
+            ],
+        },
+        {
+            regional: 'REGIONAL 06',
+            options: [
+                {value: 'VEIGA JARDIM'},
+                {value: 'CARDOSO II'},
+                {value: 'BURITI SERENO'},
+                {value: 'COLINA AZUL'},
+                {value: 'TERRA DO SOL'}
+            ],
+        },
+        {
+            regional: 'REGIONAL 07',
+            options: [
+                {value: 'VILA ROMANA'},
+                {value: 'JARDIM ITAIPU'},
+                {value: 'GOIÂNIA SUL'},
+                {value: 'BOA ESPERANÇA'},
+                {value: 'JARDIM INDEPENDENCIA'}
+            ],
+        },
+        {
+            regional: 'REGIONAL 08',
+            options: [
+                {value: 'CROMINIA'},
+                {value: 'ARAGOIÂNIA-GO'},
+                {value: 'HIDROLÂNDIA'}
+            ],
+        },
+        {
+            regional: 'REGIONAL 09',
+            options: [
+                {value: 'BOFINÓPOLIS-GO'},
+                {value: 'SETOR JULIANA (BOFINÓPOLIS-GO)'}
+            ],
+        },
+        {
+            regional: 'IGREJAS MISSIONÁRIAS',
+            options: [
+                {value: 'LONDRES'},
+                {value: 'CONCÓRDIA-ARG. PROVINCIA DE ENTRE RIOS'},
+                {value: 'ELDORADO-ARG'},
+                {value: 'VERA CRUZ'},
+                {value: 'MACAPÁ-AP (BRASIL NOVO)'},
+                {value: 'FIN SOCIAL'}
+            ],
+        }
+    ];
 
     constructor(public fb: FormBuilder, public plt: Platform, public http: HttpClient, public fileOpener: FileOpener) { }
 
@@ -141,12 +273,7 @@ export class HomePage implements OnInit {
 
         this.loadLocalAssetToBase64();
     }
-
-    onWillDismiss(event: Event) {
-        console.log(`Bye, ${this.usageDate}!`);
-        console.log(`Bye, ${this.datetime.value}!`);
-    }
-    
+   
     onWillPresent(event: Event) {
         console.log(event);
         this.datetime.reset(this.usageDate);
@@ -156,8 +283,9 @@ export class HomePage implements OnInit {
         if (event?.detail?.value) {
           const date = event.detail.value.split('T')[0];
           this.usageDate = date;
+          this.dataNascimento = date.replace(/^(\d{4})-(\d{2})-(\d{2})$/, '$3/$2/$1');
         } else {
-          this.usageDate = format(Date.now(), 'Y-m-d');
+          this.usageDate = event?.detail?.value
         }
     }
 
