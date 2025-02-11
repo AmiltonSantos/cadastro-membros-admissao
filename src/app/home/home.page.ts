@@ -77,37 +77,8 @@ export class HomePage implements OnInit {
         allowTouchMove: false,
         autoHeight: true,
     };
-    
-    public estadosBrasil = [
-        { sigla: 'AC', nome: 'ACRE' },
-        { sigla: 'AL', nome: 'ALAGOAS' },
-        { sigla: 'AP', nome: 'AMAPÁ' },
-        { sigla: 'AM', nome: 'AMAZONAS' },
-        { sigla: 'BA', nome: 'BAHIA' },
-        { sigla: 'CE', nome: 'CEARÁ' },
-        { sigla: 'DF', nome: 'DISTRITO FEDERAL' },
-        { sigla: 'ES', nome: 'ESPÍRITO SANTO' },
-        { sigla: 'GO', nome: 'GOIÁS' },
-        { sigla: 'MA', nome: 'MARANHÃO' },
-        { sigla: 'MT', nome: 'MATO GROSSO' },
-        { sigla: 'MS', nome: 'MATO GROSSO DO SUL' },
-        { sigla: 'MG', nome: 'MINAS GERAIS' },
-        { sigla: 'PA', nome: 'PARÁ' },
-        { sigla: 'PB', nome: 'PARAÍBA' },
-        { sigla: 'PR', nome: 'PARANÁ' },
-        { sigla: 'PE', nome: 'PERNAMBUCO' },
-        { sigla: 'PI', nome: 'PIAUÍ' },
-        { sigla: 'RJ', nome: 'RIO DE JANEIRO' },
-        { sigla: 'RN', nome: 'RIO GRANDE DO NORTE' },
-        { sigla: 'RS', nome: 'RIO GRANDE DO SUL' },
-        { sigla: 'RO', nome: 'RONDÔNIA' },
-        { sigla: 'RR', nome: 'RORAIMA' },
-        { sigla: 'SC', nome: 'SANTA CATARINA' },
-        { sigla: 'SP', nome: 'SÃO PAULO' },
-        { sigla: 'SE', nome: 'SERGIPE' },
-        { sigla: 'TO', nome: 'TOCANTINS' }
-    ]
-    public listaCongregacao = [
+
+    public strCongregacao = [
         {
             regional: 'REGIONAL 01',
             options: [
@@ -211,6 +182,71 @@ export class HomePage implements OnInit {
         }
     ];
 
+    public strSexo = [
+        { nome: 'MASCULINO' },
+        { nome: 'FEMININO' }
+    ];
+
+    public strEstadoCivil = [
+        { nome: 'CASADO(a)' },
+        { nome: 'SOLTEIRO(a)' },
+        { nome: 'DIVORCIADO(a)' },
+        { nome: 'VIÚVO(a)' }
+    ]
+
+    public strNacionalidade = [
+        { nome: 'BRASILEIRO(a)' },
+        { nome: 'ESTRANGEIRO(a)' }
+    ]
+    
+    public strEstados = [
+        { sigla: 'AC', nome: 'ACRE' },
+        { sigla: 'AL', nome: 'ALAGOAS' },
+        { sigla: 'AP', nome: 'AMAPÁ' },
+        { sigla: 'AM', nome: 'AMAZONAS' },
+        { sigla: 'BA', nome: 'BAHIA' },
+        { sigla: 'CE', nome: 'CEARÁ' },
+        { sigla: 'DF', nome: 'DISTRITO FEDERAL' },
+        { sigla: 'ES', nome: 'ESPÍRITO SANTO' },
+        { sigla: 'GO', nome: 'GOIÁS' },
+        { sigla: 'MA', nome: 'MARANHÃO' },
+        { sigla: 'MT', nome: 'MATO GROSSO' },
+        { sigla: 'MS', nome: 'MATO GROSSO DO SUL' },
+        { sigla: 'MG', nome: 'MINAS GERAIS' },
+        { sigla: 'PA', nome: 'PARÁ' },
+        { sigla: 'PB', nome: 'PARAÍBA' },
+        { sigla: 'PR', nome: 'PARANÁ' },
+        { sigla: 'PE', nome: 'PERNAMBUCO' },
+        { sigla: 'PI', nome: 'PIAUÍ' },
+        { sigla: 'RJ', nome: 'RIO DE JANEIRO' },
+        { sigla: 'RN', nome: 'RIO GRANDE DO NORTE' },
+        { sigla: 'RS', nome: 'RIO GRANDE DO SUL' },
+        { sigla: 'RO', nome: 'RONDÔNIA' },
+        { sigla: 'RR', nome: 'RORAIMA' },
+        { sigla: 'SC', nome: 'SANTA CATARINA' },
+        { sigla: 'SP', nome: 'SÃO PAULO' },
+        { sigla: 'SE', nome: 'SERGIPE' },
+        { sigla: 'TO', nome: 'TOCANTINS' }
+    ];
+
+    public strEscolaridade = [
+        { nome: 'FUNDAMENTAL INCOMPLETO' },
+        { nome: 'FUNDAMENTAL COMPLETO' },
+        { nome: 'MÉDIO INCOMPLETO' },
+        { nome: 'MÉDIO COMPLETO' },
+        { nome: 'SUPERIOR INCOMPLETO' },
+        { nome: 'SUPERIOR COMPLETO' },
+        { nome: 'TECNÓLOGO' },
+        { nome: 'PÓS-GRADUAÇÃO' },
+        { nome: 'MESTRADO' },
+        { nome: 'DOUTORADO' }
+    ];
+
+    public strObreiro = [
+        { nome: 'SIM' },
+        { nome: 'NAO' },
+    ];
+
     constructor(public fb: FormBuilder, public plt: Platform, public http: HttpClient, public fileOpener: FileOpener) { }
 
     ngOnInit() {
@@ -276,7 +312,21 @@ export class HomePage implements OnInit {
         if (popover) {
             if (numero === 1) {
                 this.congregacao = value;
-            } else {
+            } else if (numero === 2) {
+                this.isObreiro = value;
+            } else if (numero === 3) {
+                this.sexo = value;
+            } else if (numero === 4) {
+                this.estadoCivil = value;
+            } else if (numero === 5) {
+                this.nacionalidade = value;
+            } else if (numero === 6) {
+                this.uf = value;
+            } else if (numero === 7) {
+                this.escolaridade = value;
+            } else if (numero === 8) {
+                this.estado = value;
+            } else if (numero === 9) {
                 this.isObreiro = value;
             }
             await popover.dismiss();
@@ -546,7 +596,7 @@ export class HomePage implements OnInit {
                                         body: [
                                             [
                                                 {
-                                                    text: this.sexo === 'masculino' ? 'X' : '',
+                                                    text: this.sexo === 'MASCULINO' ? 'X' : '',
                                                     alignment: 'center'
                                                 }
                                             ]
@@ -567,7 +617,7 @@ export class HomePage implements OnInit {
                                         body: [
                                             [
                                                 {
-                                                    text: this.sexo === 'feminino' ? 'X' : '',
+                                                    text: this.sexo === 'FEMININO' ? 'X' : '',
                                                     alignment: 'center'
                                                 }
                                             ]
