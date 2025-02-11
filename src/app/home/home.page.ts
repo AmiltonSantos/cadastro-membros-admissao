@@ -269,12 +269,16 @@ export class HomePage implements OnInit {
         this.loadLocalAssetToBase64();
     }
 
-    async selectOption(value: string) {
+    async selectOption(value: string, numero: number) {
         const popovers = document.querySelectorAll('ion-popover');
         const popoverArray = Array.from(popovers); // Converte NodeList em Array
         const popover = popoverArray.pop();
         if (popover) {
-            this.isObreiro = value;            
+            if (numero === 1) {
+                this.congregacao = value;
+            } else {
+                this.isObreiro = value;
+            }
             await popover.dismiss();
         }
     }
