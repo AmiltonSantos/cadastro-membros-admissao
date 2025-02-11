@@ -65,7 +65,7 @@
           </ion-item>
           <ion-item>
             <ion-label position="floating">CPF</ion-label>
-            <ion-input type="text" [brmasker]="{mask:'000.000.000-00', len:14}" (ngModelChange)="cpf=$event" formControlName="cpf" required></ion-input>
+            <ion-input type="text" [brmasker]="{mask:'000.000.000-00', len:14, type:'num'}" (ngModelChange)="cpf=$event" formControlName="cpf" required></ion-input>
             <ion-note slot="error">Cpf é obrigatório</ion-note>
           </ion-item>
           <ion-item>
@@ -75,7 +75,7 @@
           </ion-item>
           <ion-item>
             <ion-label position="floating">DATA NASC:</ion-label>
-            <ion-input type="text" [brmasker]="{mask:'00/00/0000', len:10}" (ngModelChange)="dataNascimento=$event" formControlName="dataNascimento" required></ion-input>
+            <ion-input type="text" [brmasker]="{mask:'00/00/0000', len:10, type:'num'}" (ngModelChange)="dataNascimento=$event" formControlName="dataNascimento" required></ion-input>
             <ion-note slot="error">Data de Nascimento é obrigatório</ion-note>
           </ion-item>
           <ion-item>
@@ -188,79 +188,95 @@
           novalidate *ngIf="slide === 'Ministério'" class="custom-form">
           <ion-item>
             <ion-label position="floating">DATA BATISMO NAS ÁGUAS:</ion-label>
-            <ion-input type="text" [brmasker]="{mask:'00/00/0000', len:10}" (ngModelChange)="batismoAgua=$event" formControlName="batismoAgua"></ion-input>
+            <ion-input type="text" [brmasker]="{mask:'00/00/0000', len:10, type:'num'}" (ngModelChange)="batismoAgua=$event" formControlName="batismoAgua"></ion-input>
           </ion-item>
 
           <ion-item>
             <ion-label position="floating">DATA BATISMO ESPÍRITO SANTO:</ion-label>
-            <ion-input type="text" [brmasker]="{mask:'00/00/0000', len:10}" (ngModelChange)="batismoEspiritoSanto=$event" formControlName="batismoEspiritoSanto"></ion-input>
+            <ion-input type="text" [brmasker]="{mask:'00/00/0000', len:10, type:'num'}" (ngModelChange)="batismoEspiritoSanto=$event" formControlName="batismoEspiritoSanto"></ion-input>
           </ion-item>
 
-          <ion-item>
-            <ion-label position="floating">OBREIRO</ion-label>
-            <ion-input style="text-transform: uppercase;" (ngModelChange)="obreiroSim=$event" formControlName="obreiroSim"></ion-input>
+          <ion-item id="click-trigger">
+            <div  style="cursor: pointer;">
+              <ion-label position="floating">OBREIRO: {{isObreiro !== '' ? isObreiro : ''}}</ion-label>
+            </div>
+            <ion-popover trigger="click-trigger" triggerAction="click">
+              <ng-template>
+                <ion-content>
+                  <ion-radio-group formControlName="isObreiro">
+                    <ion-item (click)="selectOption('SIM')">
+                      <ion-label>SIM</ion-label>
+                      <ion-radio slot="start" value="SIM"></ion-radio>
+                    </ion-item>
+                    <ion-item (click)="selectOption('NÃO')">
+                      <ion-label>NÃO</ion-label>
+                      <ion-radio slot="start" value="NÃO"></ion-radio>
+                    </ion-item>
+                  </ion-radio-group>
+                </ion-content>
+              </ng-template>
+            </ion-popover>
           </ion-item>
+
           <ion-item>
             <ion-label position="floating">CARGO</ion-label>
             <ion-input style="text-transform: uppercase;" (ngModelChange)="obreiroCargo=$event" formControlName="obreiroCargo"></ion-input>
           </ion-item>
 
-          <ion-card style="padding-bottom: 100px;">
-            <ion-item>
-              <ion-label position="floating">DIÁCONO DATA INÍCIO:</ion-label>
-              <ion-input type="text" [brmasker]="{mask:'00/00/0000', len:10}" (ngModelChange)="consDiacono=$event" formControlName="consDiacono"></ion-input>
-            </ion-item>
-  
-            <ion-item>
-              <ion-label position="floating">LOCAL:</ion-label>
-              <ion-input style="text-transform: uppercase;" (ngModelChange)="localDiacono=$event" formControlName="localDiacono"></ion-input>
-            </ion-item>
+          <ion-item>
+            <ion-label position="floating">DIÁCONO DATA INÍCIO:</ion-label>
+            <ion-input type="text" [brmasker]="{mask:'00/00/0000', len:10, type:'num'}" (ngModelChange)="consDiacono=$event" formControlName="consDiacono"></ion-input>
+          </ion-item>
 
-            <ion-item>
-              <ion-label position="floating">DIÁCONO DATA INÍCIO:</ion-label>
-              <ion-input type="text" [brmasker]="{mask:'00/00/0000', len:10}" (ngModelChange)="consPresbitero=$event" formControlName="consPresbitero"></ion-input>
-            </ion-item>
+          <ion-item>
+            <ion-label position="floating">LOCAL:</ion-label>
+            <ion-input style="text-transform: uppercase;" (ngModelChange)="localDiacono=$event" formControlName="localDiacono"></ion-input>
+          </ion-item>
 
-            <ion-item>
-              <ion-label position="floating">LOCAL:</ion-label>
-              <ion-input style="text-transform: uppercase;" (ngModelChange)="localPresbitero=$event" formControlName="localPresbitero"></ion-input>
-            </ion-item>
+          <ion-item>
+            <ion-label position="floating">DIÁCONO DATA INÍCIO:</ion-label>
+            <ion-input type="text" [brmasker]="{mask:'00/00/0000', len:10, type:'num'}" (ngModelChange)="consPresbitero=$event" formControlName="consPresbitero"></ion-input>
+          </ion-item>
 
-            <ion-item>
-              <ion-label position="floating">EVANGELISTA DATA INÍCIO:</ion-label>
-              <ion-input type="text" [brmasker]="{mask:'00/00/0000', len:10}" (ngModelChange)="consEvangelista=$event" formControlName="consEvangelista"></ion-input>
-            </ion-item>
+          <ion-item>
+            <ion-label position="floating">LOCAL:</ion-label>
+            <ion-input style="text-transform: uppercase;" (ngModelChange)="localPresbitero=$event" formControlName="localPresbitero"></ion-input>
+          </ion-item>
 
-            <ion-item>
-              <ion-label position="floating">LOCAL:</ion-label>
-              <ion-input style="text-transform: uppercase;" (ngModelChange)="localEvangelista=$event" formControlName="localEvangelista"></ion-input>
-            </ion-item>
+          <ion-item>
+            <ion-label position="floating">EVANGELISTA DATA INÍCIO:</ion-label>
+            <ion-input type="text" [brmasker]="{mask:'00/00/0000', len:10, type:'num'}" (ngModelChange)="consEvangelista=$event" formControlName="consEvangelista"></ion-input>
+          </ion-item>
 
-            <ion-item>
-              <ion-label position="floating">PASTOR DATA INICIO:</ion-label>
-              <ion-input type="text" [brmasker]="{mask:'00/00/0000', len:10}" (ngModelChange)="consPastor=$event" formControlName="consPastor"></ion-input>
-            </ion-item>
+          <ion-item>
+            <ion-label position="floating">LOCAL:</ion-label>
+            <ion-input style="text-transform: uppercase;" (ngModelChange)="localEvangelista=$event" formControlName="localEvangelista"></ion-input>
+          </ion-item>
 
-            <ion-item>
-              <ion-label position="floating">LOCAL:</ion-label>
-              <ion-input style="text-transform: uppercase;" (ngModelChange)="localPastor=$event" formControlName="localPastor"></ion-input>
-            </ion-item>
+          <ion-item>
+            <ion-label position="floating">PASTOR DATA INICIO:</ion-label>
+            <ion-input type="text" [brmasker]="{mask:'00/00/0000', len:10, type:'num'}" (ngModelChange)="consPastor=$event" formControlName="consPastor"></ion-input>
+          </ion-item>
 
-            <ion-item>
-              <ion-label position="floating">REGISTRO CAMPO JD. AMÉRICA:</ion-label>
-              <ion-input type="text" [brmasker]="{mask:'00/00/0000', len:10}" (ngModelChange)="regCampo=$event" formControlName="regCampo"></ion-input>
-            </ion-item>
+          <ion-item>
+            <ion-label position="floating">LOCAL:</ion-label>
+            <ion-input style="text-transform: uppercase;" (ngModelChange)="localPastor=$event" formControlName="localPastor"></ion-input>
+          </ion-item>
 
-            <ion-item>
-              <ion-label position="floating">REGISTRO CADESGO:</ion-label>
-              <ion-input type="text" [brmasker]="{mask:'00/00/0000', len:10}" (ngModelChange)="regCadesgo=$event" formControlName="regCadesgo"></ion-input>
-            </ion-item>
+          <ion-item>
+            <ion-label position="floating">REGISTRO CAMPO JD. AMÉRICA:</ion-label>
+            <ion-input type="text" [brmasker]="{mask:'00/00/0000', len:10, type:'num'}" (ngModelChange)="regCampo=$event" formControlName="regCampo"></ion-input>
+          </ion-item>
 
-            <ion-item>
-              <ion-label position="floating">REGISTRO CGADB:</ion-label>
-              <ion-input type="text" [brmasker]="{mask:'00/00/0000', len:10}" (ngModelChange)="regCgadb=$event" formControlName="regCgadb"></ion-input>
-            </ion-item>
-          </ion-card>
+          <ion-item>
+            <ion-label position="floating">REGISTRO CADESGO:</ion-label>
+            <ion-input type="text" [brmasker]="{mask:'00/00/0000', len:10, type:'num'}" (ngModelChange)="regCadesgo=$event" formControlName="regCadesgo"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="floating">REGISTRO CGADB:</ion-label>
+            <ion-input type="text" [brmasker]="{mask:'00/00/0000', len:10, type:'num'}" (ngModelChange)="regCgadb=$event" formControlName="regCgadb"></ion-input>
+          </ion-item>
         </form>
       </ion-slide>
     </ng-container>

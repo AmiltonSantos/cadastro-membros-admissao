@@ -54,8 +54,7 @@ export class HomePage implements OnInit {
     public cidade: string = '';
     public batismoAgua: string = '';
     public batismoEspiritoSanto: string = '';
-    public obreiroSim: string = '';
-    public obreiroNao: string = '';
+    public isObreiro: string = '';
     public obreiroCargo: string = '';
     public consDiacono: string = '';
     public localDiacono: string = '';
@@ -251,8 +250,7 @@ export class HomePage implements OnInit {
         this.ministerioForm = this.fb.group({
             batismoAgua: this.batismoAgua,
             batismoEspiritoSanto: this.batismoEspiritoSanto,
-            obreiroSim: this.obreiroSim,
-            obreiroNao: this.obreiroNao,
+            isObreiro: this.isObreiro,
             obreiroCargo: this.obreiroCargo,
             consDiacono: this.consDiacono,
             localDiacono: this.localDiacono,
@@ -269,6 +267,16 @@ export class HomePage implements OnInit {
 
 
         this.loadLocalAssetToBase64();
+    }
+
+    async selectOption(value: string) {
+        const popovers = document.querySelectorAll('ion-popover');
+        const popoverArray = Array.from(popovers); // Converte NodeList em Array
+        const popover = popoverArray.pop();
+        if (popover) {
+            this.isObreiro = value;            
+            await popover.dismiss();
+        }
     }
    
     onSlidesDidChange() {
@@ -1027,7 +1035,8 @@ export class HomePage implements OnInit {
                                         body: [
                                             [
                                                 {
-                                                    text: this.obreiroSim.toUpperCase()
+                                                    text: this.isObreiro === 'SIM' ? 'X' : '',
+                                                    alignment: 'center'
                                                 }
                                             ]
                                         ]
@@ -1053,7 +1062,8 @@ export class HomePage implements OnInit {
                                         body: [
                                             [
                                                 {
-                                                    text: this.obreiroNao.toUpperCase()
+                                                    text: this.isObreiro === 'NÃO' ? 'X' : '',
+                                                    alignment: 'center'
                                                 }
                                             ]
                                         ]
