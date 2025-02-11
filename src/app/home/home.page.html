@@ -198,9 +198,9 @@
 
           <ion-item id="click-trigger">
             <div  style="cursor: pointer;">
-              <ion-label position="floating">OBREIRO: {{isObreiro !== '' ? isObreiro : ''}}</ion-label>
+              <ion-label position="floating">OBREIRO: <span style="color: red;">{{isObreiro !== '' ? isObreiro : ''}}</span></ion-label>
             </div>
-            <ion-popover trigger="click-trigger" triggerAction="click">
+            <ion-popover trigger="click-trigger" triggerAction="click" side="top" alignment="center">
               <ng-template>
                 <ion-content>
                   <ion-radio-group formControlName="isObreiro">
