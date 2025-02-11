@@ -230,12 +230,12 @@ export class HomePage implements OnInit {
     ];
 
     public strEscolaridade = [
-        { nome: 'FUNDAMENTAL INCOMPLETO' },
-        { nome: 'FUNDAMENTAL COMPLETO' },
-        { nome: 'MÉDIO INCOMPLETO' },
+        { nome: 'FUND. INCOMPLETO' },
+        { nome: 'FUND. COMPLETO' },
+        { nome: 'MÉD. INCOMPLETO' },
         { nome: 'MÉDIO COMPLETO' },
-        { nome: 'SUPERIOR INCOMPLETO' },
-        { nome: 'SUPERIOR COMPLETO' },
+        { nome: 'SUP. INCOMPLETO' },
+        { nome: 'SUP. COMPLETO' },
         { nome: 'TECNÓLOGO' },
         { nome: 'PÓS-GRADUAÇÃO' },
         { nome: 'MESTRADO' },
