@@ -59,6 +59,13 @@
             </div>
             <ion-popover trigger="click-congregacao" triggerAction="click" alignment="center">
               <ng-template>
+                <ion-header>
+                  <ion-toolbar color="primary">
+                    <ion-title>
+                      CONGREGAÇÃO
+                    </ion-title>
+                  </ion-toolbar>
+                </ion-header>
                 <ion-content>
                   <ion-radio-group formControlName="congregacao" *ngFor="let section of strCongregacao">
                     <ion-item-divider>
@@ -79,11 +86,13 @@
             <ion-input style="color: blueviolet;" type="text" [brmasker]="{mask:'000.000.000-00', len:14, type:'num'}" (ngModelChange)="cpf=$event" formControlName="cpf" required></ion-input>
             <ion-note slot="error">Cpf é obrigatório</ion-note>
           </ion-item>
+
           <ion-item>
             <ion-label position="floating">NOME COMPLETO</ion-label>
             <ion-input style="text-transform: uppercase; color: blueviolet;" (ngModelChange)="nome=$event" formControlName="nome" required></ion-input>
             <ion-note slot="error">Nome é obrigatório</ion-note>
           </ion-item>
+
           <ion-item>
             <ion-label position="floating">DATA NASC:</ion-label>
             <ion-input style="color: blueviolet;" type="text" [brmasker]="{mask:'00/00/0000', len:10, type:'num'}" (ngModelChange)="dataNascimento=$event" formControlName="dataNascimento" required></ion-input>
@@ -96,6 +105,13 @@
             </div>
             <ion-popover trigger="click-sexo" triggerAction="click" alignment="center">
               <ng-template>
+                <ion-header>
+                  <ion-toolbar color="primary">
+                    <ion-title>
+                      SEXO
+                    </ion-title>
+                  </ion-toolbar>
+                </ion-header>
                 <ion-content>
                   <ion-radio-group formControlName="sexo" *ngFor="let sex of strSexo">
                     <ion-item (click)="selectOption(sex.nome, 3)">
@@ -114,6 +130,13 @@
             </div>
             <ion-popover trigger="click-estadoCivil" triggerAction="click" alignment="center">
               <ng-template>
+                <ion-header>
+                  <ion-toolbar color="primary">
+                    <ion-title>
+                      ESTADO CIVIL
+                    </ion-title>
+                  </ion-toolbar>
+                </ion-header>
                 <ion-content>
                   <ion-radio-group formControlName="estadoCivil" *ngFor="let civil of strEstadoCivil">
                     <ion-item (click)="selectOption(civil.nome, 4)">
@@ -132,6 +155,13 @@
             </div>
             <ion-popover trigger="click-nacionalidade" triggerAction="click" alignment="center">
               <ng-template>
+                <ion-header>
+                  <ion-toolbar color="primary">
+                    <ion-title>
+                      NATURALIDADE
+                    </ion-title>
+                  </ion-toolbar>
+                </ion-header>
                 <ion-content>
                   <ion-radio-group formControlName="nacionalidade" *ngFor="let nasc of strNacionalidade">
                     <ion-item (click)="selectOption(nasc.nome, 5)">
@@ -156,6 +186,13 @@
             </div>
             <ion-popover trigger="click-uf" triggerAction="click" alignment="center">
               <ng-template>
+                <ion-header>
+                  <ion-toolbar color="primary">
+                    <ion-title>
+                      UF
+                    </ion-title>
+                  </ion-toolbar>
+                </ion-header>
                 <ion-content>
                   <ion-radio-group formControlName="uf" *ngFor="let estado of strEstados">
                     <ion-item (click)="selectOption(estado.sigla, 6)">
@@ -173,11 +210,13 @@
             <ion-input style="color: blueviolet;" (ngModelChange)="email=$event" formControlName="email" ngModel email></ion-input>
             <ion-note slot="error">E-mail Invalido</ion-note>
           </ion-item>
+
           <ion-item>
             <ion-label position="floating">NOME MÃE</ion-label>
             <ion-input style="text-transform: uppercase; color:  blueviolet;" (ngModelChange)="nomeMae=$event" formControlName="nomeMae" required></ion-input>
             <ion-note slot="error">Nome da Mãe é obrigatório</ion-note>
           </ion-item>
+
           <ion-item>
             <ion-label position="floating">NOME PAI</ion-label>
             <ion-input style="text-transform: uppercase; color:  blueviolet;" (ngModelChange)="nomePai=$event" formControlName="nomePai"></ion-input>
@@ -189,6 +228,13 @@
             </div>
             <ion-popover trigger="click-escolaridade" triggerAction="click" alignment="center">
               <ng-template>
+                <ion-header>
+                  <ion-toolbar color="primary">
+                    <ion-title>
+                      ESCOLARIDADE
+                    </ion-title>
+                  </ion-toolbar>
+                </ion-header>
                 <ion-content>
                   <ion-radio-group formControlName="escolaridade" *ngFor="let escola of strEscolaridade">
                     <ion-item (click)="selectOption(escola.nome, 7)">
@@ -205,6 +251,7 @@
             <ion-label position="floating">TELEFONE 1</ion-label>
             <ion-input style="color: blueviolet;" type="text" [brmasker]="{phone: true}"  (ngModelChange)="telefone1=$event" formControlName="telefone1"></ion-input>
           </ion-item>
+
           <ion-item>
             <ion-label position="floating">TELEFONE 2</ion-label>
             <ion-input style="color: blueviolet;" type="text" [brmasker]="{phone: true}" (ngModelChange)="telefone2=$event" formControlName="telefone2"></ion-input>
@@ -217,18 +264,22 @@
             <ion-label position="floating">CEP</ion-label>
             <ion-input style="text-transform: uppercase; color:  blueviolet;" (ngModelChange)="cep=$event" formControlName="cep"></ion-input>
           </ion-item>
+
           <ion-item>
             <ion-label position="floating">RUA</ion-label>
             <ion-input style="text-transform: uppercase; color:  blueviolet;" (ngModelChange)="rua=$event" formControlName="rua"></ion-input>
           </ion-item>
+
           <ion-item>
             <ion-label position="floating">NÚMERO</ion-label>
             <ion-input style="text-transform: uppercase; color:  blueviolet;" (ngModelChange)="numero=$event" formControlName="numero"></ion-input>
           </ion-item>
+
           <ion-item>
             <ion-label position="floating">BAIRRO</ion-label>
             <ion-input style="text-transform: uppercase; color:  blueviolet;" (ngModelChange)="bairro=$event" formControlName="bairro"></ion-input>
           </ion-item>
+
           <ion-item>
             <ion-label position="floating">COMPLEMENTO</ion-label>
             <ion-input style="text-transform: uppercase; color:  blueviolet;" (ngModelChange)="complemento=$event" formControlName="complemento"></ion-input>
@@ -240,6 +291,13 @@
             </div>
             <ion-popover trigger="click-estado" triggerAction="click" alignment="center">
               <ng-template>
+                <ion-header>
+                  <ion-toolbar color="primary">
+                    <ion-title>
+                      ESTADO
+                    </ion-title>
+                  </ion-toolbar>
+                </ion-header>
                 <ion-content>
                   <ion-radio-group formControlName="estado" *ngFor="let estado of strEstados">
                     <ion-item (click)="selectOption(estado.nome, 8)">
@@ -261,12 +319,12 @@
         <form style="height: 600px; overflow: scroll" [formGroup]="ministerioForm" #ministerioFormRef="ngForm"
           novalidate *ngIf="slide === 'Ministério'" class="custom-form">
           <ion-item>
-            <ion-label position="floating">DATA BATISMO NAS ÁGUAS:</ion-label>
+            <ion-label position="floating">DATA BAT. ÁGUAS:</ion-label>
             <ion-input style="color: blueviolet;" type="text" [brmasker]="{mask:'00/00/0000', len:10, type:'num'}" (ngModelChange)="batismoAgua=$event" formControlName="batismoAgua"></ion-input>
           </ion-item>
 
           <ion-item>
-            <ion-label position="floating">DATA BATISMO ESPÍRITO SANTO:</ion-label>
+            <ion-label position="floating">DATA BAT. ESPÍRITO SANTO:</ion-label>
             <ion-input style="color: blueviolet;" type="text" [brmasker]="{mask:'00/00/0000', len:10, type:'num'}" (ngModelChange)="batismoEspiritoSanto=$event" formControlName="batismoEspiritoSanto"></ion-input>
           </ion-item>
 
@@ -276,6 +334,13 @@
             </div>
             <ion-popover trigger="click-isObreiro" triggerAction="click" alignment="center">
               <ng-template>
+                <ion-header>
+                  <ion-toolbar color="primary">
+                    <ion-title>
+                      OBREIRO
+                    </ion-title>
+                  </ion-toolbar>
+                </ion-header>
                 <ion-content>
                   <ion-radio-group formControlName="isObreiro" *ngFor="let obr of strObreiro">
                     <ion-item (click)="selectOption(obr.nome, 9)">
@@ -294,42 +359,42 @@
           </ion-item>
 
           <ion-item>
-            <ion-label position="floating">DIÁCONO DATA INÍCIO:</ion-label>
+            <ion-label position="floating">DATA CONSAG. DIÁCONO:</ion-label>
             <ion-input style="color: blueviolet;" type="text" [brmasker]="{mask:'00/00/0000', len:10, type:'num'}" (ngModelChange)="consDiacono=$event" formControlName="consDiacono"></ion-input>
           </ion-item>
 
           <ion-item>
-            <ion-label position="floating">LOCAL:</ion-label>
+            <ion-label position="floating">LOCAL DA CONSAG.</ion-label>
             <ion-input style="text-transform: uppercase; color:  blueviolet;" (ngModelChange)="localDiacono=$event" formControlName="localDiacono"></ion-input>
           </ion-item>
 
           <ion-item>
-            <ion-label position="floating">DIÁCONO DATA INÍCIO:</ion-label>
+            <ion-label position="floating">DATA CONSAG. PRESBÍTERO:</ion-label>
             <ion-input style="color: blueviolet;" type="text" [brmasker]="{mask:'00/00/0000', len:10, type:'num'}" (ngModelChange)="consPresbitero=$event" formControlName="consPresbitero"></ion-input>
           </ion-item>
 
           <ion-item>
-            <ion-label position="floating">LOCAL:</ion-label>
+            <ion-label position="floating">LOCAL DA CONSAG.</ion-label>
             <ion-input style="text-transform: uppercase; color:  blueviolet;" (ngModelChange)="localPresbitero=$event" formControlName="localPresbitero"></ion-input>
           </ion-item>
 
           <ion-item>
-            <ion-label position="floating">EVANGELISTA DATA INÍCIO:</ion-label>
+            <ion-label position="floating">DATA CONSAG. EVANGELISTA:</ion-label>
             <ion-input style="color: blueviolet;" type="text" [brmasker]="{mask:'00/00/0000', len:10, type:'num'}" (ngModelChange)="consEvangelista=$event" formControlName="consEvangelista"></ion-input>
           </ion-item>
 
           <ion-item>
-            <ion-label position="floating">LOCAL:</ion-label>
+            <ion-label position="floating">LOCAL DA CONSAG.</ion-label>
             <ion-input style="text-transform: uppercase; color:  blueviolet;" (ngModelChange)="localEvangelista=$event" formControlName="localEvangelista"></ion-input>
           </ion-item>
 
           <ion-item>
-            <ion-label position="floating">PASTOR DATA INICIO:</ion-label>
+            <ion-label position="floating">DATA CONSAG. PASTOR:</ion-label>
             <ion-input style="color: blueviolet;" type="text" [brmasker]="{mask:'00/00/0000', len:10, type:'num'}" (ngModelChange)="consPastor=$event" formControlName="consPastor"></ion-input>
           </ion-item>
 
           <ion-item>
-            <ion-label position="floating">LOCAL:</ion-label>
+            <ion-label position="floating">LOCAL DA CONSAG.</ion-label>
             <ion-input style="text-transform: uppercase; color:  blueviolet;" (ngModelChange)="localPastor=$event" formControlName="localPastor"></ion-input>
           </ion-item>
 
