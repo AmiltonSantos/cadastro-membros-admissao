@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, NgForm } from '@angular/forms';
 import { IonContent, IonSlides, Platform } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
@@ -16,7 +16,7 @@ import { FileOpener } from '@awesome-cordova-plugins/file-opener/ngx';
     templateUrl: 'home.page.html',
     styleUrls: ['home.page.scss'],
 })
-export class HomePage implements OnInit, OnDestroy {
+export class HomePage implements OnInit {
 
     @ViewChild(IonContent, { static: true }) ionContent!: IonContent;
     @ViewChild(IonSlides, { static: false }) ionSlides!: IonSlides;
@@ -250,12 +250,6 @@ export class HomePage implements OnInit, OnDestroy {
     constructor(public fb: FormBuilder, public plt: Platform, public http: HttpClient, public fileOpener: FileOpener) { }
 
     ngOnInit() {
-        const inputElement = document.querySelector('ion-input');
-        if (inputElement) {
-            inputElement.addEventListener('focus', this.keyboardWillShow);
-            inputElement.addEventListener('blur', this.keyboardWillHide);
-        }
-
         const slides = ['Dados Pessoais', 'Endereço', 'Ministério'];
         this.currentSlide = slides[0];
         this.slides = slides;
@@ -309,30 +303,6 @@ export class HomePage implements OnInit, OnDestroy {
 
 
         this.loadLocalAssetToBase64();
-    }
-
-    ngOnDestroy() {
-        // Remove os listeners quando o componente for destruído
-        const inputElement = document.querySelector('ion-input');
-    
-        if (inputElement) {
-          inputElement.removeEventListener('focus', this.keyboardWillShow);
-          inputElement.removeEventListener('blur', this.keyboardWillHide);
-        }
-    }
-
-    keyboardWillShow() {
-        console.log('Teclado aberto');
-        alert('Teclado aberto');
-        // Aqui você pode adicionar lógica para ajustar a interface
-        // Por exemplo, rolar a página para o input
-        window.scrollTo(0, document.body.scrollHeight);
-    }
-    
-    keyboardWillHide() {
-        console.log('Teclado fechado');
-        alert('Teclado fechado');
-        // Aqui você pode adicionar lógica para restaurar a interface
     }
    
     onSlidesDidChange() {
