@@ -232,7 +232,7 @@ export class HomePage implements OnInit {
     public strEscolaridade = [
         { nome: 'FUND. INCOMPLETO' },
         { nome: 'FUND. COMPLETO' },
-        { nome: 'MÉD. INCOMPLETO' },
+        { nome: 'MÉDIO INCOMPLETO' },
         { nome: 'MÉDIO COMPLETO' },
         { nome: 'SUP. INCOMPLETO' },
         { nome: 'SUP. COMPLETO' },
@@ -303,34 +303,6 @@ export class HomePage implements OnInit {
 
 
         this.loadLocalAssetToBase64();
-    }
-
-    async selectOption(value: string, numero: number) {
-        const popovers = document.querySelectorAll('ion-popover');
-        const popoverArray = Array.from(popovers); // Converte NodeList em Array
-        const popover = popoverArray.pop();
-        if (popover) {
-            if (numero === 1) {
-                this.congregacao = value;
-            } else if (numero === 2) {
-                this.isObreiro = value;
-            } else if (numero === 3) {
-                this.sexo = value;
-            } else if (numero === 4) {
-                this.estadoCivil = value;
-            } else if (numero === 5) {
-                this.nacionalidade = value;
-            } else if (numero === 6) {
-                this.uf = value;
-            } else if (numero === 7) {
-                this.escolaridade = value;
-            } else if (numero === 8) {
-                this.estado = value;
-            } else if (numero === 9) {
-                this.isObreiro = value;
-            }
-            await popover.dismiss();
-        }
     }
    
     onSlidesDidChange() {

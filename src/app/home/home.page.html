@@ -57,7 +57,7 @@
             <div  style="cursor: pointer;">
               <ion-label position="floating">CONGREGAÇÃO: <span style="color:  blueviolet;">{{congregacao !== '' ? congregacao : ''}}</span></ion-label>
             </div>
-            <ion-popover class="style-popover" trigger="click-congregacao" triggerAction="click" side="top" alignment="center">
+            <ion-popover class="style-popover" trigger="click-congregacao" triggerAction="click" alignment="center" [dismissOnSelect]="true">
               <ng-template>
                 <ion-header>
                   <ion-toolbar color="primary">
@@ -67,11 +67,11 @@
                   </ion-toolbar>
                 </ion-header>
                 <ion-content>
-                  <ion-radio-group formControlName="congregacao" *ngFor="let section of strCongregacao">
+                  <ion-radio-group [(ngModel)]="congregacao" formControlName="congregacao" *ngFor="let section of strCongregacao">
                     <ion-item-divider>
                       <ion-label> {{ section.regional }}</ion-label>
                     </ion-item-divider>
-                    <ion-item *ngFor="let option of section.options" (click)="selectOption(option.value, 1)">
+                    <ion-item *ngFor="let option of section.options">
                       <ion-label>{{ option.value }}</ion-label>
                       <ion-radio slot="start" [value]="option.value"></ion-radio>
                     </ion-item>
@@ -103,7 +103,7 @@
             <div  style="cursor: pointer;">
               <ion-label position="floating">SEXO: <span style="color:  blueviolet;">{{sexo !== '' ? sexo : ''}}</span></ion-label>
             </div>
-            <ion-popover class="style-popover" trigger="click-sexo" triggerAction="click" side="top" alignment="center">
+            <ion-popover class="style-popover" trigger="click-sexo" triggerAction="click" alignment="center" [dismissOnSelect]="true">
               <ng-template>
                 <ion-header>
                   <ion-toolbar color="primary">
@@ -113,8 +113,8 @@
                   </ion-toolbar>
                 </ion-header>
                 <ion-content>
-                  <ion-radio-group formControlName="sexo" *ngFor="let sex of strSexo">
-                    <ion-item (click)="selectOption(sex.nome, 3)">
+                  <ion-radio-group [(ngModel)]="sexo" formControlName="sexo" *ngFor="let sex of strSexo">
+                    <ion-item>
                       <ion-label>{{sex.nome}}</ion-label>
                       <ion-radio slot="start" [value]="sex.nome"></ion-radio>
                     </ion-item>
@@ -128,7 +128,7 @@
             <div  style="cursor: pointer;">
               <ion-label position="floating">ESTADO CIVIL: <span style="color:  blueviolet;">{{estadoCivil !== '' ? estadoCivil : ''}}</span></ion-label>
             </div>
-            <ion-popover class="style-popover" trigger="click-estadoCivil" triggerAction="click" side="top" alignment="center">
+            <ion-popover class="style-popover" trigger="click-estadoCivil" triggerAction="click" alignment="center" [dismissOnSelect]="true">
               <ng-template>
                 <ion-header>
                   <ion-toolbar color="primary">
@@ -138,8 +138,8 @@
                   </ion-toolbar>
                 </ion-header>
                 <ion-content>
-                  <ion-radio-group formControlName="estadoCivil" *ngFor="let civil of strEstadoCivil">
-                    <ion-item (click)="selectOption(civil.nome, 4)">
+                  <ion-radio-group [(ngModel)]="estadoCivil" formControlName="estadoCivil" *ngFor="let civil of strEstadoCivil">
+                    <ion-item>
                       <ion-label>{{civil.nome}}</ion-label>
                       <ion-radio slot="start" [value]="civil.nome"></ion-radio>
                     </ion-item>
@@ -153,7 +153,7 @@
             <div  style="cursor: pointer;">
               <ion-label position="floating">NACIONALIDADE: <span style="color:  blueviolet;">{{nacionalidade !== '' ? nacionalidade : ''}}</span></ion-label>
             </div>
-            <ion-popover class="style-popover" trigger="click-nacionalidade" triggerAction="click" side="top" alignment="center">
+            <ion-popover class="style-popover" trigger="click-nacionalidade" triggerAction="click" alignment="center" [dismissOnSelect]="true">
               <ng-template>
                 <ion-header>
                   <ion-toolbar color="primary">
@@ -163,8 +163,8 @@
                   </ion-toolbar>
                 </ion-header>
                 <ion-content>
-                  <ion-radio-group formControlName="nacionalidade" *ngFor="let nasc of strNacionalidade">
-                    <ion-item (click)="selectOption(nasc.nome, 5)">
+                  <ion-radio-group [(ngModel)]="nacionalidade" formControlName="nacionalidade" *ngFor="let nasc of strNacionalidade">
+                    <ion-item>
                       <ion-label>{{nasc.nome}}</ion-label>
                       <ion-radio slot="start" [value]="nasc.nome"></ion-radio>
                     </ion-item>
@@ -184,7 +184,7 @@
             <div  style="cursor: pointer;">
               <ion-label position="floating">UF: <span style="color:  blueviolet;">{{uf !== '' ? uf : ''}}</span></ion-label>
             </div>
-            <ion-popover class="style-popover" trigger="click-uf" triggerAction="click" side="top" alignment="center">
+            <ion-popover class="style-popover" trigger="click-uf" triggerAction="click" alignment="center" [dismissOnSelect]="true">
               <ng-template>
                 <ion-header>
                   <ion-toolbar color="primary">
@@ -194,8 +194,8 @@
                   </ion-toolbar>
                 </ion-header>
                 <ion-content>
-                  <ion-radio-group formControlName="uf" *ngFor="let estado of strEstados">
-                    <ion-item (click)="selectOption(estado.sigla, 6)">
+                  <ion-radio-group [(ngModel)]="uf" formControlName="uf" *ngFor="let estado of strEstados">
+                    <ion-item>
                       <ion-label>{{estado.nome}} - {{estado.sigla}}</ion-label>
                       <ion-radio slot="start" [value]="estado.sigla"></ion-radio>
                     </ion-item>
@@ -226,7 +226,7 @@
             <div  style="cursor: pointer;">
               <ion-label position="floating">ESCOLARIDADE: <span style="color:  blueviolet;">{{escolaridade !== '' ? escolaridade : ''}}</span></ion-label>
             </div>
-            <ion-popover class="style-popover" trigger="click-escolaridade" triggerAction="click" side="top" alignment="center">
+            <ion-popover class="style-popover" trigger="click-escolaridade" triggerAction="click" alignment="center" [dismissOnSelect]="true">
               <ng-template>
                 <ion-header>
                   <ion-toolbar color="primary">
@@ -236,8 +236,8 @@
                   </ion-toolbar>
                 </ion-header>
                 <ion-content>
-                  <ion-radio-group formControlName="escolaridade" *ngFor="let escola of strEscolaridade">
-                    <ion-item (click)="selectOption(escola.nome, 7)">
+                  <ion-radio-group [(ngModel)]="escolaridade" formControlName="escolaridade" *ngFor="let escola of strEscolaridade">
+                    <ion-item>
                       <ion-label>{{escola.nome}}</ion-label>
                       <ion-radio slot="start" [value]="escola.nome"></ion-radio>
                     </ion-item>
@@ -252,7 +252,7 @@
             <ion-input style="color: blueviolet;" type="text" [brmasker]="{phone: true}"  (ngModelChange)="telefone1=$event" formControlName="telefone1"></ion-input>
           </ion-item>
 
-          <ion-item>
+          <ion-item style="padding-bottom: 100px;">
             <ion-label position="floating">TELEFONE 2</ion-label>
             <ion-input style="color: blueviolet;" type="text" [brmasker]="{phone: true}" (ngModelChange)="telefone2=$event" formControlName="telefone2"></ion-input>
           </ion-item>
@@ -289,7 +289,7 @@
             <div  style="cursor: pointer;">
               <ion-label position="floating">ESTADO: <span style="color:  blueviolet;">{{estado !== '' ? estado : ''}}</span></ion-label>
             </div>
-            <ion-popover class="style-popover" trigger="click-estado" triggerAction="click" side="top" alignment="center">
+            <ion-popover class="style-popover" trigger="click-estado" triggerAction="click" alignment="center" [dismissOnSelect]="true">
               <ng-template>
                 <ion-header>
                   <ion-toolbar color="primary">
@@ -299,10 +299,10 @@
                   </ion-toolbar>
                 </ion-header>
                 <ion-content>
-                  <ion-radio-group formControlName="estado" *ngFor="let estado of strEstados">
-                    <ion-item (click)="selectOption(estado.nome, 8)">
-                      <ion-label>{{estado.nome}} - {{estado.sigla}}</ion-label>
-                      <ion-radio slot="start" [value]="estado.nome"></ion-radio>
+                  <ion-radio-group [(ngModel)]="estado" formControlName="estado" *ngFor="let est of strEstados">
+                    <ion-item>
+                      <ion-label>{{est.nome}} - {{est.sigla}}</ion-label>
+                      <ion-radio slot="start" [value]="est.nome"></ion-radio>
                     </ion-item>
                   </ion-radio-group>
                 </ion-content>
@@ -310,7 +310,7 @@
             </ion-popover>
           </ion-item>
 
-          <ion-item>
+          <ion-item  style="padding-bottom: 100px;">
             <ion-label position="floating">CIDADE</ion-label>
             <ion-input style="text-transform: uppercase; color:  blueviolet;" (ngModelChange)="cidade=$event" formControlName="cidade"></ion-input>
           </ion-item>
@@ -332,7 +332,7 @@
             <div  style="cursor: pointer;">
               <ion-label position="floating">OBREIRO: <span style="color:  blueviolet;">{{isObreiro !== '' ? isObreiro : ''}}</span></ion-label>
             </div>
-            <ion-popover class="style-popover" trigger="click-isObreiro" triggerAction="click" side="top" alignment="center">
+            <ion-popover class="style-popover" trigger="click-isObreiro" triggerAction="click" alignment="center" [dismissOnSelect]="true">
               <ng-template>
                 <ion-header>
                   <ion-toolbar color="primary">
@@ -342,8 +342,8 @@
                   </ion-toolbar>
                 </ion-header>
                 <ion-content>
-                  <ion-radio-group formControlName="isObreiro" *ngFor="let obr of strObreiro">
-                    <ion-item (click)="selectOption(obr.nome, 9)">
+                  <ion-radio-group [(ngModel)]="isObreiro" formControlName="isObreiro" *ngFor="let obr of strObreiro">
+                    <ion-item>
                       <ion-label>{{obr.nome}}</ion-label>
                       <ion-radio slot="start" [value]="obr.nome"></ion-radio>
                     </ion-item>
@@ -408,7 +408,7 @@
             <ion-input style="color: blueviolet;" type="text" [brmasker]="{mask:'00/00/0000', len:10, type:'num'}" (ngModelChange)="regCadesgo=$event" formControlName="regCadesgo"></ion-input>
           </ion-item>
 
-          <ion-item>
+          <ion-item style="padding-bottom: 100px;">
             <ion-label position="floating">REGISTRO CGADB:</ion-label>
             <ion-input style="color: blueviolet;" type="text" [brmasker]="{mask:'00/00/0000', len:10, type:'num'}" (ngModelChange)="regCgadb=$event" formControlName="regCgadb"></ion-input>
           </ion-item>
