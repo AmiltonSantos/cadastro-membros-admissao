@@ -382,7 +382,7 @@ export class HomePage implements OnInit {
     }
 
     createPdf() {
-        let logo = { image: this.logoData, width: 450, alignment: 'center' };
+        let logo = { image: this.logoData, width: 450, margin: [30, 0, 0, 0] };
 
         const content = [];
 
