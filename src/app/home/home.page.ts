@@ -80,6 +80,12 @@ export class HomePage implements OnInit {
 
     public strCongregacao = [
         {
+            regional: 'TEMPLO',
+            options: [
+                { value: 'SEDE' }
+            ],
+        },
+        {
             regional: 'REGIONAL 01',
             options: [
                 {value: 'ANICUNS'},
